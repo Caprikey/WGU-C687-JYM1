@@ -1,0 +1,414 @@
+/*
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+// Created A Custom User Class For The Required WGU Student Project Details
+class WGUStudentDetails {
+
+	public:
+
+		// Creating and Initializing String Variables For The Required WGU Student Details
+		const string wguStudentCourseTitle = "Scripting and Programming - Applications - C867";
+		const string wguStudentAssessmentLanguage = "C++";
+		const string wguStudentFirstName = "Danty";
+		const string wguStudentLastName = "Cook";
+		const string wguStudentID = "007003568";
+
+
+		// Prints WGU Student Details Method. 
+		void printWGUStudentDetails() {
+			
+			cout << "WGU Course Title: " << wguStudentCourseTitle << endl;
+			cout << "Programing Language: " << wguStudentAssessmentLanguage << endl;
+			cout << "WGU Student ID: " << wguStudentID << endl;
+			cout << "Student Name: " << wguStudentFirstName << " " << wguStudentLastName << endl;
+			cout << endl << endl;
+
+		}
+
+};
+
+
+
+// Student Data Table Arrary Input FOR PRFA YMJ1
+const string studentData[] = {
+	"A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
+	"A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
+	"A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+	"A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+	"A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
+};
+
+class Student {
+
+	private:
+		// Variable Creation;
+
+		string studentID;
+
+		string firstName;
+		string lastName;
+		string emailAddress;
+
+		int age = 99;
+
+		int daysInCourse[3] = { 0,0,0 };
+
+		int daysInCourse1 = 0;
+		int daysInCourse2 = 0;
+		int daysInCourse3 = 0;
+
+		enum DegreeProgram {SECURITY, NETWORK, SOFTWARE} degreeProgram;
+		// DegreeProgram degreeProgram;
+
+
+	public:
+
+		// Accessors 
+
+		string getStudentByID(string a) {
+			return this->studentID;
+		}
+		
+
+
+
+		// Mutators
+
+		void SetStudentID(string a) {
+			studentID = a;
+		}
+
+		void SetFirstName(string b) {
+			firstName = b;
+		}
+
+		void SetLastName(string c) {
+			lastName = c;
+		}
+
+		void SetEmailAddress(string d) {
+			emailAddress = d;
+		}
+
+		void SetAge(int e) {
+			age = e;
+		}
+
+		void SetDaysInCourse1(int f) {
+			daysInCourse1 = f;
+		}
+
+		void SetDaysInCourse2(int g) {
+			daysInCourse2 = g;
+		}
+
+		void SetDaysInCourse3(int h) {
+			daysInCourse3 = h;
+		}
+
+		void SetDegreeProgram(DegreeProgram _degreeProgram) {
+			degreeProgram = _degreeProgram;
+		}
+
+
+
+
+		// Constructor
+
+		Student() {
+			cout << "Default Constructor" << endl;
+		}
+
+
+
+		// Print 
+
+		void Print() {
+			
+			cout << "Student ID: " << studentID << endl;
+			cout << "Student Name: " << firstName << " " << lastName << endl;
+			cout << "Student Email Address: " << emailAddress << endl;
+			cout << "Student's Age: " << age << endl;
+
+		}
+		
+	};
+
+
+
+
+
+int main() {
+
+	WGUStudentDetails myObj;
+		myObj.printWGUStudentDetails();
+
+	Student stud;
+		stud.SetStudentID("007003568");
+		stud.SetFirstName("Danty");
+		stud.SetLastName("Cook");
+		stud.SetEmailAddress("DCoo230@wgu.edu");
+		stud.SetAge(34);
+		stud.Print();
+
+		cout << "-------------------------------" << endl << endl;
+
+		// int studentDataArraySize= (sizeof(studentData) / sizeof(string));
+		
+		for (int i = 0; i < (sizeof(studentData) / sizeof(string)); i++) {
+
+			string tempString = studentData[i];
+
+			cout << "Student " << i + 1 << ":" << endl;
+			// cout << tempString << endl << endl;
+
+			int startingIndex = 0;
+			int currentInde = 0;
+
+			while (tempString.find(',') != string::npos) {
+
+				startingIndex = tempString.find(',');
+				tempString.replace(startingIndex, 1, "\n");
+			}
+
+			cout << tempString << endl;
+			//string _studentID = ;
+
+			//cout << "Student ID: " << _studentID << endl;
+
+			
+			cout << "-------------------------------" << endl << endl;
+			// temp = studentData[i];
+			//int startingPoint = 0;
+			//int endingPoint = 0;
+
+
+
+
+			//cout << "Next Student" << endl << endl;
+			
+
+			}
+
+	return 0;
+
+
+}
+
+*/
+
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+	using namespace std;
+
+
+	class Student {
+
+	private:
+
+		string studentID = "";
+		string firstName = "";
+		string lastName;
+		string emailAddress;
+
+		int age = 0;
+
+		int daysInCourse1 = 0;
+		int daysInCourse2 = 0;
+		int daysInCourse3 = 0;
+
+		int daysInCourse[3] = {0,0,0};
+
+		double AverageDaysInCourse = 0.00;
+
+		//enum DegreeProgram { SECURITY, NETWORK, SOFTWARE } degreeProgram = NETWORK;
+
+	public:
+
+
+	// Mutators
+	
+		string a;
+		//enum degreeProgram;
+
+
+		void setStudentID(string _studentID) {
+			studentID = _studentID;
+		}
+
+		void setStudentFirstName(string _firstName) {
+			firstName = _firstName;
+		}
+
+		void setStudentLastName(string _lastName) {
+			lastName = _lastName;
+		}
+
+		void setStudentEmailAddress(string _emailAddress) {
+			emailAddress = _emailAddress;
+		}
+
+		void setStudentAge(int _age) {
+			age = _age;
+		}
+
+		//void setStudentDegreeProgram(DegreeProgram _degreeProgram) {
+		//	degreeProgram = _degreeProgram;
+		//}
+
+
+	// Accessors
+
+		string getStudentID() {
+			return studentID;
+		}
+		
+		string getStudentFirstName() {
+			return firstName;
+		}
+
+		string getStudentLastName() {
+			return lastName;
+		}
+
+		string getStudentEmailAddress() {
+			return emailAddress;
+		}
+	
+		int getStudentAge() {
+			return age;
+		}
+
+		//enum DegreeProgram getStudentDegreeProgram() {
+		//	return degreeProgram;
+		//}
+
+	// Constructor
+
+		// Default Constructor
+		/*
+		Student() {
+			cout << "Enter Student Details" << endl;
+			cout << "Student ID: ";
+			//cin >> studentID;
+			//studentID = a;
+			//setStudentID(a);
+			//cout << getStudentID();
+
+		}
+		*/
+		// Parameterized Constructor
+		Student(string _studentID, 
+				string _firstName, 
+				string _lastName, 
+				string _emailAddress, 
+				int _age, 
+				int _daysInCourse1, 
+				int _daysInCourse2,
+				int _daysInCourse3/*,*/
+				/*int _daysInCourse[], */
+				/*DegreeProgram _degreeProgram*/) {
+
+			studentID = _studentID;
+			firstName = _firstName;
+			lastName = _lastName;
+			emailAddress = _emailAddress;
+			age = _age;
+			daysInCourse1 = _daysInCourse1;
+			daysInCourse2 = _daysInCourse2;
+			daysInCourse3 = _daysInCourse3;
+			//daysInCourse[] = _daysInCourse[];
+			//degreeProgram = _degreeProgram;
+		
+		}
+
+
+	// Member Function 
+		//int addDaysToArray(int _daysInCourse1, int _daysInCourse2, int _daysInCourse3) {
+		void addDaysToArray() {
+
+			int _daysInCourse1 = daysInCourse1;
+			int _daysInCourse2 = daysInCourse2;
+			int _daysInCourse3 = daysInCourse3;
+
+			daysInCourse[0] = _daysInCourse1;
+			daysInCourse[1] = _daysInCourse2;
+			daysInCourse[2] = _daysInCourse3;
+
+			//return daysInCourse[];
+		}
+
+		double getAverageDaysInCourse() {
+
+			int size = 3;
+			int sum = 0;
+
+			for (int i = 0; i < size; ++i) {
+				
+				sum += daysInCourse[i];
+
+			}
+
+			AverageDaysInCourse = double(sum) / size;
+			
+			return AverageDaysInCourse;
+
+		}
+
+		void print() {
+			cout << "---- ---- ---- ---- ---- ---- ---- ----" << endl;
+			cout << "---- ---- --Student Details-- ---- ----" << endl;
+			cout << "---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+			cout << "Student ID: " << studentID << endl;
+			cout << "Student Name: " << lastName << ", " << firstName << endl;
+			cout << "Studnet Email: " << emailAddress << endl;
+			cout << "Student Age: " << age << endl;
+			//cout << "Student Degree Program: " << degreeProgram << endl;
+			cout << "Number of Days In Course 1: " << daysInCourse1 << endl;
+			cout << "Number of Days In Course 2: " << daysInCourse2 << endl;
+			cout << "Number of Days In Course 3: " << daysInCourse3 << endl;
+
+			cout << "Number Of Days In Course Array: ";
+			for (int i = 0; i < 3; i++) {
+				if (i != 2) {
+					cout << daysInCourse[i] << ", ";
+				}
+				else {
+					cout << daysInCourse[i] << endl;
+				}
+			}
+
+			cout << "Average Number Of days In Courses: " << fixed << setprecision(2) << AverageDaysInCourse << endl;
+
+			//cout << "Number of Days In Course Array: " << daysInCourse << endl; 
+
+
+			//cout << "Average Days in Courses: " << AverageDaysInCourse << endl;
+			cout << "---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+		}
+};
+
+int main() {
+
+	//Student s;
+	
+	Student s("A1", "Danty", "Cook", "DCoo230@WGU.edu", 34, 27, 44, 59);
+	s.addDaysToArray();
+	s.getAverageDaysInCourse();
+	s.print();
+	
+
+
+	return 0;
+
+
+}

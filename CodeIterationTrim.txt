@@ -1,0 +1,1037 @@
+
+#include "stdafx.h"
+
+#include <iostream>
+#include <string>
+
+#include <iomanip>
+#include <cstring>
+
+#include <sstream>
+
+	using namespace std;
+
+
+
+
+
+
+
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+
+// Classes
+
+	// Enumerated Data Class
+
+	enum class DegreeProgram {
+		NETWORK = 0, SOFTWARE, SECURITY
+
+	};
+	/*
+		DegreeProgram convertStringToEnum(string _degreeProgram)
+	{
+
+		if (_degreeProgram == "NETWORK") return NETWORK;
+		else if (_degreeProgram == "SECURITY") return SECURITY;
+		else return SOFTWARE;
+	}
+
+	*/
+
+	// Student Class 
+
+	class Student {
+
+		private:
+
+			string studentID = "";
+			string firstName = "";
+			string lastName;
+			string emailAddress;
+
+			int age = 0;
+
+			int daysInCourse1 = 0;
+			int daysInCourse2 = 0;
+			int daysInCourse3 = 0;
+
+			int daysInCourse[3] = { 0,0,0 };
+
+			double AverageDaysInCourse = 0.00;
+
+			DegreeProgram degreeProgram = DegreeProgram::SECURITY;
+			int degreeProgramInt = 0;
+
+			string arrayInputData;
+
+
+		public:
+
+			// Mutators
+
+			string a;
+
+			void setStudentID(string _studentID) {
+				studentID = _studentID;
+			}
+
+			void setStudentFirstName(string _firstName) {
+				firstName = _firstName;
+			}
+
+			void setStudentLastName(string _lastName) {
+				lastName = _lastName;
+			}
+
+			void setStudentEmailAddress(string _emailAddress) {
+				emailAddress = _emailAddress;
+			}
+
+			void setStudentAge(int _age) {
+				age = _age;
+			}
+
+			void setStudentDaysInCourse1(int _daysInCourse1) {
+				daysInCourse1 = _daysInCourse1;
+			}
+
+			void setStudentDaysInCourse2(int _daysInCourse2) {
+				daysInCourse2 = _daysInCourse2;
+			}
+
+			void setStudentDaysInCourse3(int _daysInCourse3) {
+				daysInCourse3 = _daysInCourse3;
+			}
+
+			void setStudentDegreeProgram(DegreeProgram _degreeProgram) {
+				degreeProgram = _degreeProgram;
+			}
+
+
+			void setArrayInputData(string _arrayInputData) {
+				arrayInputData = _arrayInputData;
+
+			}
+
+			// Accessors
+
+			string getStudentID() {
+				return studentID;
+			}
+
+			string getStudentFirstName() {
+				return firstName;
+			}
+
+			string getStudentLastName() {
+				return lastName;
+			}
+
+			string getStudentEmailAddress() {
+				return emailAddress;
+			}
+
+			int getStudentAge() {
+				return age;
+			}
+
+			string getArrayInputData() {
+				return arrayInputData;
+			}
+
+			// Constructor
+
+				// Default Constructor
+			Student() {
+			}
+
+				// Parameterized Constructor
+
+			Student(string arrayInputData) {
+				this->arrayInputData;
+			
+			}
+
+			// Parameterized Constructor
+			Student(string studentID,
+				string firstName,
+				string lastName,
+				string emailAddress,
+				int age,
+				int daysInCourse1,
+				int daysInCourse2,
+				int daysInCourse3,
+				/*int _daysInCourse[], */
+				DegreeProgram degreeProgram
+			) {
+
+
+				this->studentID = studentID;
+				this->firstName = firstName;
+				this->lastName = lastName;
+				this->emailAddress = emailAddress;
+				this->age = age;
+				this->daysInCourse1 = daysInCourse1;
+				this->daysInCourse2 = daysInCourse2;
+				this->daysInCourse3 = daysInCourse3;
+				this->degreeProgram = degreeProgram;
+
+				this->degreeProgramInt = static_cast<int>(degreeProgram);
+				//DegreeProgram degreeProgramIntToEnum = static_cast<DegreeProgram>(degreeProgramInt);
+
+				/*
+				studentID = _studentID;
+				firstName = _firstName;
+				lastName = _lastName;
+				emailAddress = _emailAddress;
+				age = _age;
+				daysInCourse1 = _daysInCourse1;
+				daysInCourse2 = _daysInCourse2;
+				daysInCourse3 = _daysInCourse3;
+				//daysInCourse[] = _daysInCourse[];
+				*/
+
+			}
+
+
+			// Member Functions
+
+				// Member Function: 
+				// Add Int daysInCourse(x) to daysInCourse Array
+
+				//int addDaysToArray(int _daysInCourse1, int _daysInCourse2, int _daysInCourse3) {
+			void addDaysToArray() {
+
+				int _daysInCourse1 = daysInCourse1;
+				int _daysInCourse2 = daysInCourse2;
+				int _daysInCourse3 = daysInCourse3;
+
+				daysInCourse[0] = _daysInCourse1;
+				daysInCourse[1] = _daysInCourse2;
+				daysInCourse[2] = _daysInCourse3;
+
+				//return daysInCourse[];
+			}
+
+			// Member Function:
+			// Calculate Average Days In Courses
+
+			double getAverageDaysInCourse() {
+
+				int size = 3;
+				int sum = 0;
+
+				for (int i = 0; i < size; ++i) {
+
+					sum += daysInCourse[i];
+
+				}
+
+				AverageDaysInCourse = double(sum) / size;
+
+				return AverageDaysInCourse;
+
+			}
+
+			// Member Function:
+			// Prints All Data For Student:
+
+			void print() {
+
+
+				std::cout << "---- ---- ---- ---- ---- ---- ---- ----" << endl;
+				std::cout << "---- ---- --Student Details-- ---- ----" << endl;
+				std::cout << "---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+				std::cout << "Student ID: " << studentID << endl;
+				std::cout << "Student Name: " << lastName << ", " << firstName << endl;
+				std::cout << "Studnet Email: " << emailAddress << endl;
+				std::cout << "Student Age: " << age << endl;
+
+				std::cout << "Number of Days In Course 1: " << daysInCourse1 << endl;
+				std::cout << "Number of Days In Course 2: " << daysInCourse2 << endl;
+				std::cout << "Number of Days In Course 3: " << daysInCourse3 << endl;
+
+				std::cout << "Number Of Days In Course Array: ";
+				for (int i = 0; i < 3; i++) {
+					if (i != 2) {
+						std::cout << daysInCourse[i] << ", ";
+					}
+					else {
+						std::cout << daysInCourse[i] << endl;
+					}
+				}
+
+				std::cout << "Average Number Of days In Courses: " << fixed << setprecision(2) << AverageDaysInCourse << endl;
+
+				//std::cout << "Number of Days In Course Array: " << daysInCourse << endl; 
+
+
+				//std::cout << "Average Days in Courses: " << AverageDaysInCourse << endl;
+
+
+
+				std::cout << "Student's Degree Program (Int): " << degreeProgramInt << endl;
+				//std::cout << "Student's Degree Program (String): " << degreeProgramIntToEnum << endl;
+
+				std::cout << "---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+			}
+
+
+			void printArrayInputData() {
+				
+				std::cout << arrayInputData << endl << endl;
+			}
+	};
+
+		// End Of Student Class
+
+		///*
+
+		// Rooster Class
+
+
+	class Rooster: public Student{
+
+		private:
+				
+			//Student objStudent[5];
+			
+
+			//enum DegreeProgram degreeProgram;
+
+
+
+		public:
+			/*
+			int i, jyx;
+			string parseInputData;
+			string parseInputData = studentData[i];
+			*/
+
+
+
+
+			Rooster() {
+				
+				/*
+				parseInputData = studentData[i];
+				stringstream inputStream(parseInputData);;
+				jyx = 0;
+
+				while (getline(inputStream, parseInputData, ',')) {
+					//std::getline (parseTest2, parseTest2Temp, ",");
+
+					variableParseArray2[jyx++] = parseInputData;
+
+					// cout << parseTestObjTemp << endl;
+				}
+
+				*/
+
+
+
+
+
+			}
+
+
+			void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
+				
+				this->setStudentID(studentID);
+				this->setStudentFirstName(firstName);
+				this->setStudentLastName(lastName);
+				this->setStudentEmailAddress(emailAddress);
+				this->setStudentAge(age);
+
+				this->setStudentDaysInCourse1(daysInCourse1);
+				this->setStudentDaysInCourse2(daysInCourse2);
+				this->setStudentDaysInCourse3(daysInCourse3);
+
+				this->addDaysToArray();
+				this->getAverageDaysInCourse();
+				/*
+				if (variableParseArray2[8] == "NETWORK") {
+					this->setStudentDegreeProgram(DegreeProgram::NETWORK);
+				}
+				else if (variableParseArray2[8] == "SECRUITY") {
+					this->setStudentDegreeProgram(DegreeProgram::SECURITY);
+				}
+				else {
+					this->setStudentDegreeProgram(DegreeProgram::SOFTWARE);
+				}
+
+				*/
+
+			}
+
+			
+			void add2(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3) {
+
+				this->setStudentID(studentID);
+				this->setStudentFirstName(firstName);
+				this->setStudentLastName(lastName);
+				this->setStudentEmailAddress(emailAddress);
+				this->setStudentAge(age);
+
+				this->setStudentDaysInCourse1(daysInCourse1);
+				this->setStudentDaysInCourse2(daysInCourse2);
+				this->setStudentDaysInCourse3(daysInCourse3);
+
+				this->addDaysToArray();
+				this->getAverageDaysInCourse();
+
+				/*
+				if (variableParseArray2[8] == "NETWORK") {
+					this->setStudentDegreeProgram(DegreeProgram::NETWORK);
+				}
+				else if (variableParseArray2[8] == "SECRUITY") {
+					this->setStudentDegreeProgram(DegreeProgram::SECURITY);
+				}
+				else {
+					this->setStudentDegreeProgram(DegreeProgram::SOFTWARE);
+				}
+				
+				*/
+
+
+			}
+
+			
+			void remove(string studentId) {
+				
+
+
+				bool isFound = false;
+				int i = 0;
+
+				for (int i = 0; i < 5; i++) {
+
+					if (this[i].getStudentID() == studentId) {
+
+						isFound = true;
+						cout << "Student Object Was Located In Array Position: " << i << endl << endl;
+						break;
+					}
+
+					cout << "Student Object Was NOT In Array Position: " << i << endl << endl;
+
+				}
+			}
+
+			void printAll() {
+
+				for (int i = 0; i < 5; i++) {
+
+					this[i].print();
+				}
+
+
+			}
+				
+			void printAverageDaysInCourse(string studentID) {
+				
+			}
+				
+			void printInvalidEmails() {
+				
+				
+				
+			}
+
+			void printByDegreeProgram(DegreeProgram degreeProgram) {
+				
+				
+			}
+
+	};
+
+		// END Of The Rooster Class
+			
+		//*/
+
+
+
+
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+
+// Project Required Data:
+	// Student Data Table Arrary Input FOR PRFA YMJ1
+
+const string studentData[] = {
+		"A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
+		"A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
+		"A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+		"A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+		"A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
+	};
+
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+
+
+int main() {
+
+	// Student test[5];
+	/*
+	Student* test = new Student[5];
+	Student* test2 = new Student[5];
+	*/
+
+	Rooster* r = new Rooster[5];
+
+	DegreeProgram degreeProgram;
+
+	/*
+	Student s("A1", "Danty", "Cook", "DCoo230@WGU.edu", 34, 22, 47, 59, DegreeProgram::SOFTWARE);
+	s.addDaysToArray();
+	s.getAverageDaysInCourse();
+	s.print();
+
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+	std::cout << "Student Object Arrays with string array data split and added" << endl << endl;
+
+	for (int i = 0; i < 5; i++) {
+		test[i].setArrayInputData(studentData[i]);
+
+	}
+
+	for (int i = 0; i < 5; i++) {
+
+		test[i].printArrayInputData();
+	}
+
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+	string parseTest;
+	string parseTestfix = "\"TxtRpl\"";
+	size_t parseTestIndex;
+	string replaceText = ",";
+
+	// string parseArray[9];
+
+	for (int i = 0; i < 5; i++) {
+
+		std::cout << i << "\t";
+
+		parseTest = studentData[i];
+
+
+		parseTest.insert(parseTest.begin(), '\"');
+
+		parseTest.push_back('\"');
+
+
+
+		while (parseTest.find(",") != string::npos) {
+			parseTestIndex = parseTest.find(",");
+			parseTest.replace(parseTestIndex, 1, parseTestfix);
+
+		}
+
+		// std::cout << parseTest;
+		// std::cout << endl;
+
+		while (parseTest.find("TxtRpl") != string::npos) {
+			parseTestIndex = parseTest.find("TxtRpl");
+			parseTest.replace(parseTestIndex, 6, replaceText);
+
+		}
+
+		std::cout << parseTest;
+		std::cout << endl;
+
+
+	}
+
+	std::cout << endl;
+
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+	cout << "Stream Parsing:" << endl << endl;
+
+	string parseTest2;
+	string parseTest2Temp;
+	string myStream;
+	string parseBy = ",";
+	size_t parseTest2Index = 0;
+	string replaceText2 = ",";
+	int jx = 0;
+	string variableParse[9] = {};
+
+	for (int i = 0; i < 5; i++) {
+
+		parseTest2 = studentData[i];
+
+		stringstream myStream(parseTest2);
+		jx = 0;
+
+		while (getline(myStream, parseTest2Temp, ',')) {
+			//std::getline (parseTest2, parseTest2Temp, ",");
+
+			variableParse[jx++] = parseTest2Temp;
+
+			cout << parseTest2Temp << endl;
+		}
+
+		cout << endl;
+
+		for (int ix = 0; ix < 9; ix++) {
+
+			cout << variableParse[ix] << "\t";
+
+		}
+
+		cout << endl << endl;
+		cout << "---- ---- ---- ---- ---- ---- ---- ---- ";
+		cout << endl << endl;
+	}
+
+	cout << endl << endl;
+
+	*/
+	/*
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+	string parseTestObj;
+	string parseTestObjTemp;
+
+	string myStream2;
+	string variableParseArray[9] = {};
+	int jy = 0;
+
+	for (int i = 0; i < 5; i++) {
+
+		// Student Object Array
+
+		// for (int j = 0; j < 5; j++) {
+
+			// Student Data Input Array
+
+
+		parseTestObj = studentData[i];
+		stringstream myStream2(parseTestObj);
+		jy = 0;
+
+		while (getline(myStream2, parseTestObjTemp, ',')) {
+			//std::getline (parseTest2, parseTest2Temp, ",");
+
+			variableParseArray[jy++] = parseTestObjTemp;
+
+			// cout << parseTestObjTemp << endl;
+		}
+
+			// Connecting Student Object Data Members to Variable Storage Array From Parsing The Student Data Input Array;
+			test2[i].setStudentID(variableParseArray[0]);
+			test2[i].setStudentFirstName(variableParseArray[1]);
+			test2[i].setStudentLastName(variableParseArray[2]);
+			test2[i].setStudentEmailAddress(variableParseArray[3]);
+			test2[i].setStudentAge(stoi(variableParseArray[4]));
+
+			test2[i].setStudentDaysInCourse1(stoi(variableParseArray[5]));
+			test2[i].setStudentDaysInCourse2(stoi(variableParseArray[6]));
+			test2[i].setStudentDaysInCourse3(stoi(variableParseArray[7]));
+
+			test2[i].addDaysToArray();
+			test2[i].getAverageDaysInCourse();
+
+			if (variableParseArray[8] == "NETWORK") {
+				test2[i].setStudentDegreeProgram(DegreeProgram::NETWORK);
+			}
+			else if (variableParseArray[8] == "SECRUITY") {
+				test2[i].setStudentDegreeProgram(DegreeProgram::SECURITY);
+			}
+			else {
+				test2[i].setStudentDegreeProgram(DegreeProgram::SOFTWARE);
+			}
+
+	}
+
+	for (int i = 0; i < 5; i++) {
+
+		test2[i].print();
+	}
+	*/
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+	
+	string parseTestObj2;
+	string parseTestObj2Temp;
+
+	string myStream3;
+	string variableParseArray2[9] = {};
+	int jyx = 0;
+
+	for (int i = 0; i < 5; i++) {
+
+		// Student Object Array
+
+		// for (int j = 0; j < 5; j++) {
+
+			// Student Data Input Array
+
+
+		parseTestObj2 = studentData[i];
+		stringstream myStream3(parseTestObj2);
+		jyx = 0;
+
+		while (getline(myStream3, parseTestObj2Temp, ',')) {
+			//std::getline (parseTest2, parseTest2Temp, ",");
+
+			variableParseArray2[jyx++] = parseTestObj2Temp;
+
+			cout << parseTestObj2Temp << endl;
+		}
+		
+		
+		r->add2(variableParseArray2[0], variableParseArray2[1], variableParseArray2[2], variableParseArray2[3], (stoi(variableParseArray2[4])), (stoi(variableParseArray2[5])), (stoi(variableParseArray2[6])), (stoi(variableParseArray2[7])));
+	}
+
+		
+		// r->printAll();
+	
+
+	/*
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+
+	cout << test2[3].getStudentID();
+
+	cout << endl;
+	*/
+
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+
+	/*
+		string studentIDTestMaster = "A3";
+
+		for (int ixy = 0; ixy < 5; ixy++) {
+
+			cout << "Current Student ID: " << test2[ixy].getStudentID() << endl;
+
+			if (test2[ixy].getStudentID() == "A5") {
+
+				test2[ixy].print();
+				break;
+			}
+
+			if (test2[ixy].getStudentID() == studentIDTestMaster) {
+
+				cout << "String Successfully Matched To Student ID" << endl;
+				test2[ixy].print();
+			};
+			/*
+			if (test2[ixy].getStudentID() == studentIDTestMaster) {
+				//cout << test2[ixy].print();
+				//break;
+			}
+
+			cout << "Student ID Does Not Match Student Test2 Object " << ixy << endl;
+			*/
+			//	}
+
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+
+
+
+	string studentIDTestMaster = "A3";
+
+	for (int ixy = 0; ixy < 5; ixy++) {
+
+		cout << "Current Student ID: " << r[ixy].getStudentID() << endl;
+
+		if (r[ixy].getStudentID() == "A5") {
+
+			r[ixy].print();
+			break;
+		}
+
+		if (r[ixy].getStudentID() == studentIDTestMaster) {
+
+			cout << "String Successfully Matched To Student ID" << endl;
+			r[ixy].print();
+		};
+		/*
+		if (test2[ixy].getStudentID() == studentIDTestMaster) {
+			//cout << test2[ixy].print();
+			//break;
+		}
+
+		cout << "Student ID Does Not Match Student Test2 Object " << ixy << endl;
+
+	*/
+	}
+
+
+
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+	cout << r[1].getStudentID();
+
+	cout << endl << endl;
+
+
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+		r->remove("A4");
+
+		
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+	cout << "Print All Test" << endl << endl;
+
+		r->printAll();
+
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+
+	/*
+
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+
+
+	for (int i = 0; i < 5; i++) {
+
+		string tempStr = studentData[i];
+		size_t tempStrSize = tempStr.size();
+		size_t startIndx = 0;
+		size_t currIndx = 0;
+		size_t j = 0;
+		size_t commaArray[8] = {};
+
+
+		std::cout << "String: ";
+		std::cout << tempStr << endl << endl;
+
+		std::cout << "---- ---- ---- ---- ---- ---- ---- ---- " << endl << endl;
+
+		while (tempStr.find(",", startIndx) != string::npos) {
+
+			//std::cout << "Start Point: ";
+			//std::cout << startIndx << "\t";
+
+			currIndx = tempStr.find(",", startIndx);
+
+			//std::cout << "End Point: ";
+			//std::cout << currIndx << endl;
+			
+			std::cout << "Variable #: " << (j + 1) << endl;
+			std::cout << "Variable Stored: " << startIndx << ", " << (currIndx - 1) << "\t";
+			// std::cout << "Variable Length: " << ((currIndx)-startIndx) << endl << endl;
+			std::cout << "Variable Length: " << ((currIndx)-startIndx) << endl;
+			std::cout << "Variable Data: " << tempStr.substr(startIndx, (currIndx-startIndx)) << endl << endl;
+			std::cout << "---- ---- ---- ---- ---- ---- ---- ---- " << endl << endl;
+
+
+			startIndx = (currIndx + 1);
+
+			commaArray[j++] = currIndx;
+		}
+		if (j == 8) {
+			std::cout << "Variable #: " << (j + 1) << endl;
+			currIndx = tempStrSize;
+			std::cout << "Variable Stored: " << startIndx << ", " << currIndx << "\t";
+			// std::cout << "Variable Length: " << tempStrSize - startIndx << endl << endl;
+			std::cout << "Variable Length: " << ((currIndx)-startIndx) << endl;
+			std::cout << "Variable Data: " << tempStr.substr(startIndx, (currIndx - startIndx)) << endl << endl;
+			std::cout << "---- ---- ---- ---- ---- ---- ---- ---- " << endl << endl;
+		}
+
+
+		size_t n = sizeof(commaArray) / sizeof(commaArray[0]);
+
+		std::cout << "All Commas are found here: ";
+
+		for (int i = 0; i < n; i++) {
+
+			std::cout << commaArray[i];
+
+			if (i != (n - 1)) {
+				std::cout << ", ";
+			}
+
+		}
+		std::cout << endl << endl;
+
+		std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+		std::cout << endl;
+	}
+	*/
+	/*
+
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+
+
+	string tempString;
+	
+
+	for (int i = 0; i < 5; i++) {
+		
+		size_t startingIndex = 0;
+		size_t currentIndex = 0;
+		size_t stringSize = 0;
+
+		//strcpy(string tempString, studentData[i]);
+		//std::cout << tempString;	
+		
+		tempString = studentData[i];
+
+		std::cout << "String: ";
+		std::cout << tempString << endl << endl;;
+
+		stringSize = tempString.size();
+		std::cout << "Size of String: " << stringSize << endl << endl;
+
+		// std::cout << "Starting Index: " << startingIndex << endl;
+		std::cout << "Starting Index: " << startingIndex << "\t";
+
+		currentIndex = tempString.find(",");
+		std::cout << "First Comma Instance: " << currentIndex << endl;
+
+		std::cout << "Student ID: " << tempString.substr(startingIndex, currentIndex) << endl << endl;
+		
+		startingIndex = currentIndex + 1; 
+		// std::cout << "New Starting Index: " << startingIndex << endl;
+		std::cout << "New Starting Index: " << startingIndex << "\t";
+
+		currentIndex = tempString.find(",", startingIndex);
+		std::cout << "Second Comma Instance: " << currentIndex << endl;
+
+		std::cout << "Student First Name: " << tempString.substr(startingIndex, (currentIndex - startingIndex)) << endl << endl;
+
+		startingIndex = currentIndex + 1;
+		// std::cout << "New Starting Index: " << startingIndex << endl;
+		std::cout << "New Starting Index: " << startingIndex << "\t";
+
+		currentIndex = tempString.find(",", startingIndex);
+		std::cout << "Third Comma Instance: " << currentIndex << endl;
+
+		std::cout << "Student Last Name: " << tempString.substr(startingIndex, (currentIndex - startingIndex)) << endl << endl;
+
+		startingIndex = currentIndex + 1;
+		// std::cout << "New Starting Index: " << startingIndex << endl;
+		std::cout << "New Starting Index: " << startingIndex << "\t";
+
+		currentIndex = tempString.find(",", startingIndex);
+		std::cout << "Forth Comma Instance: " << currentIndex << endl;
+
+		std::cout << "Student Email Address: " << tempString.substr(startingIndex, (currentIndex - startingIndex)) << endl << endl;
+
+		startingIndex = currentIndex + 1;
+		// std::cout << "New Starting Index: " << startingIndex << endl;
+		std::cout << "New Starting Index: " << startingIndex << "\t";
+
+		currentIndex = tempString.find(",", startingIndex);
+		std::cout << "Fifth Comma Instance: " << currentIndex << endl;
+
+		// std::cout << "Student Age (Str): " << tempString.substr(startingIndex, (currentIndex - startingIndex)) << endl;
+		std::cout << "Student Age: " << endl;
+		std::cout << "\t\t" << "String: " << tempString.substr(startingIndex, (currentIndex - startingIndex));
+		std::cout << "\t" << "Integer: " << stoi(tempString.substr(startingIndex, (currentIndex - startingIndex))) << endl << endl;
+
+		startingIndex = currentIndex + 1;
+		// std::cout << "New Starting Index: " << startingIndex << endl;
+		std::cout << "New Starting Index: " << startingIndex << "\t";
+
+		currentIndex = tempString.find(",", startingIndex);
+		std::cout << "Sixth Comma Instance: " << currentIndex << endl;
+
+		// std::cout << "Days In Course 1 (Str): " << tempString.substr(startingIndex, (currentIndex - startingIndex)) << endl;
+		
+		std::cout << "Days In Course 1:" << endl;
+		std::cout << "\t\t" << "String: " << tempString.substr(startingIndex, (currentIndex - startingIndex));
+		std::cout << "\t" << "Integer: " << stoi(tempString.substr(startingIndex, (currentIndex - startingIndex))) << endl << endl;
+
+		startingIndex = currentIndex + 1;
+		// std::cout << "New Starting Index: " << startingIndex << endl;
+		std::cout << "New Starting Index: " << startingIndex << "\t";
+
+		currentIndex = tempString.find(",", startingIndex);
+		std::cout << "Seventh Comma Instance: " << currentIndex << endl;
+		// std::cout << "Seventh Comma Instance: " << currentIndex << "\t";
+
+		// std::cout << "Days In Course 2 (Str): " << tempString.substr(startingIndex, (currentIndex - startingIndex)) << endl;
+		std::cout << "Days In Course 2:" << endl;
+		std::cout << "\t\t" << "String: " << tempString.substr(startingIndex, (currentIndex - startingIndex));
+		std::cout << "\t" << "Integer: " << stoi(tempString.substr(startingIndex, (currentIndex - startingIndex))) << endl << endl;
+
+		startingIndex = currentIndex + 1;
+		// std::cout << "New Starting Index: " << startingIndex << endl;
+		std::cout << "New Starting Index: " << startingIndex << "\t";
+
+
+		currentIndex = tempString.find(",", startingIndex);
+		std::cout << "Eigth Comma Instance: " << currentIndex << endl;
+
+		// std::cout << "Days In Course 3 (Str): " << tempString.substr(startingIndex, (currentIndex - startingIndex)) << endl;
+		std::cout << "Days In Course 3:" << endl;
+		std::cout << "\t\t" << "String: " << tempString.substr(startingIndex, (currentIndex - startingIndex));
+		std::cout << "\t" << "Integer: " << stoi(tempString.substr(startingIndex, (currentIndex - startingIndex))) << endl << endl;
+
+		startingIndex = currentIndex + 1;
+		// std::cout << "New Starting Index: " << startingIndex << endl;
+		std::cout << "New Starting Index: " << startingIndex << "\t";
+
+		currentIndex = stringSize;
+		std::cout << "End of the String: " << currentIndex << endl;
+		// degreeProgram = tempString.substr(startingIndex, (currentIndex - startingIndex));
+		std::cout << "Degree Program: " << tempString.substr(startingIndex, (currentIndex - startingIndex)) << endl << endl;
+
+
+		std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+		std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
+		std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
+
+		
+
+
+		
+	}
+	*/
+	/*
+	delete[] test;
+	delete[] test2;
+	*/
+	delete[] r;
+
+	return 0;
+
+
+}
