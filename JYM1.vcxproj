@@ -127,15 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cpp\rooster.cpp" />
+    <ClCompile Include="cpp\student.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="rooster.cpp" />
-    <ClCompile Include="student.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="rooster.h" />
-    <ClInclude Include="student.h" />
+    <ClInclude Include="header\degree.h" />
+    <ClInclude Include="header\rooster.h" />
+    <ClInclude Include="header\stdafx.h" />
+    <ClInclude Include="header\student.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
