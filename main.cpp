@@ -23,6 +23,8 @@ using namespace std;
 
 // WGU STUDENT INFORMATION - START
 
+//TODO: ADD WGU STUDENT REQUIRED INFO 
+
 // WGU STUDENT INFORMATION - END
 
 
@@ -41,12 +43,16 @@ const string studentData[] = {
 		"A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
 	};
 
+// TODO: DETERMINE How I am going to call this data. Loop in main calling the add function for Roster, or have the import and calls occur during instance creation?
+
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
 
 int main() {
+    //TODO: FULL CLEANUP NEEDED 
+
 
     Roster classRoster;
 

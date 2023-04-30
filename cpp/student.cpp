@@ -9,7 +9,11 @@ using namespace std;
 
 // CONSTRUCTORS - START
 
+//DEFAULT CONSTRUCTOR
 Student::Student() {};
+
+//TODO: New constructor to call all the parameters upon creation 
+
 
 
 // CONSTRUCTORS - END
@@ -17,6 +21,8 @@ Student::Student() {};
 // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
 
 // MUTATORS - START
+
+//TODO: DELETE commented lines
 
 void Student::setStudentID(string studentID) {
     //studentID = studentID;
@@ -87,7 +93,6 @@ int Student::getStudentAge() {
 int* Student::getStudentDaysInCourse() {
     return daysInCourse;
 }
-
 
 DegreeProgram Student::getStudentDegreeProgram() {
     return degreeProgram;

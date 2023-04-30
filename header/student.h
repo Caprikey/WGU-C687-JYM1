@@ -15,6 +15,8 @@ class Student {
         // ==== ==== ==== ==== ==== ==== ==== ==== 
 		// Variables
 
+            // TODO: RESET ALL VARIALBES
+            
 			// Student ID
             //string studentID = "";
             string studentID = "Testing";
@@ -39,7 +41,7 @@ class Student {
 			//int daysInCourse[3] = { 0,0,0 };
 			int daysInCourse[3] = { 10,8,31 };
 
-
+            // TODO: DELETE THIS -- Will Be capturing and entering during calls/runtime
 			// Need To Delete These Variables, and input the information directly in to the array
 				
 				// Days In Course 1
@@ -52,16 +54,11 @@ class Student {
 				int daysInCourse3 = 0;
 
 
-			// Need To Delete This Variable and calculated it in realtime
-
-				// Average Day In Course
-				double AverageDaysInCourse = 0.00;
-
 		// Degree Program Enumerated Variable. 
                 DegreeProgram degreeProgram = DegreeProgram::SOFTWARE;
 		
 		
-
+            // TODO: DELETE THIS
 			// Probably need to delete and do it in real time instead. 
 			// Input Data Array 
 			string arrayInputData;
@@ -125,7 +122,11 @@ class Student {
 
         // Default Constructor
 
+
         Student();
+
+        // TODO: Need To Create A constructor that will add all details on call
+
 
         // CONSTRUCTORS - END
         // 
