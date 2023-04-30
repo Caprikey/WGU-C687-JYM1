@@ -1,36 +1,49 @@
-#include "..\header\rooster.h"
+Roster.cpp - Code Removal For Troubleshooting
+
+
+#include "..\header\roster.h"
 #include "..\header\student.h"
 
 using namespace std;
 
-// Rooster Class
+// Roster Class
 
 
 /*
 public void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram)
-    // Sets the instance variables from Part D1 and updates the rooster
+    // Sets the instance variables from Part D1 and updates the roster
 */
 
 /*
-void Rooster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram) {
+void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram) {
 
 };
 */
 
-void Rooster::add2(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3) {
+void Roster::add2(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3) {
 
 
 };
 
 /*
 public void remove(string studentID)
-    // Removes a student from the rooster by Student Id.
+    // Removes a student from the roster by Student Id.
     // If studentID does not exist, print an error message indicating the student was not found.
 */
-void Rooster::remove(string studentID) {
-
-
-
+void Roster::remove(string studentID) {
+    
+    for (int i = 0; i < 5; ++i) {
+        if (classRosterArray[i] != nullptr) {
+            if (classRosterArray[i]->getStudentID() == studentID) {
+                cout << "FOUND!";
+                break;
+            }
+            else {
+                cout << "Still looking" << endl;
+                continue;
+            }
+        }
+    }
 };
 
 
@@ -45,7 +58,17 @@ public void printAll()
 //
 */
 
-void Rooster::printAll() {
+void Roster::printAll() {
+    
+    for (int i = 0; i < numStudents; ++i) {
+        
+        if (classRosterArray[i] != nullptr) {
+            
+            classRosterArray[i]->print();
+
+        }
+    }
+
 
 };
 
@@ -55,8 +78,26 @@ print void printAverageDaysInCourse(string studentID)
     // Prints a Student's average number of days in the three courses.
 */
 
-void Rooster::printAverageDaysInCourse(string studentID) {
+void Roster::printAverageDaysInCourse(string studentID) {
 
+    string temp; 
+
+    for (int i = 0; i < 5; ++i) {
+
+        if (classRosterArray[i] != nullptr) {
+
+            if (classRosterArray[i]->getStudentID() == studentID) {
+
+                for (int j = 0; j < 3; ++i) {
+
+                    classRosterArray[i]->getStudentDaysInCourse();
+                    cout << "Array Test" << endl;
+                }
+
+            }
+
+        }
+    }
 };
 
 /*
@@ -65,7 +106,7 @@ public void printInvalidEmails()
     // Email addresses are valid if they contain an at ('@') symbol and a period ('.') and do not contain any spaces (' ').
 */
 
-void Rooster::printInvalidEmails() {
+void Roster::printInvalidEmails() {
 
 };
 
@@ -75,22 +116,22 @@ public void printByDegreeProgram(DegreeProgram degreeProgram)
 */
 
 /*
-void Rooster::printByDegreeProgram(DegreeProgram degreeProgram) {
+void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 
 };
 */
 
-Rooster::Rooster() {
+Roster::Roster() {
 
-    classRoosterArray = new Student * [numStudents];
-
+    classRosterArray = new Student * [numStudents];
+    
     for (int i = 0; i < numStudents; i++) {
-        classRoosterArray[i] = nullptr;
+        
+        classRosterArray[i] = new Student();
+
     }
-
-    for (int i = 0; i < numStudents; ++i) {
-        classRoosterArray[i] = new Student();
-    }
+    
+}; 
 
 
 
@@ -98,7 +139,7 @@ Rooster::Rooster() {
 
 
 
-}
+
 
     /*
     int i, jyx;
@@ -111,9 +152,21 @@ Rooster::Rooster() {
     }
     */
 
+// DECONSTRUCTOR
 
+Roster::~Roster() {
 
-//Rooster::Rooster() {
+    for (int i = 0; i < numStudents; i++) {
+
+        delete classRosterArray[i];
+    
+    }
+
+    //delete[] classRosterArray;
+
+};
+
+//Roster::Roster() {
 
         /*
         parseInputData = studentData[i];
@@ -359,19 +412,132 @@ Rooster::Rooster() {
     /*
             }
     */
-    /*
-                void printAverageDaysInCourse(string studentID) {
 
+
+    -------------------------
+
+
+    
+
+
+
+/*
+public void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram)
+    // Sets the instance variables from Part D1 and updates the roster
+*/
+
+/*
+void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram) {
+
+};
+*/
+
+void Roster::add2(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3) {
+
+
+};
+
+/*
+public void remove(string studentID)
+    // Removes a student from the roster by Student Id.
+    // If studentID does not exist, print an error message indicating the student was not found.
+*/
+void Roster::remove(string studentID) {
+    
+    for (int i = 0; i < 5; ++i) {
+        if (classRosterArray[i] != nullptr) {
+            if (classRosterArray[i]->getStudentID() == studentID) {
+                cout << "FOUND!";
+                break;
+            }
+            else {
+                cout << "Still looking" << endl;
+                continue;
+            }
+        }
+    }
+};
+
+
+
+/*
+public void printAll()
+//
+//	* Prints a Tabs-Seperated List of the Student Data in the following format :
+//	* A1 [Tab] First Name: John [Tab] Last Name: Smith [Tab] Age: 20 [Tab] daysInCourse {35, 40, 55} [Tab]? Degree Program: Security
+//	* Needs to loop throught all students in the classRosterArray and calls the print() function for each student
+//	*
+//
+*/
+
+void Roster::printAll() {
+    
+    for (int i = 0; i < numStudents; ++i) {
+        
+        if (classRosterArray[i] != nullptr) {
+            
+            classRosterArray[i]->print();
+
+        }
+    }
+
+
+};
+
+
+/*
+print void printAverageDaysInCourse(string studentID)
+    // Prints a Student's average number of days in the three courses.
+*/
+
+void Roster::printAverageDaysInCourse(string studentID) {
+
+    string temp; 
+
+    for (int i = 0; i < 5; ++i) {
+
+        if (classRosterArray[i] != nullptr) {
+
+            if (classRosterArray[i]->getStudentID() == studentID) {
+
+                for (int j = 0; j < 3; ++i) {
+
+                    classRosterArray[i]->getStudentDaysInCourse();
+                    cout << "Array Test" << endl;
                 }
 
-                void printInvalidEmails() {
+            }
+
+        }
+    }
+};
+
+/*
+public void printInvalidEmails()
+    // Verifies student email addresses and displays all invalid email addresses to the user.
+    // Email addresses are valid if they contain an at ('@') symbol and a period ('.') and do not contain any spaces (' ').
+*/
+
+void Roster::printInvalidEmails() {
+
+};
+
+/*
+public void printByDegreeProgram(DegreeProgram degreeProgram)
+    // Prints out all student information for the degree program specified by the degree program enumerated type.
+*/
+
+/*
+void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
+
+};
+*/
 
 
 
-                }
 
-                void printByDegreeProgram(DegreeProgram degreeProgram) {
+// DECONSTRUCTOR
 
 
-                }
-                */
+
+

@@ -18,7 +18,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cpp\rooster.cpp">
+    <ClCompile Include="cpp\roster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cpp\student.cpp">
@@ -32,7 +32,7 @@
     <ClInclude Include="header\student.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\rooster.h">
+    <ClInclude Include="header\roster.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\stdafx.h">

@@ -3,7 +3,7 @@
 
 #include "header\degree.h"
 #include "header\student.h"
-#include "header\rooster.h"
+#include "header\roster.h"
 
 
 #include <iostream>
@@ -48,263 +48,183 @@ const string studentData[] = {
 
 int main() {
 
-	// Student test[5];
-	/*
-	Student* test = new Student[5];
-	Student* test2 = new Student[5];
-	*/
-
-
-	/*
-
-	Rooster* r = new Rooster[5];
-
-	*/	
-    DegreeProgram degreeProgram = DegreeProgram::SECURITY;
-
-	int cr;
-	int classSize = 5;
-
-	Rooster** classRooster = new Rooster * [classSize];
-
-	for (cr = 0; cr < classSize; ++cr) {
-
-		classRooster[cr] = new Rooster();
-
-	}
-
-
-
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
-
-	string parseTestObj2;
-	string parseTestObj2Temp;
-
-	string myStream3;
-	string variableParseArray2[9] = {};
-
-	DegreeProgram __degreeProgram = DegreeProgram::NETWORK;
-	int jyx = 0;
-
-	for (int i = 0; i < 5; i++) {
-
-		// Student Object Array
-
-		// for (int j = 0; j < 5; j++) {
-
-			// Student Data Input Array
-
-
-		parseTestObj2 = studentData[i];
-		stringstream myStream3(parseTestObj2);
-		jyx = 0;
-
-		while (getline(myStream3, parseTestObj2Temp, ',')) {
-			//std::getline (parseTest2, parseTest2Temp, ",");
-
-			variableParseArray2[jyx++] = parseTestObj2Temp;
-
-			// std::cout << parseTestObj2Temp << endl;
-		}
-
-		/*
-		std::cout << "---- TEMP variable Assignment ----" << endl;
-		string __studentID = variableParseArray2[0];
-		string __firstName = variableParseArray2[1];
-		string __lastName = variableParseArray2[2];
-		string __emailAddress = variableParseArray2[3];
-		int __age = (stoi(variableParseArray2[4]));
-		int __daysInCourse1 = (stoi(variableParseArray2[5]));
-		int __daysInCourse2 = (stoi(variableParseArray2[6]));
-		int __daysInCourse3 = (stoi(variableParseArray2[7]));
-		*/
-
-		/*
-		func(DegreeProgram::NETWORK);
-		*/
-
-
-		/*
-		std::cout << __studentID << endl;
-		std::cout << __firstName << endl;
-		std::cout << __lastName << endl;
-		std::cout << __emailAddress << endl;
-		std::cout << __age << endl;
-		std::cout << __daysInCourse1 << endl;
-		std::cout << __daysInCourse2 << endl;
-		std::cout << __daysInCourse3 << endl;
-		*/
-
-
-		if (variableParseArray2[8] == "NETWORK") {
-			std::cout << "Degree Program Is Network" << endl;
-			__degreeProgram = DegreeProgram::NETWORK;
-			__degreeProgram = DegreeProgram::NETWORK;
-			__degreeProgram = DegreeProgram::NETWORK;
-		}
-		else if (variableParseArray2[8] == "SOFTWARE") {
-			std::cout << "Degree Program Is Software" << endl;
-			__degreeProgram = DegreeProgram::SOFTWARE;
-		}
-		else if (variableParseArray2[8] == "SECURITY") {
-			std::cout << "Degree Program Is Security" << endl;
-			__degreeProgram = DegreeProgram::SECURITY;
-		}
-		else
-			std::cout << "Degree Program Not Matched" << endl;
-
-		// std::cout << __degreeProgram;
-
-		std::cout << endl << endl;
-
-
-
-		//r->add2(variableParseArray2[0], variableParseArray2[1], variableParseArray2[2], variableParseArray2[3], (stoi(variableParseArray2[4])), (stoi(variableParseArray2[5])), (stoi(variableParseArray2[6])), (stoi(variableParseArray2[7])));
-		//r[i].add2(__studentID, __firstName, __lastName, __emailAddress, __age, __daysInCourse1, __daysInCourse2, __daysInCourse3);
-		//r[i].add2(variableParseArray2[0], variableParseArray2[1], variableParseArray2[2], variableParseArray2[3], (stoi(variableParseArray2[4])), (stoi(variableParseArray2[5])), (stoi(variableParseArray2[6])), (stoi(variableParseArray2[7])));
-		// r[i].add3(variableParseArray2[0], variableParseArray2[1], variableParseArray2[2], variableParseArray2[3], (stoi(variableParseArray2[4])), (stoi(variableParseArray2[5])), (stoi(variableParseArray2[6])), (stoi(variableParseArray2[7])), (__degreeProgram));
-		//classRooster[i]->add3(variableParseArray2[0], variableParseArray2[1], variableParseArray2[2], variableParseArray2[3], (stoi(variableParseArray2[4])), (stoi(variableParseArray2[5])), (stoi(variableParseArray2[6])), (stoi(variableParseArray2[7])), (__degreeProgram));
-
-
-
-	}
-
-
-	// r->printAll();
-
-
-/*
-std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
-
-
-std::cout << test2[3].getStudentID();
-
-std::cout << endl;
-*/
-
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
-
-	/*
-		string studentIDTestMaster = "A2";
-
-		for (int ixy = 0; ixy < 5; ixy++) {
-
-			// std::cout << "Current Student ID: " << r[ixy].getStudentID() << endl;
-			std::cout << "Current Student ID: " << classRooster[ixy]->getStudentID() << endl;
-
-			// if (r[ixy].getStudentID() == "A5") {
-			if (classRooster[ixy]->getStudentID() == "A5") {
-
-				//r[ixy].printCustom();
-				classRooster[ixy]->printCustom();
-				break;
-			}
-
-			/// if (r[ixy].getStudentID() == studentIDTestMaster) {
-			if (classRooster[ixy]->getStudentID() == studentIDTestMaster) {
-
-				std::cout << "String Successfully Matched To Student ID" << endl;
-				//r[ixy].printCustom();
-				classRooster[ixy]->printCustom();
-			};
-
-			*/
-
-			/*
-			if (test2[ixy].getStudentID() == studentIDTestMaster) {
-				//std::cout << test2[ixy].printCustom();
-				//break;
-			}
-
-			std::cout << "Student ID Does Not Match Student Test2 Object " << ixy << endl;
-
-		*/
-		/*
-		}
-		*/
-
-
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
-
-	//for (int i = 0; i < 5; i++) {
-
-		// std::cout << "Rooster Student Object #: " << i << "Is Located At: " << &r[i] << endl;
-		//std::cout << "Rooster Student Object #: " << i << " Is Located At: " << &classRooster[i] << endl;
-
-		// string temp = r[i].getStudentID();
-		//string temp = classRooster[i]->getStudentID();
-
-		//std::cout << "\t" << "Rooster Student Object #: " << i << "'s Data Member - Student ID, value is " << temp << " And Is Located At : " << &temp << endl;
-
-	//}
-
-	//std::cout << endl;
-
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
-
-	std::cout << "Print All Test" << endl << endl;
-
-	// r->printAll();
-
-	//classRooster[this]->printAll();
-	//classRooster->printAll();
-
-	// classRooster->printAllStudent();
-
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
-
-	std::cout << "Prints Each Student Object on a loop";
-
-
-	for (int i = 0; i < 5; i++) {
-
-		//classRooster[i]->printCustom();
-	}
-	for (int i = 0; i < 5; i++) {
-
-		//classRooster[i]->print();
-	}
-
-
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl;
-	std::cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----" << endl << endl;
-
-	/*
-	delete[] test;
-	delete[] test2;
-	*/
-
-	// delete[] r;
-	
-
-
-	for (int i = 0; i < 5; ++i) {
-	
-		delete classRooster[i];
-		classRooster[i] = nullptr;
-	}
-
-	delete[] classRooster;
-
-
-
-
-
-
-	return 0;
-
-
+    Roster classRoster;
+
+    // ==== ==== ==== ==== ==== ==== ==== ====
+
+    cout << "Print All Function Test - Start" << endl;
+    classRoster.printAll();
+    cout << "Print All Function Test - End" << endl;
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ====
+
+
+    Student* studentDPTest1 = classRoster.getStudent(1);
+
+    if (studentDPTest1 != nullptr) {
+        cout << "Changing Degree Program To SECRUITY" << endl;
+        cout << "Student DP Test 1's Student Object Address: " << &studentDPTest1 << endl;
+        studentDPTest1->setStudentDegreeProgram(DegreeProgram::SECURITY);
+        // Updating Student CPP to Use This, Fixed This Method
+    }
+    else {
+        cout << "Student DP Test 1 Not Found" << endl;
+    }
+    cout << endl;
+    cout << "Priting Updated Student Details" << endl;
+
+    cout << endl;
+    cout << "Manual Priting - Start" << endl;
+    cout << studentDPTest1->getStudentID() << endl;
+    auto test = studentDPTest1->getStudentID();
+    cout << &test << endl << endl;
+    cout << "Student ID - Change Test 1" << endl;
+
+
+    cout << endl;
+    cout << studentDPTest1->getStudentID();
+    cout << endl;
+
+    cout << "Manual Printing - End" << endl;
+    cout << endl;
+
+    studentDPTest1->print();
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+    Student* studentDPTest2 = classRoster.getStudent(4);
+
+    if (studentDPTest2 != nullptr) {
+        cout << "Changing Degree Program To NETWORK" << endl;
+        cout << "Student DP Test 2's Student Object Address: " << &studentDPTest2 << endl;
+        studentDPTest2->setStudentDegreeProgram(DegreeProgram::NETWORK);
+        // Updating Student CPP to Use This, Fixed This Method
+    }
+    else {
+        cout << "Student DP Test 2 Not Found" << endl;
+    }
+    cout << endl;
+    cout << "Priting Updated Student Details" << endl;
+
+    studentDPTest2->print();
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+    cout << "Updated Student CPP Set Function to Use This Now" << endl;
+    cout << "Testing changing student details now" << endl;
+
+    Student* studentDPTest3 = classRoster.getStudent(3);
+    studentDPTest3->setStudentID("Test3");
+    // This method worked after updating to this
+
+    studentDPTest3->print();
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+    cout << "Performing Print All Function Test Again - Start" << endl;
+    classRoster.printAll();
+    cout << "Performing Print All Function Test Again - End" << endl;
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ====    
+    cout << "Print By DegreeProgram Function Testing -- START" << endl;
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== 
+    cout << endl;
+    cout << "\t";
+    cout << "By DegreeProgram::NETWORK - Start" << endl;
+    cout << "---- ---- ---- ---- " << endl;
+    classRoster.printByDegreeProgram(DegreeProgram::NETWORK);
+    cout << "---- ---- ---- ---- " << endl;
+    cout << "\t";
+    cout << "By DegreeProgram::NETWORK - End" << endl;
+    cout << endl;
+    // ==== ==== ==== ==== 
+    cout << endl;
+    cout << "\t";
+    cout << "By DegreeProgram::SOFTWARE - Start" << endl;
+    cout << "---- ---- ---- ---- " << endl;
+    classRoster.printByDegreeProgram(DegreeProgram::SOFTWARE);
+    cout << "---- ---- ---- ---- " << endl;
+    cout << "\t";
+    cout << "By DegreeProgram::SOFTWARE - End" << endl;
+    cout << endl;
+    // ==== ==== ==== ==== 
+    cout << endl;
+    cout << "\t";
+    cout << "By DegreeProgram::SECURITY - Start" << endl;
+    cout << "---- ---- ---- ---- " << endl;
+    classRoster.printByDegreeProgram(DegreeProgram::SECURITY);
+    cout << "---- ---- ---- ---- " << endl;
+    cout << "\t";
+    cout << "By DegreeProgram::SECURITY - End" << endl;
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+    cout << "Print By DegreeProgram Function Testing -- END" << endl;
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== 
+    cout << endl;
+
+    cout << endl;
+    cout << "Print Average Days In Course Test - START" << endl;
+    cout << endl;
+    cout << "Priting Test3's Days In Course Array - ORIGINAL - START" << endl;
+        cout << "daysInCourse: ";
+
+        cout << "{";
+
+        for (int i = 0; i < 3; i++) {
+            if (i != 2) {
+                cout << studentDPTest3->getStudentDaysInCourse()[i] << ", ";
+            }
+            else {
+                cout << studentDPTest3->getStudentDaysInCourse()[i];
+            }
+        }
+        cout << "} ";
+
+        cout << endl;
+        cout << "Priting Test3's Days In Course Array - ORIGINAL - END" << endl;
+
+    studentDPTest3->setDaysInCourse(45,25,10);
+    cout << endl;
+    cout << "Priting Test3's Days In Course Array - MODIFIED - START" << endl;
+    cout << "daysInCourse: ";
+
+    cout << "{";
+
+    for (int i = 0; i < 3; i++) {
+        if (i != 2) {
+            cout << studentDPTest3->getStudentDaysInCourse()[i] << ", ";
+        }
+        else {
+            cout << studentDPTest3->getStudentDaysInCourse()[i];
+        }
+    }
+    cout << "} ";
+
+    cout << endl;
+    cout << "Priting Test3's Days In Course Array - MODIFIED - END" << endl;
+        cout << endl;
+
+   classRoster.printAverageDaysInCourse("Test3");
+    
+    cout << endl;
+    cout << "Print Average Days In Course Test - END" << endl;
+
+
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+    return 0;
 }

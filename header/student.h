@@ -1,4 +1,6 @@
 #pragma once
+#include "degree.h"
+
 
 #include <iostream>
 #include <string>
@@ -14,22 +16,28 @@ class Student {
 		// Variables
 
 			// Student ID
-            string studentID = "";
+            //string studentID = "";
+            string studentID = "Testing";
 		
 			// Student First Name
-			string firstName = "";
+			//string firstName = "";
+			string firstName = "Tester";
 			
 			// Student Last Name
-			string lastName = "";
+			//string lastName = "";
+			string lastName = "Testerson";
 
 			// Student Email Address
-			string emailAddress = "";
+			//string emailAddress = "";
+			string emailAddress = "Test@TestieTesters.co";
 
 			// Student's Age
-			int age = 0;
+			//int age = 0;
+			int age = 34;
 
 			// Days In Courses Array, 3 Values
-			int daysInCourse[3] = { 0,0,0 };
+			//int daysInCourse[3] = { 0,0,0 };
+			int daysInCourse[3] = { 10,8,31 };
 
 
 			// Need To Delete These Variables, and input the information directly in to the array
@@ -50,7 +58,7 @@ class Student {
 				double AverageDaysInCourse = 0.00;
 
 		// Degree Program Enumerated Variable. 
-                //DegreeProgram degreeProgram;
+                DegreeProgram degreeProgram = DegreeProgram::SOFTWARE;
 		
 		
 
@@ -79,7 +87,7 @@ class Student {
 
         void setDaysInCourse(int daysInCourse1, int daysInCourse2, int daysInCourse3);
 
-        //void setStudentDegreeProgram(DegreeProgram degreeProgram);
+        void setStudentDegreeProgram(DegreeProgram degreeProgram);
 
 
 		// MUTATORS - END
@@ -89,13 +97,18 @@ class Student {
 		// ACCESSORS - START
 
         string getStudentID();
+
         string getStudentFirstName();
+
         string getStudentLastName();
+
         string getStudentEmailAddress();
+
         int getStudentAge();
+
         int* getStudentDaysInCourse();
 
-        //DegreeProgram getStudentDegreeProgram();
+        DegreeProgram getStudentDegreeProgram();
 
 		// ACCESSORS - END
         // 
@@ -113,11 +126,6 @@ class Student {
         // Default Constructor
 
         Student();
-
-
-
-
-
 
         // CONSTRUCTORS - END
         // 
