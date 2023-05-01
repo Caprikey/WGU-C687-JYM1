@@ -323,10 +323,75 @@ void Roster::printAverageDaysInCourse(string studentID) {
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
 //TODO: Print Invalid Emails Function
+    // NOTE: A valid email per school project requirements: should include an at sign ('@') and period ('.') and should not include a space (' '). [Part E, Number 3, Section e]
+        // NOTE: Valid Email Address Information https://en.wikipedia.org/wiki/Email_address
+        // Only one @ symbol
+            // Local Part (local_part@domain.com)
+                // Allowed: Upper Case (A-Z) and Lower Case (a-z) characters (latin only)
+                // Allowed: Number digits (0-9)
+                // Allowed: Printable Characters !#$%&'*+-/=?^_`{|} 
+                // Allowed With Exception: Periods, Period cannot be the first or last characters and cannot appear consecutively (..)
+            // Domain Part
+                // Allowed: Upper Case (A-Z) and Lower Case (a-z) characters (Latin only)
+                // Allowed With Exception: Number digits (0-9) allowed as long as not all of the characters in the domain name are not numeric.
+                // Allowed With Exception: Hyphen, as long as it is not the first or last character.
+                
+            // There is more information on the above web address. 
+    // 
+        // IDEA: Get Length/Size of email Address. Loop through each character, check for spaces first. 
 
 void Roster::printInvalidEmails() {
 
+    for (int i = 0; i < numStudents; i++) {
+    
+        if (classRosterArray[i] != nullptr) {
 
+            // Get Email Address and Assign It To A Temporary String Variable
+            string _emailAddress = classRosterArray[i]->getStudentEmailAddress();
+            string _studentID = classRosterArray[i]->getStudentID();
+            int _emailAddressLength = _emailAddress.length();
+
+            cout << "---- ---- ---- ---- " << endl;
+            cout << _emailAddress << endl;
+            cout << _studentID << endl;
+            cout << _emailAddressLength << endl;
+            cout << "---- ---- ---- ---- " << endl;
+
+            // Loop to check for spaces, uses .length() string standard library function. 
+            // Length was choosen because it returns the number of characters, while size() returns the size in memory 
+                // (However, they are basically the same because a single character (1 char) is a single byte in size (1 byte) [1 char = 1 byte].)
+            for (int j = 0; j < _emailAddressLength; j++) {
+
+                // If Statement Checks If Current Character is a Space -- If A space is detected, and error message is printed. 
+
+                // TODO: Should I look into try and catch error message handling. 
+
+                if (isspace(_emailAddress.at(j))) {
+                    cout << "INVALID EMAIL ADDRESSES:" << endl;
+                    cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                    cout << "\t" << "    ";
+                    cout << _studentID;
+                    cout << "\t\t\t";
+                    cout << "Email Address Contains A Space." << endl << endl;;
+                    break;
+                }
+                
+                // Checks If First Or Last Character Are Periods -- If First and/or Last characters are a period, an error message is printed. 
+                if ((ispunct(_emailAddress.at(0))) || (ispunct(_emailAddress.at(_emailAddressLength-1)))) {
+                    cout << "INVALID EMAIL ADDRESSES:" << endl;
+                    cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                    cout << "\t" << "    ";
+                    cout << _studentID;
+                    cout << "\t\t\t";
+                    cout << "Email Address Contains Has A Period As Either The First Or Last Character." << endl << endl;;
+                    break;
+                }
+
+            }
+
+        }
+    
+    }
 
 };
 

@@ -255,8 +255,27 @@ int main() {
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
 
+    Student* studentDPTest5 = classRoster.getStudent(3);
+    studentDPTest5->setStudentID("B3");
+    studentDPTest5->setStudentAge(45);
+    studentDPTest5->setStudentFirstName("Barba");
+    studentDPTest5->setStudentLastName("Bacon");
+    studentDPTest5->setStudentEmailAddress("Barba Bacon@yahoo.com");
+
+    studentDPTest2->setStudentEmailAddress(".testemail@email.com");
+    studentDPTest1->setStudentEmailAddress("testingmail@electronicmail.com.");
 
 
+    cout << studentDPTest1->getStudentEmailAddress() << endl;
+    cout << studentDPTest2->getStudentEmailAddress() << endl;
+    cout << studentDPTest3->getStudentEmailAddress() << endl;
+
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+    classRoster.printInvalidEmails();
 
     cout << endl;
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
