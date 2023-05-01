@@ -1,6 +1,9 @@
 #include "..\header\roster.h"
 #include <iostream>
 #include <iomanip> 
+#include <array>
+
+
 
 using namespace std;
 
@@ -16,6 +19,35 @@ using namespace std;
 
 Roster::Roster() {
     cout << "Constructor Successfully Started" << endl;
+    cout << endl;
+
+    const string studentData[] = {
+        "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
+        "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
+        "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+        "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+        "A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
+    };
+
+    cout << "Int numStudents variable is currently set to: " << numStudents << endl;
+    cout << "Int inputSize variable is currently set to: " << inputSize << endl;
+
+    cout << endl;
+
+    cout << "Calculating Size of Student Data Input Array - Start" << endl;
+    inputSize = *(&studentData + 1) - studentData;
+    cout << "Calculating Size of Student Data Input Array - End" << endl;
+
+    cout << endl;
+    cout << "studentData Input String Array has a total of " << inputSize << " elements." << endl;
+
+    cout << endl;
+    cout << "Setting Int numStudents variable equal to the inputSize result" << endl;
+
+    numStudents = inputSize;
+    
+    cout << "Int numStudents variable was updated with the inputSize result, " << numStudents << endl;
+    cout << endl;
     cout << endl;
 
     classRosterArray = new Student*[numStudents];
@@ -61,6 +93,18 @@ Roster::Roster() {
 // Constructor Without Debug Comments
  
 Roster::Roster() {
+    
+    const string studentData[] = {
+        "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
+        "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
+        "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+        "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+        "A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
+    };
+
+    inputSize = *(&studentData + 1) - studentData;
+
+    numStudents = inputSize;
 
     classRosterArray = new Student * [numStudents];
 
@@ -261,7 +305,9 @@ void Roster::printAll() {
 // Print Average Days In Course Function
 
 void Roster::printAverageDaysInCourse(string studentID) {
-    int sum = 0;
+    int sumOfDays = 0;
+    int numOfCourses = 0;
+    double courseDayAvg = 0.0;
 
     for (int i = 0; i < numStudents; i++) {
 
@@ -269,7 +315,7 @@ void Roster::printAverageDaysInCourse(string studentID) {
 
             if (classRosterArray[i]->getStudentID() == studentID) {
 
-                // TODO: FIX Array Capture Code 
+                // TODO: FIX Array Capture Code -- Need to find a way to set the j loop max dynamically, this way num of courses will update as the array changes
 
                 cout << "FOUND" << endl;
                 cout << i << endl;
@@ -285,8 +331,9 @@ void Roster::printAverageDaysInCourse(string studentID) {
                     else {
                         cout << classRosterArray[i]->getStudentDaysInCourse()[j];
                     }
-                    sum += classRosterArray[i]->getStudentDaysInCourse()[j];
-
+                    
+                    sumOfDays += classRosterArray[i]->getStudentDaysInCourse()[j];
+                    numOfCourses += 1;
                 }
 
                 cout << "}";
@@ -294,18 +341,22 @@ void Roster::printAverageDaysInCourse(string studentID) {
 
                 // TODO: Is it possible to get the size of the array? Current issue is sizeof(classRosterArray[i]->getStudentDaysInCourse()) pulls a pointer not the array itself.
 
-                cout << "Sum Of Array Items: " << sum << endl;
+                cout << "Sum Of Array Items: " << sumOfDays << endl;
                 cout << endl;
-                
-                // TODO: Need A Way to Count and Store Array Size to make the average computation dynamic. Dynamic computation also need to be converted to double to ensure double data type. 
-                
-                // Average variable is created and set to double data type. Sum for average is computed in the above for loop. Average is currently calculated statically with 3.0 to ensure integer/double division occurs to keep double data type. 
-                double avg = (sum / 3.0);
+
+                cout << "Total Courses Taken: " << numOfCourses << endl;
+                cout << endl;
+
+                cout << "Performing Static_Cast Type Conversion From Int To Double On numOfCourses Variable." << endl;
+                cout << "Performing Division Of Sum of Days By the Static_casted numOfCourse Variable to generate the average days in courses" << endl;
+
+                // Total Number Of Days, sumOfDays Is calculated in the loop, Total Number Of Courses is also calculated In The Loop; Number Of Courses is then static_casted into double format for division.  
+                courseDayAvg = (sumOfDays / static_cast<double>(numOfCourses));
 
                 // Average Value Is Formated With "Fixed" function to set fixed floating-point notation
                 // Average value Is formated With "setprecision" function to format the floating-point notation to a specific value
 
-                cout << "Average Days In Courses: " << fixed << setprecision(2) << avg << endl;
+                cout << "Average Days In Courses: " << fixed << setprecision(2) << courseDayAvg << endl;
 
                 
             }
@@ -349,7 +400,8 @@ void Roster::printInvalidEmails() {
             // Get Email Address and Assign It To A Temporary String Variable
             string _emailAddress = classRosterArray[i]->getStudentEmailAddress();
             string _studentID = classRosterArray[i]->getStudentID();
-            int _emailAddressLength = _emailAddress.length();
+            // Changing from int to size_t to remove compiler warning regarding possible data loss due to type conversion. 
+            size_t _emailAddressLength = _emailAddress.length();
 
             cout << "---- ---- ---- ---- " << endl;
             cout << _emailAddress << endl;
@@ -438,7 +490,6 @@ Student* Roster::getStudent(int i) {
     */
     return classRosterArray[i];
 }
-
 
 
 
