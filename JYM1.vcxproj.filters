@@ -41,5 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
+    <None Include="text\ProjectRequirements.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
