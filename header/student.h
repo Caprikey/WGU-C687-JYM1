@@ -19,19 +19,19 @@ class Student {
             
 			// Student ID
             //string studentID = "";
-            string studentID = "Testing";
+            string studentID = "B1";
 		
 			// Student First Name
 			//string firstName = "";
-			string firstName = "Tester";
+			string firstName = "Bravo";
 			
 			// Student Last Name
 			//string lastName = "";
-			string lastName = "Testerson";
+			string lastName = "Besterson";
 
 			// Student Email Address
 			//string emailAddress = "";
-			string emailAddress = "Test@TestieTesters.co";
+			string emailAddress = "BravoBesterson@Bestie Testers.co";
 
 			// Student's Age
 			//int age = 0;
@@ -72,7 +72,7 @@ class Student {
         // ==== ==== ==== ==== ==== ==== ==== ==== 
 		// MUTATORS - START
 
-        void setStudentID(string);
+        void setStudentID(string studentID);
 
         void setStudentFirstName(string firstName);
 
@@ -121,11 +121,11 @@ class Student {
         // CONSTRUCTORS - START
 
         // Default Constructor
-
-
         Student();
 
         // TODO: Need To Create A constructor that will add all details on call
+        // Constructor - 2d
+        Student(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram);
 
 
         // CONSTRUCTORS - END

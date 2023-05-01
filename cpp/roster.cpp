@@ -159,6 +159,7 @@ Roster::~Roster() {
 // Add Function With All Required Parameters
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram) {
 
+    
 
 
 };
@@ -168,8 +169,61 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
 // TODO: Completed Remove Function
+// TODO: Condense If Statements Into A Single Logical Operator 'OR' STATEMENT
 
 void Roster::remove(string studentID) {
+
+    int deletedStudent = 0;
+
+    for (int i = 0; i < numStudents; i++) {
+    
+        if (classRosterArray[i] != nullptr) {
+        
+            if (classRosterArray[i]->getStudentID() == studentID) {
+            
+                cout << "FOUND - Deletion Beginning" << endl;
+                cout << "Setting Student Object Location Variable" << endl;
+                deletedStudent = i;
+                cout << deletedStudent << endl;
+
+                cout << "Deleting Object" << endl;
+                delete classRosterArray[i];
+                cout << "Deletion Successful" << endl;
+
+                classRosterArray[i] = nullptr;
+            
+            }
+            else {
+                
+                cout << "A Student with that ID was not found. Please try again." << endl;
+            
+            }
+        
+        }
+    
+    }
+
+    cout << endl;
+    cout << "---- ---- ---- ---- " << endl;
+    cout << endl;
+
+
+    printAll();
+
+    cout << endl;
+    cout << "---- ---- ---- ---- " << endl;
+    cout << endl;
+
+    // This loop moves the newly deleted student to the end of the array index. 
+    // Ensuring that the open spots are at the end of the array. 
+
+
+    for (int j = deletedStudent; j < numStudents-1; j++) {
+        classRosterArray[j] = classRosterArray[j + 1];
+        classRosterArray[j + 1] = nullptr;
+    
+    
+    }
 
 
 
@@ -189,6 +243,9 @@ void Roster::printAll() {
             
             classRosterArray[i]->print();
             
+        }
+        else {
+            cout << "classRosterArray[" << i << "] is empty and set to a nullptr" << endl;
         }
 
     }

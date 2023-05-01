@@ -56,13 +56,13 @@ int main() {
 
     Roster classRoster;
 
-    // ==== ==== ==== ==== ==== ==== ==== ====
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
 
     cout << "Print All Function Test - Start" << endl;
     classRoster.printAll();
     cout << "Print All Function Test - End" << endl;
     cout << endl;
-    // ==== ==== ==== ==== ==== ==== ==== ====
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
 
 
     Student* studentDPTest1 = classRoster.getStudent(1);
@@ -97,7 +97,7 @@ int main() {
     studentDPTest1->print();
 
     cout << endl;
-    // ==== ==== ==== ==== ==== ==== ==== ====
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
 
     Student* studentDPTest2 = classRoster.getStudent(4);
@@ -117,7 +117,7 @@ int main() {
     studentDPTest2->print();
 
     cout << endl;
-    // ==== ==== ==== ==== ==== ==== ==== ====
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
 
     cout << "Updated Student CPP Set Function to Use This Now" << endl;
@@ -130,7 +130,7 @@ int main() {
     studentDPTest3->print();
 
     cout << endl;
-    // ==== ==== ==== ==== ==== ==== ==== ====
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
 
     cout << "Performing Print All Function Test Again - Start" << endl;
@@ -138,7 +138,8 @@ int main() {
     cout << "Performing Print All Function Test Again - End" << endl;
 
     cout << endl;
-    // ==== ==== ==== ==== ==== ==== ==== ====    
+    // ==== ==== ==== ==== ==== ==== ==== ====  ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
     cout << "Print By DegreeProgram Function Testing -- START" << endl;
     cout << endl;
     // ==== ==== ==== ==== ==== ==== ==== ==== 
@@ -176,7 +177,7 @@ int main() {
 
     cout << "Print By DegreeProgram Function Testing -- END" << endl;
     cout << endl;
-    // ==== ==== ==== ==== ==== ==== ==== ==== 
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
 
     cout << endl;
@@ -229,7 +230,36 @@ int main() {
 
 
     cout << endl;
-    // ==== ==== ==== ==== ==== ==== ==== ====
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+
+    Student* studentDPTest4 = classRoster.getStudent(2);
+    studentDPTest4->setStudentID("B2");
+    studentDPTest4->setStudentAge(29);
+    studentDPTest4->setStudentFirstName("Buddy");
+    studentDPTest4->setStudentLastName("Buccaneer");
+    // This method worked after updating to this
+
+    studentDPTest4->print();
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+    classRoster.remove("B2");
+
+    classRoster.printAll();
+    
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+
+
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
 
     return 0;

@@ -13,7 +13,21 @@ using namespace std;
 Student::Student() {};
 
 //TODO: New constructor to call all the parameters upon creation 
+// Constructor - 2b
+Student::Student(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
 
+    this->studentID = studentID;
+    this->firstName = firstName;
+    this->lastName = lastName;
+    this->emailAddress = emailAddress;
+    this->age = age;
+    
+    this->daysInCourse[0] = daysInCourse1;
+    this->daysInCourse[1] = daysInCourse2;
+    this->daysInCourse[2] = daysInCourse3;
+
+    this->degreeProgram = degreeProgram;
+};
 
 
 // CONSTRUCTORS - END
