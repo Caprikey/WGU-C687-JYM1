@@ -168,7 +168,7 @@ Tasks may not be submitted as cloud links, such as links to Google Docs, Google 
 ## G. Demonstrate professional communication in the content and presentation of your submission.
  
 
-    File Restrictions
-        File name may contain only letters, numbers, spaces, and these symbols: ! - _ . * ' ( )
-        File size limit: 200 MB
-        File types allowed: doc, docx, rtf, xls, xlsx, ppt, pptx, odt, pdf, txt, qt, mov, mpg, avi, mp3, wav, mp4, wma, flv, asf, mpeg, wmv, m4v, svg, tif, tiff, jpeg, jpg, gif, png, zip, rar, tar, 7z
+ ### File Restrictions
+    File name may contain only letters, numbers, spaces, and these symbols: ! - _ . * ' ( )
+    File size limit: 200 MB
+    File types allowed: doc, docx, rtf, xls, xlsx, ppt, pptx, odt, pdf, txt, qt, mov, mpg, avi, mp3, wav, mp4, wma, flv, asf, mpeg, wmv, m4v, svg, tif, tiff, jpeg, jpg, gif, png, zip, rar, tar, 7z
