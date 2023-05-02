@@ -19,27 +19,27 @@ class Student {
             
 			// Student ID
             //string studentID = "";
-            string studentID = "B1";
+            string studentID = "C1";
 		
 			// Student First Name
 			//string firstName = "";
-			string firstName = "Bravo";
+			string firstName = "Charles";
 			
 			// Student Last Name
 			//string lastName = "";
-			string lastName = "Besterson";
+			string lastName = "CunningHam";
 
 			// Student Email Address
 			//string emailAddress = "";
-			string emailAddress = "BravoBesterson@Bestie Testers.co";
+			string emailAddress = "CunningCharlie@Change Test.edu";
 
 			// Student's Age
 			//int age = 0;
-			int age = 34;
+			int age = 31;
 
 			// Days In Courses Array, 3 Values
 			//int daysInCourse[3] = { 0,0,0 };
-			int daysInCourse[3] = { 10,8,31 };
+			int daysInCourse[3] = { 40,39,26 };
 
             // TODO: DELETE THIS -- Will Be capturing and entering during calls/runtime
 			// Need To Delete These Variables, and input the information directly in to the array
@@ -55,7 +55,7 @@ class Student {
 
 
 		// Degree Program Enumerated Variable. 
-                DegreeProgram degreeProgram = DegreeProgram::SOFTWARE;
+                DegreeProgram degreeProgram = DegreeProgram::NETWORK;
 		
 		
             // TODO: DELETE THIS
@@ -83,6 +83,8 @@ class Student {
         void setStudentAge(int age);
 
         void setDaysInCourse(int daysInCourse1, int daysInCourse2, int daysInCourse3);
+
+        void setDaysInCourse(int daysInCourse[]);
 
         void setStudentDegreeProgram(DegreeProgram degreeProgram);
 
@@ -123,9 +125,9 @@ class Student {
         // Default Constructor
         Student();
 
-        // TODO: Need To Create A constructor that will add all details on call
-        // Constructor - 2d
-        Student(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram);
+        // Paramaterized Constructor(s)
+        // Constructor - Takes All Parameters -- Requirement D, Number 2, Part d
+        Student(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse[], DegreeProgram degreeProgram);
 
 
         // CONSTRUCTORS - END

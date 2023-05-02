@@ -1,6 +1,7 @@
 #include "..\header\student.h"
 #include "..\header\degree.h"
 
+#include <iomanip> 
 
 using namespace std;
 
@@ -12,9 +13,9 @@ using namespace std;
 //DEFAULT CONSTRUCTOR
 Student::Student() {};
 
-//TODO: New constructor to call all the parameters upon creation 
-// Constructor - 2b
-Student::Student(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
+//TODO: Adjust Code To Use Paramaterized Constructor For Student Object Creation
+// Constructor - Requirement D, Number 2, Part d
+Student::Student(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse[], DegreeProgram degreeProgram) {
 
     this->studentID = studentID;
     this->firstName = firstName;
@@ -22,9 +23,15 @@ Student::Student(string studentID, string firstName, string lastName, string ema
     this->emailAddress = emailAddress;
     this->age = age;
     
+    /*
     this->daysInCourse[0] = daysInCourse1;
     this->daysInCourse[1] = daysInCourse2;
     this->daysInCourse[2] = daysInCourse3;
+    */
+
+    this->daysInCourse[0] = daysInCourse[0];
+    this->daysInCourse[1] = daysInCourse[1];
+    this->daysInCourse[2] = daysInCourse[2];
 
     this->degreeProgram = degreeProgram;
 };
@@ -70,6 +77,15 @@ void Student::setDaysInCourse(int daysInCourse1, int daysInCourse2, int daysInCo
     this->daysInCourse[0] = daysInCourse1;
     this->daysInCourse[1] = daysInCourse2;
     this->daysInCourse[2] = daysInCourse3;
+}
+
+void Student::setDaysInCourse(int daysInCourse[]) {
+    // daysInCourse[0] = daysInCourse1;
+    // daysInCourse[1] = daysInCourse2;
+    // daysInCourse[2] = daysInCourse3;
+    this->daysInCourse[0] = daysInCourse[0];
+    this->daysInCourse[1] = daysInCourse[1];
+    this->daysInCourse[2] = daysInCourse[2];
 }
 
 void Student::setStudentDegreeProgram(DegreeProgram degreeProgram) {
@@ -180,7 +196,7 @@ void Student::print() {
     }
     cout << "} ";
 
-    cout << "Degree Program: ";
+    cout << setw(28) << "Degree Program: ";
 
     if (this->degreeProgram == DegreeProgram::NETWORK) {
         cout << "NETWORK";

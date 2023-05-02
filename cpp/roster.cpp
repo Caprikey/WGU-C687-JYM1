@@ -5,10 +5,18 @@
 #include <string>
 #include <sstream>
 
-
 using namespace std;
 
 // Roster Class
+
+const string studentData[] = {
+    "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
+    "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
+    "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+    "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+    "A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
+};
+
 
 //
 // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
@@ -62,7 +70,7 @@ Roster::Roster() {
     cout << "Constructor Pointer NullPtr Assignment Loop Starting" << endl;
     for (int i = 0; i < numStudents; i++) {
 
-        //classRosterArray[i] = new Student();
+        // Assigns classRosterArray Elements To Nullptr To Ensure All Pointer Elements Are Initialized. 
         classRosterArray[i] = nullptr;
         cout << "\t\t";
         cout << "classRosterArray[" << i << "] was successfully assigned as nullptr" << endl;
@@ -123,6 +131,62 @@ Roster::Roster() {
 };
 
 */
+
+Roster::Roster(int classSize) {
+    cout << "Constructor Successfully Started" << endl;
+    cout << endl;
+
+    // numStudents Variable Is Set By Arguement From Paramaterized Constructor
+    numStudents = classSize;
+
+    cout << "Int numStudents variable was updated with the inputSize result, " << numStudents << endl;
+    cout << endl;
+    cout << endl;
+
+    classRosterArray = new Student * [numStudents];
+    cout << "\t";
+    cout << "classRosterArray variable was created successfully and " << numStudents << " Student Pointers were created" << endl;
+
+    cout << endl;
+    cout << "\t";
+    cout << "Constructor Pointer NullPtr Assignment Loop Starting" << endl;
+    for (int i = 0; i < numStudents; i++) {
+
+        // Assigns classRosterArray Elements To Nullptr To Ensure All Pointer Elements Are Initialized. 
+        classRosterArray[i] = nullptr;
+        cout << "\t\t";
+        cout << "classRosterArray[" << i << "] was successfully assigned as nullptr" << endl;
+    }
+    cout << "\t";
+    cout << "Constructor Pointer NullPtr Assignment Loop Completed" << endl;
+    cout << endl;
+
+    cout << "\t";
+    cout << "Constructor Pointer Assignment To New Object Loop Started" << endl;
+    cout << endl;
+    for (int i = 0; i < numStudents; i++) {
+
+        // For Loop To Create A New Student Object And Assigns It To A classRosterArray Element
+        classRosterArray[i] = new Student();
+        cout << "\t\t";
+        cout << "classRosterArray[" << i << "] was successfully assigned the address of the newly created Student Object" << endl;
+        cout << "\t\t\t";
+        cout << "Located at " << &classRosterArray[i] << endl;
+    }
+    cout << "\t";
+    cout << "Constructor Pointer Assignment To New Object Loop Completed" << endl;
+    cout << endl;
+    cout << endl;
+
+    cout << endl;
+    cout << "Constructor Successfully Completed" << endl;
+
+};
+
+
+
+
+
 
 // CONSTRUCTORS - END
 //
@@ -207,11 +271,45 @@ Roster::~Roster() {
 
 
 // Add Function With All Required Parameters
-void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram) {
+void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
 
+    for (int i = 0; i < numStudents; i++) {
     
+        if (classRosterArray[i] == nullptr) {
+
+            cout << "Empty Array Location Found" << endl;
+
+            cout << "Creating daysInCourse[] Int Array and populating It With Parameters: daysInCourse1, daysInCourse2, daysInCourse3" << endl;
+
+                int daysInCourse[3] = {};
+                
+                daysInCourse[0] = daysInCourse1;
+                daysInCourse[1] = daysInCourse2;
+                daysInCourse[2] = daysInCourse3;
+
+                cout << "Population Of daysInCourse Int Array Completed" << endl;
+                cout << "Int Array daysInCourse[] = {";
+                
+                for (int j = 0; j < 3; j++) {
+                    if (j < 2) {
+                        cout << daysInCourse[j];
+                        cout << ", ";
+                    }
+                    else {
+                        cout << daysInCourse[j];
+                        cout << "}" << endl;
+                    }
+                }
+
+                DegreeProgram _degreeProgram = DegreeProgram::NETWORK;
+                _degreeProgram = degreeProgram;
 
 
+                classRosterArray[i] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, _degreeProgram);
+        
+        }
+    
+    }
 };
 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
@@ -287,6 +385,14 @@ void Roster::remove(string studentID) {
 
 void Roster::printAll() {
             
+    cout << "S.ID:" << "\t";
+    cout << "First Name: " << "\t\t";
+    cout << "Last Name: " << "\t\t";
+    cout << "Age: " << "\t";
+    cout << "Days In Course []:" << "\t";
+    cout << "Degree Program: ";
+    cout << endl;
+
     for (int i = 0; i < numStudents; i++) {
             
         if (classRosterArray[i] != nullptr) {
@@ -397,6 +503,8 @@ void Roster::printAverageDaysInCourse(string studentID) {
 
 void Roster::printInvalidEmails() {
 
+    bool invalidAddressFound = false;
+
     for (int i = 0; i < numStudents; i++) {
     
         if (classRosterArray[i] != nullptr) {
@@ -413,6 +521,47 @@ void Roster::printInvalidEmails() {
             cout << _emailAddressLength << endl;
             cout << "---- ---- ---- ---- " << endl;
 
+            // START OF EMAIL CHECK ---- ---- ---- ---- ---- ---- ---- ----  
+
+
+            // Checks Email Address To Verify That An At (@) Symbol Is Present AND That Only One (1) Is Present. 
+
+            int startingIndex = 0;
+            int workingIndex = 0;
+            int countAtSymbols = 0;
+
+            if (_emailAddress.find("@") != string::npos) {
+
+                while (_emailAddress.find("@", startingIndex) != string::npos) {
+
+                    workingIndex = _emailAddress.find("@", startingIndex);
+                    countAtSymbols++;
+                    if (countAtSymbols > 1) {
+                        invalidAddressFound = true;
+                        cout << "INVALID EMAIL ADDRESSES:" << endl;
+                        cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                        cout << "\t" << "    ";
+                        cout << _studentID;
+                        cout << "\t\t\t";
+                        cout << "Email Address Contains More Than One \@ Symbol." << endl << endl;;
+                        break;
+                    }
+                    startingIndex = (workingIndex + 1);
+
+                }
+            }
+            else {
+                cout << "INVALID EMAIL ADDRESSES:" << endl;
+                cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                cout << "\t" << "    ";
+                cout << _studentID;
+                cout << "\t\t\t";
+                cout << "Email Address Does Not Contain A \@ Symbol." << endl << endl;;
+                break;
+            
+            }
+
+
             // Loop to check for spaces, uses .length() string standard library function. 
             // Length was choosen because it returns the number of characters, while size() returns the size in memory 
                 // (However, they are basically the same because a single character (1 char) is a single byte in size (1 byte) [1 char = 1 byte].)
@@ -420,8 +569,7 @@ void Roster::printInvalidEmails() {
 
                 // If Statement Checks If Current Character is a Space -- If A space is detected, and error message is printed. 
 
-                // TODO: Should I look into try and catch error message handling. 
-
+                // TODO: Should I look into try and catch error message handling.          
                 if (isspace(_emailAddress.at(j))) {
                     cout << "INVALID EMAIL ADDRESSES:" << endl;
                     cout << "Student ID:" << "\t\t" << "Reason:" << endl;

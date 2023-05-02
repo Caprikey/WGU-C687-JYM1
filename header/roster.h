@@ -23,7 +23,7 @@ class Roster {
         // Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion. 
         __int64 inputSize = 0;
 
-        
+        const string studentData[];
 
         
     public:
@@ -35,7 +35,7 @@ class Roster {
         // CONSTRUCTORS - START
 
         Roster();
-
+        Roster(int classSize);
 
         // CONSTRUCTORS - END
         // 

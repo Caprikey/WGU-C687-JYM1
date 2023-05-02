@@ -247,7 +247,7 @@ int main() {
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
 
-    //classRoster.remove("B2");
+    classRoster.remove("B2");
 
     classRoster.printAll();
     
@@ -255,7 +255,7 @@ int main() {
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
 
-    Student* studentDPTest5 = classRoster.getStudent(3);
+    Student* studentDPTest5 = classRoster.getStudent(0);
     studentDPTest5->setStudentID("B3");
     studentDPTest5->setStudentAge(45);
     studentDPTest5->setStudentFirstName("Barba");
@@ -275,18 +275,42 @@ int main() {
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
 
+    //TODO: Create Parsing function
+
+
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+    classRoster.printAll();
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+    classRoster.add("D1","Danty","Cook","DantyDCookgmail.com",34,45,40,30,DegreeProgram::SOFTWARE);
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+
+    classRoster.printAll();
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+
+
+
     classRoster.printInvalidEmails();
 
     cout << endl;
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
 
-
-    //TODO: Create Parsing function
-
-    cout << endl;
-    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
-    cout << endl;
 
     return 0;
 }
