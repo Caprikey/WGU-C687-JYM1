@@ -45,4 +45,21 @@
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="text\Code-042623-143000.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="text\CodeIterationTrim.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="text\MainCPPCodeRemovalForTroubleshooting.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="text\RosterCPPCodeRemovalForTroubleshooting.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="text\RosterHCodeRemovalForTroubleshooting.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

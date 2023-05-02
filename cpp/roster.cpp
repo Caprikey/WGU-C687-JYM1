@@ -2,7 +2,8 @@
 #include <iostream>
 #include <iomanip> 
 #include <array>
-
+#include <string>
+#include <sstream>
 
 
 using namespace std;
@@ -21,6 +22,8 @@ Roster::Roster() {
     cout << "Constructor Successfully Started" << endl;
     cout << endl;
 
+    // TODO: Not Sure If I Should Keep This Here or Remove It and Find A Better Way To Calculate The Size
+    // IDEA: Parse The Data At The Same Time I'm Performing The Size/Element Count. Possibly Peform The Parseing After The Size Count. 
     const string studentData[] = {
         "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
         "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
@@ -84,6 +87,7 @@ Roster::Roster() {
     cout << endl;
     cout << endl;
 
+    cout << endl;
     cout << "Constructor Successfully Completed" << endl;
 
 };
@@ -490,7 +494,6 @@ Student* Roster::getStudent(int i) {
     */
     return classRosterArray[i];
 }
-
 
 
 // MEMBER FUNCTIONS - END

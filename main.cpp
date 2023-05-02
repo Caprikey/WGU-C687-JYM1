@@ -247,7 +247,7 @@ int main() {
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
 
-    classRoster.remove("B2");
+    //classRoster.remove("B2");
 
     classRoster.printAll();
     
@@ -282,7 +282,7 @@ int main() {
     cout << endl;
 
 
-
+    //TODO: Create Parsing function
 
     cout << endl;
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====

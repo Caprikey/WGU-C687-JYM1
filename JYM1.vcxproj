@@ -141,6 +141,13 @@
     <None Include=".editorconfig" />
     <None Include="text\ProjectRequirements.md" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="text\Code-042623-143000.txt" />
+    <Text Include="text\CodeIterationTrim.txt" />
+    <Text Include="text\MainCPPCodeRemovalForTroubleshooting.txt" />
+    <Text Include="text\RosterCPPCodeRemovalForTroubleshooting.txt" />
+    <Text Include="text\RosterHCodeRemovalForTroubleshooting.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
