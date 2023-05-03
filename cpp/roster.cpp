@@ -294,7 +294,8 @@ Roster::~Roster() {
 // Add Function With All Required Parameters
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
 
-
+    // IDEA: Perform a loop to check all index positions first for null ptr. If a nullptr is found that is not at the end, perform sort of array. Then update currentStudentIndex and then add new student?
+    // 
     // for (int i = 0; i < numStudents; i++) {
     
         if (classRosterArray[currentStudentIndex] == nullptr) {
