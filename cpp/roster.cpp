@@ -9,14 +9,9 @@ using namespace std;
 
 // Roster Class
 
-const string studentData[] = {
-    "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
-    "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
-    "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
-    "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
-    "A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
-};
-
+/*
+const string studentData[5] = {"A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY","A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK","A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE","A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY","A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"};
+*/
 
 //
 // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
@@ -32,6 +27,8 @@ Roster::Roster() {
 
     // TODO: Not Sure If I Should Keep This Here or Remove It and Find A Better Way To Calculate The Size
     // IDEA: Parse The Data At The Same Time I'm Performing The Size/Element Count. Possibly Peform The Parseing After The Size Count. 
+
+    /*
     const string studentData[] = {
         "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
         "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
@@ -39,6 +36,8 @@ Roster::Roster() {
         "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
         "A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
     };
+    */
+
 
     cout << "Int numStudents variable is currently set to: " << numStudents << endl;
     cout << "Int inputSize variable is currently set to: " << inputSize << endl;
@@ -46,7 +45,18 @@ Roster::Roster() {
     cout << endl;
 
     cout << "Calculating Size of Student Data Input Array - Start" << endl;
-    inputSize = *(&studentData + 1) - studentData;
+
+    // This was used with the above commented out studentData Array.
+    //inputSize = *(&studentData + 1) - studentData;
+    // string len = *(studentData + 1);
+
+    
+    // NOT SURE IF THIS WILL WORK
+    //inputSize = studentData->size();
+
+    // NOTE: May have to make a for loop to calculate the array size as a possible work around but that would be frowned above.
+    // FOR LOOP
+
     cout << "Calculating Size of Student Data Input Array - End" << endl;
 
     cout << endl;
@@ -55,20 +65,20 @@ Roster::Roster() {
     cout << endl;
     cout << "Setting Int numStudents variable equal to the inputSize result" << endl;
 
-    numStudents = inputSize;
+    //numStudents = inputSize;
     
     cout << "Int numStudents variable was updated with the inputSize result, " << numStudents << endl;
     cout << endl;
     cout << endl;
 
-    classRosterArray = new Student*[numStudents];
+    classRosterArray = new Student*[initializationPointerArraySize];
     cout << "\t";
-    cout << "classRosterArray variable was created successfully and " << numStudents << " Student Pointers were created" << endl;
+    cout << "classRosterArray variable was created successfully and " << initializationPointerArraySize << " Student Pointers were created" << endl;
 
     cout << endl;
     cout << "\t";
     cout << "Constructor Pointer NullPtr Assignment Loop Starting" << endl;
-    for (int i = 0; i < numStudents; i++) {
+    for (int i = 0; i < initializationPointerArraySize; i++) {
 
         // Assigns classRosterArray Elements To Nullptr To Ensure All Pointer Elements Are Initialized. 
         classRosterArray[i] = nullptr;
@@ -78,22 +88,33 @@ Roster::Roster() {
     cout << "\t";
     cout << "Constructor Pointer NullPtr Assignment Loop Completed" << endl;
     cout << endl;
-
+    
+    // TODO: Added Back numStudents Assignment with the InitializationPointerArraySize set to 5
+    numStudents = initializationPointerArraySize;
+    
     cout << "\t";
     cout << "Constructor Pointer Assignment To New Object Loop Started" << endl;
     cout << endl;
+
+    //TODO: Need To Remove the Object Creation And Move It To Add Function. 
+
+    /*
     for (int i = 0; i < numStudents; i++) {
-        
+
         classRosterArray[i] = new Student();
         cout << "\t\t";
         cout << "classRosterArray[" << i << "] was successfully assigned the address of the newly created Student Object" << endl;
         cout << "\t\t\t";
         cout << "Located at " << &classRosterArray[i] << endl;
     }
+    */
     cout << "\t";
     cout << "Constructor Pointer Assignment To New Object Loop Completed" << endl;
     cout << endl;
     cout << endl;
+
+    
+    
 
     cout << endl;
     cout << "Constructor Successfully Completed" << endl;
@@ -131,7 +152,7 @@ Roster::Roster() {
 };
 
 */
-
+/*
 Roster::Roster(int classSize) {
     cout << "Constructor Successfully Started" << endl;
     cout << endl;
@@ -182,7 +203,7 @@ Roster::Roster(int classSize) {
     cout << "Constructor Successfully Completed" << endl;
 
 };
-
+*/
 
 
 
@@ -273,12 +294,12 @@ Roster::~Roster() {
 // Add Function With All Required Parameters
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
 
-    for (int i = 0; i < numStudents; i++) {
+
+    // for (int i = 0; i < numStudents; i++) {
     
-        if (classRosterArray[i] == nullptr) {
-
+        if (classRosterArray[currentStudentIndex] == nullptr) {
+            cout << endl;
             cout << "Empty Array Location Found" << endl;
-
             cout << "Creating daysInCourse[] Int Array and populating It With Parameters: daysInCourse1, daysInCourse2, daysInCourse3" << endl;
 
                 int daysInCourse[3] = {};
@@ -297,7 +318,7 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
                     }
                     else {
                         cout << daysInCourse[j];
-                        cout << "}" << endl;
+                        cout << "}" << endl << endl;
                     }
                 }
 
@@ -305,11 +326,13 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
                 _degreeProgram = degreeProgram;
 
 
-                classRosterArray[i] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, _degreeProgram);
-        
+                classRosterArray[currentStudentIndex] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, _degreeProgram);
+                currentStudentIndex++;
+                cout << "---- ---- ---- ---- ";
+                cout << endl << endl;
         }
     
-    }
+    // }
 };
 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
@@ -526,9 +549,9 @@ void Roster::printInvalidEmails() {
 
             // Checks Email Address To Verify That An At (@) Symbol Is Present AND That Only One (1) Is Present. 
 
-            int startingIndex = 0;
-            int workingIndex = 0;
-            int countAtSymbols = 0;
+            size_t startingIndex = 0;
+            size_t workingIndex = 0;
+            size_t countAtSymbols = 0;
 
             if (_emailAddress.find("@") != string::npos) {
 
@@ -543,7 +566,7 @@ void Roster::printInvalidEmails() {
                         cout << "\t" << "    ";
                         cout << _studentID;
                         cout << "\t\t\t";
-                        cout << "Email Address Contains More Than One \@ Symbol." << endl << endl;;
+                        cout << "Email Address Contains More Than One At (@) Symbol." << endl << endl;;
                         break;
                     }
                     startingIndex = (workingIndex + 1);
@@ -556,7 +579,7 @@ void Roster::printInvalidEmails() {
                 cout << "\t" << "    ";
                 cout << _studentID;
                 cout << "\t\t\t";
-                cout << "Email Address Does Not Contain A \@ Symbol." << endl << endl;;
+                cout << "Email Address Does Not Contain A At (@) Symbol." << endl << endl;;
                 break;
             
             }
@@ -642,6 +665,7 @@ Student* Roster::getStudent(int i) {
     */
     return classRosterArray[i];
 }
+
 
 
 // MEMBER FUNCTIONS - END

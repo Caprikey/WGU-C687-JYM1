@@ -58,6 +58,53 @@ int main() {
 
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
 
+    string inputData;
+    string parsedVariableData[9] = {};
+
+
+    string parsingWorker;
+    string parsedVariable;
+
+    int inputDataSize = sizeof(studentData) / (sizeof(studentData[0]));
+    cout << inputDataSize << endl;
+
+    cout << endl;
+
+    for (int i = 0; i < inputDataSize; i++) {
+
+        parsingWorker = studentData[i];
+        stringstream inputData(parsingWorker);
+        int j = 0;
+
+        while (getline(inputData, parsedVariable, ',')) {
+            cout << parsedVariable << endl;
+            parsedVariableData[j++] = parsedVariable;
+
+        }
+
+        DegreeProgram degreeProgram;
+        degreeProgram = DegreeProgram::NETWORK;
+
+        if (parsedVariableData[8] == "NETWORK") {
+            std::cout << "Degree Program Is Network" << endl;
+            degreeProgram = DegreeProgram::NETWORK;
+        }
+        else if (parsedVariableData[8] == "SOFTWARE") {
+            std::cout << "Degree Program Is Software" << endl;
+            degreeProgram = DegreeProgram::SOFTWARE;
+        }
+        else if (parsedVariableData[8] == "SECURITY") {
+            std::cout << "Degree Program Is Security" << endl;
+            degreeProgram = DegreeProgram::SECURITY;
+        }
+
+        classRoster.add(parsedVariableData[0], parsedVariableData[1], parsedVariableData[2], parsedVariableData[3], (stoi(parsedVariableData[4])), (stoi(parsedVariableData[5])), (stoi(parsedVariableData[6])), (stoi(parsedVariableData[7])), degreeProgram);
+
+    }
+
+
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+
     cout << "Print All Function Test - Start" << endl;
     classRoster.printAll();
     cout << "Print All Function Test - End" << endl;
