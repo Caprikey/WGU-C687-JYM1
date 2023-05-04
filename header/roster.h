@@ -19,7 +19,7 @@ class Roster {
         // Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion.
         __int64 numStudents = 0;
 
-        int currentStudentIndex = 0;
+        int currentStudentIndex = -1;
 
         // Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion. 
         __int64 inputSize = 0;

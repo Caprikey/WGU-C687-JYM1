@@ -300,7 +300,10 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
     // IDEA: Perform a loop to check all index positions first for null ptr. If a nullptr is found that is not at the end, perform sort of array. Then update currentStudentIndex and then add new student?
     // 
     // for (int i = 0; i < numStudents; i++) {
-    
+    cout << endl;
+    cout << "Current Student Index: " << currentStudentIndex << endl;
+    //++currentStudentIndex;
+    ++currentStudentIndex;
         if (classRosterArray[currentStudentIndex] == nullptr) {
             cout << endl;
             cout << "Empty Array Location Found" << endl;
@@ -330,8 +333,10 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
                 degreeProgram = degreeProgram;
 
 
+
                 classRosterArray[currentStudentIndex] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, degreeProgram);
-                currentStudentIndex++;
+
+                cout << "Updated Student Index: " << currentStudentIndex << endl;
                 cout << "---- ---- ---- ---- ";
                 cout << endl << endl;
         }
@@ -373,6 +378,7 @@ void Roster::remove(string studentID) {
                 cout << "Deletion Successful" << endl;
 
                 classRosterArray[i] = nullptr;
+                --currentStudentIndex;
             
             }
             else {
@@ -599,13 +605,12 @@ void Roster::printInvalidEmails() {
                         cout << _studentID;
                         cout << "\t\t\t";
                         cout << "Email Address Contains More Than One At (@) Symbol." << endl << endl;;
-                        break;
+                        //break;
                     }
                     startingIndex = (workingIndex + 1);
-
                 }
-            }
-            else {
+
+            } else {
 
                 string invalidEmailError2 = "Email Address Does Not Contain A At (@) Symbol.";
 
@@ -617,10 +622,11 @@ void Roster::printInvalidEmails() {
                 cout << _studentID;
                 cout << "\t\t\t";
                 cout << "Email Address Does Not Contain A At (@) Symbol." << endl << endl;;
-                break;
+                //break;
             
             }
 
+            
 
             // Loop to check for spaces, uses .length() string standard library function. 
             // Length was choosen because it returns the number of characters, while size() returns the size in memory 
@@ -632,9 +638,9 @@ void Roster::printInvalidEmails() {
                 // TODO: Should I look into try and catch error message handling.          
                 if (isspace(_emailAddress.at(j))) {
 
-                    string invalidEmailError3 = "Email Address Contains A Space.";
+                    string invalidEmailError5 = "Email Address Contains A Space.";
 
-                    invalidEmails.push_back(make_pair(_studentID, invalidEmailError3));
+                    invalidEmails.push_back(make_pair(_studentID, invalidEmailError5));
 
                     cout << "INVALID EMAIL ADDRESSES:" << endl;
                     cout << "Student ID:" << "\t\t" << "Reason:" << endl;
@@ -642,7 +648,7 @@ void Roster::printInvalidEmails() {
                     cout << _studentID;
                     cout << "\t\t\t";
                     cout << "Email Address Contains A Space." << endl << endl;;
-                    break;
+                    //break;
                 }
                 
                 // Checks If First Or Last Character Are Periods -- If First and/or Last characters are a period, an error message is printed. 
@@ -650,9 +656,9 @@ void Roster::printInvalidEmails() {
                     
                     if ((_emailAddress.at(0) == '@') || (_emailAddress.at(_emailAddressLength - 1) == '@')) {
 
-                        string invalidEmailError4 = "Email Address Contains An At (@) Symbol At Either The First Or Last Character.";
+                        string invalidEmailError6 = "Email Address Contains An At (@) Symbol At Either The First Or Last Character.";
 
-                        invalidEmails.push_back(make_pair(_studentID, invalidEmailError4));
+                        invalidEmails.push_back(make_pair(_studentID, invalidEmailError6));
 
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
                         cout << "Student ID:" << "\t\t" << "Reason:" << endl;
@@ -664,9 +670,9 @@ void Roster::printInvalidEmails() {
                     }
                     else if ((_emailAddress.at(0) == '.') || (_emailAddress.at(_emailAddressLength - 1) == '.')) {
 
-                        string invalidEmailError5 = "Email Address Contains An A Period (.) At Either The First Or Last Character.";
+                        string invalidEmailError7 = "Email Address Contains An A Period (.) At Either The First Or Last Character.";
 
-                        invalidEmails.push_back(make_pair(_studentID, invalidEmailError5));
+                        invalidEmails.push_back(make_pair(_studentID, invalidEmailError7));
 
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
                         cout << "Student ID:" << "\t\t" << "Reason:" << endl;
@@ -679,8 +685,101 @@ void Roster::printInvalidEmails() {
                     else {
                         continue;
                     }
+
                     
                 }
+
+
+
+
+            }
+            if (_emailAddress.find('.') != string::npos) {
+
+                while (_emailAddress.find(".", startingIndex) != string::npos) {
+
+                    workingIndex = _emailAddress.find(".", startingIndex);
+                    countAtSymbols++;
+
+                    if (countAtSymbols > 1) {
+                        //invalidAddressFound = true;
+
+                        if (_emailAddress.at(workingIndex) = 0) {
+
+                            if (_emailAddress.at(workingIndex + 1) == '.') {
+
+                                string invalidEmailError3 = "Email Address Contains More Than One Period (.) Symbol In A Row.";
+
+                                invalidEmails.push_back(make_pair(_studentID, invalidEmailError3));
+
+                                cout << "INVALID EMAIL ADDRESSES:" << endl;
+                                cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                                cout << "\t" << "    ";
+                                cout << _studentID;
+                                cout << "\t\t\t";
+                                cout << "Email Address Contains More Than One Period (.) Symbol In A Row." << endl << endl;;
+                                //break;
+                            }
+
+                        }
+                        else if (_emailAddress.at(workingIndex) = _emailAddressLength) {
+
+                            if (_emailAddress.at(workingIndex + -1) == '.') {
+
+                                string invalidEmailError3 = "Email Address Contains More Than One Period (.) Symbol In A Row.";
+
+                                invalidEmails.push_back(make_pair(_studentID, invalidEmailError3));
+
+                                cout << "INVALID EMAIL ADDRESSES:" << endl;
+                                cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                                cout << "\t" << "    ";
+                                cout << _studentID;
+                                cout << "\t\t\t";
+                                cout << "Email Address Contains More Than One Period (.) Symbol In A Row." << endl << endl;;
+                                // break;
+                            }
+
+
+                        }
+                        else if (!(_emailAddress.at(workingIndex) = 0) && (!(_emailAddress.at(workingIndex) = _emailAddressLength))) {
+
+                            if ((_emailAddress.at(workingIndex - 1) == '.') || (_emailAddress.at(workingIndex + 1) == '.')) {
+
+                                string invalidEmailError3 = "Email Address Contains More Than One Period (.) Symbol In A Row.";
+
+                                invalidEmails.push_back(make_pair(_studentID, invalidEmailError3));
+
+                                cout << "INVALID EMAIL ADDRESSES:" << endl;
+                                cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                                cout << "\t" << "    ";
+                                cout << _studentID;
+                                cout << "\t\t\t";
+                                cout << "Email Address Contains More Than One Period (.) Symbol In A Row." << endl << endl;;
+                                //break;
+                            }
+
+                        }
+                        //(!(_emailAddress.at(workingIndex) >= _emailAddressLength)) ||
+                    //((_emailAddress.at(workingIndex - 1) == '.') ||
+
+                    }
+
+                    startingIndex = (workingIndex + 1);
+
+                }
+            }
+            else {
+
+                string invalidEmailError4 = "Email Address Does Not Contain A Period (.) Symbol.";
+
+                invalidEmails.push_back(make_pair(_studentID, invalidEmailError4));
+
+                cout << "INVALID EMAIL ADDRESSES:" << endl;
+                cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                cout << "\t" << "    ";
+                cout << _studentID;
+                cout << "\t\t\t";
+                cout << "Email Address Does Not Contain A Period (.) Symbol." << endl << endl;;
+                //break;
 
             }
 

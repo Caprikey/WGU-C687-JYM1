@@ -387,8 +387,9 @@ int main() {
     cout << endl;
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
+    cout << "Add function main () call " << endl;
 
-    classRoster.add("D1","Danty","Cook","DantyDCookgmail.com",34,45,40,30,DegreeProgram::SOFTWARE);
+    classRoster.add("D1","Danty","Cook","DantyDCookgmail..com",34,45,40,30,SOFTWARE);
 
     cout << endl;
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
@@ -403,6 +404,14 @@ int main() {
 
 
     classRoster.printInvalidEmails();
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+
+
+    classRoster.printAll();
 
     cout << endl;
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
