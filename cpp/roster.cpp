@@ -1,10 +1,11 @@
 #include "..\header\roster.h"
+
 #include <iostream>
 #include <iomanip> 
 #include <array>
 #include <string>
 #include <sstream>
-
+#include <vector>
 
 
 using namespace std;
@@ -539,8 +540,8 @@ void Roster::printAverageDaysInCourse(string studentID) {
 
 void Roster::printInvalidEmails() {
 
-    bool invalidAddressFound = false;
-    
+    // Creates a Vector that accepts a pair of two string data types as a single element.  
+    vector<pair<string, string>> invalidEmails;
     
     cout << "INVALID EMAIL ADDRESS" << endl;
 
@@ -548,12 +549,20 @@ void Roster::printInvalidEmails() {
     
         if (classRosterArray[i] != nullptr) {
 
+            // Boolean Variable To Use As A Variable Flag
+            //bool invalidAddressFound = false;
+
+            // Get Student ID and Assign It To A Tempory String Variable
+            string _studentID = classRosterArray[i]->getStudentID();
+
             // Get Email Address and Assign It To A Temporary String Variable
             string _emailAddress = classRosterArray[i]->getStudentEmailAddress();
-            string _studentID = classRosterArray[i]->getStudentID();
-            // Changing from int to size_t to remove compiler warning regarding possible data loss due to type conversion. 
+
+            // Get Length Of Student Emails Addresss and Assigning it to a temporary size_t variable to be used with loops below. 
+                // Changing from int to size_t to remove compiler warning regarding possible data loss due to type conversion. 
             size_t _emailAddressLength = _emailAddress.length();
 
+            // Debugging Print Out of Temp Variable Values For Current Student In Loop
             cout << "---- ---- ---- ---- " << endl;
             cout << _emailAddress << endl;
             cout << _studentID << endl;
@@ -563,8 +572,10 @@ void Roster::printInvalidEmails() {
             // START OF EMAIL CHECK ---- ---- ---- ---- ---- ---- ---- ----  
 
 
+
             // Checks Email Address To Verify That An At (@) Symbol Is Present AND That Only One (1) Is Present. 
 
+            // Tempoary Size_t variables used for computations below. Initialized To zero. 
             size_t startingIndex = 0;
             size_t workingIndex = 0;
             size_t countAtSymbols = 0;
@@ -576,7 +587,12 @@ void Roster::printInvalidEmails() {
                     workingIndex = _emailAddress.find("@", startingIndex);
                     countAtSymbols++;
                     if (countAtSymbols > 1) {
-                        invalidAddressFound = true;
+                        //invalidAddressFound = true;
+
+                        string invalidEmailError1 = "Email Address Contains More Than One At (@) Symbol";
+
+                        invalidEmails.push_back(make_pair(_studentID, invalidEmailError1));
+
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
                         cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                         cout << "\t" << "    ";
@@ -590,6 +606,11 @@ void Roster::printInvalidEmails() {
                 }
             }
             else {
+
+                string invalidEmailError2 = "Email Address Does Not Contain A At (@) Symbol.";
+
+                invalidEmails.push_back(make_pair(_studentID, invalidEmailError2));
+
                 cout << "INVALID EMAIL ADDRESSES:" << endl;
                 cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                 cout << "\t" << "    ";
@@ -610,6 +631,11 @@ void Roster::printInvalidEmails() {
 
                 // TODO: Should I look into try and catch error message handling.          
                 if (isspace(_emailAddress.at(j))) {
+
+                    string invalidEmailError3 = "Email Address Contains A Space.";
+
+                    invalidEmails.push_back(make_pair(_studentID, invalidEmailError3));
+
                     cout << "INVALID EMAIL ADDRESSES:" << endl;
                     cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                     cout << "\t" << "    ";
@@ -623,6 +649,11 @@ void Roster::printInvalidEmails() {
                 if ((ispunct(_emailAddress.at(0))) || (ispunct(_emailAddress.at(_emailAddressLength-1)))) {
                     
                     if ((_emailAddress.at(0) == '@') || (_emailAddress.at(_emailAddressLength - 1) == '@')) {
+
+                        string invalidEmailError4 = "Email Address Contains An At (@) Symbol At Either The First Or Last Character.";
+
+                        invalidEmails.push_back(make_pair(_studentID, invalidEmailError4));
+
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
                         cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                         cout << "\t" << "    ";
@@ -632,6 +663,11 @@ void Roster::printInvalidEmails() {
                         break;
                     }
                     else if ((_emailAddress.at(0) == '.') || (_emailAddress.at(_emailAddressLength - 1) == '.')) {
+
+                        string invalidEmailError5 = "Email Address Contains An A Period (.) At Either The First Or Last Character.";
+
+                        invalidEmails.push_back(make_pair(_studentID, invalidEmailError5));
+
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
                         cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                         cout << "\t" << "    ";
@@ -650,6 +686,26 @@ void Roster::printInvalidEmails() {
 
         }
     
+    }
+
+    cout << "---- ---- ---- ---- ---- ---- ---- ---- " << endl;
+    cout << endl;
+
+
+    if (!invalidEmails.empty()) {
+    
+        cout << "Invalid Email Address Results:" << endl;
+
+        for (auto const& invalidEmail : invalidEmails) {
+        
+            cout << "Student ID: " << invalidEmail.first << ", Reason: " << invalidEmail.second << endl;
+        
+        }
+    
+    }
+    else {
+    
+        cout << "No Invalid Emails Were Found." << endl;
     }
 
 };
