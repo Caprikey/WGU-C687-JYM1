@@ -585,6 +585,10 @@ void Roster::printInvalidEmails() {
             size_t startingIndex = 0;
             size_t workingIndex = 0;
             size_t countAtSymbols = 0;
+            size_t singleAtSymbolIndex = 0;
+            size_t countPeriods = 0;
+
+            //Start of At Symbol
 
             if (_emailAddress.find("@") != string::npos) {
 
@@ -606,9 +610,16 @@ void Roster::printInvalidEmails() {
                         cout << "\t\t\t";
                         cout << "Email Address Contains More Than One At (@) Symbol." << endl << endl;;
                         //break;
-                    }
+                    } 
                     startingIndex = (workingIndex + 1);
                 }
+
+                if (countAtSymbols == 1) {
+                
+                    singleAtSymbolIndex = startingIndex-1;
+                
+                }
+
 
             } else {
 
@@ -626,7 +637,25 @@ void Roster::printInvalidEmails() {
             
             }
 
-            
+            // End Of At Symbol 
+
+            if (countAtSymbols == 1) {
+                
+                if (_emailAddress.at(singleAtSymbolIndex + 1) == '-') {
+
+                    string invalidEmailError9 = "Email Address Contains A Hyphen (-) Symbol After The At (@) Symbol and As The First Character Of The Domain Address";
+
+                    invalidEmails.push_back(make_pair(_studentID, invalidEmailError9));
+
+                    cout << "INVALID EMAIL ADDRESSES:" << endl;
+                    cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                    cout << "\t" << "    ";
+                    cout << _studentID;
+                    cout << "\t\t\t";
+                    cout << "Email Address Contains A Hyphen (-) Symbol After The At (@) Symbol and As The First Character Of The Domain Address" << endl << endl;;
+                    //break;
+                }
+            }
 
             // Loop to check for spaces, uses .length() string standard library function. 
             // Length was choosen because it returns the number of characters, while size() returns the size in memory 
@@ -650,49 +679,62 @@ void Roster::printInvalidEmails() {
                     cout << "Email Address Contains A Space." << endl << endl;;
                     //break;
                 }
+            }
                 
+                // Checks If First Or Last Character Are An At Symbol -- If First and/or Last characters are a period, an error message is printed. 
                 // Checks If First Or Last Character Are Periods -- If First and/or Last characters are a period, an error message is printed. 
-                if ((ispunct(_emailAddress.at(0))) || (ispunct(_emailAddress.at(_emailAddressLength-1)))) {
+            if ((ispunct(_emailAddress.at(0))) || (ispunct(_emailAddress.at(_emailAddressLength-1)))) {
                     
-                    if ((_emailAddress.at(0) == '@') || (_emailAddress.at(_emailAddressLength - 1) == '@')) {
+                if ((_emailAddress.at(0) == '@') || (_emailAddress.at(_emailAddressLength - 1) == '@')) {
 
-                        string invalidEmailError6 = "Email Address Contains An At (@) Symbol At Either The First Or Last Character.";
+                    string invalidEmailError6 = "Email Address Contains An At (@) Symbol At Either The First Or Last Character.";
 
-                        invalidEmails.push_back(make_pair(_studentID, invalidEmailError6));
+                    invalidEmails.push_back(make_pair(_studentID, invalidEmailError6));
 
-                        cout << "INVALID EMAIL ADDRESSES:" << endl;
-                        cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                        cout << "\t" << "    ";
-                        cout << _studentID;
-                        cout << "\t\t\t";
-                        cout << "Email Address Contains An At (@) Symbol At Either The First Or Last Character." << endl << endl;;
-                        break;
-                    }
-                    else if ((_emailAddress.at(0) == '.') || (_emailAddress.at(_emailAddressLength - 1) == '.')) {
+                    cout << "INVALID EMAIL ADDRESSES:" << endl;
+                    cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                    cout << "\t" << "    ";
+                    cout << _studentID;
+                    cout << "\t\t\t";
+                    cout << "Email Address Contains An At (@) Symbol At Either The First Or Last Character." << endl << endl;;
+                    //break;
+                }
+                else if ((_emailAddress.at(0) == '.') || (_emailAddress.at(_emailAddressLength - 1) == '.')) {
 
-                        string invalidEmailError7 = "Email Address Contains An A Period (.) At Either The First Or Last Character.";
+                    string invalidEmailError7 = "Email Address Contains An A Period (.) At Either The First Or Last Character.";
 
-                        invalidEmails.push_back(make_pair(_studentID, invalidEmailError7));
+                    invalidEmails.push_back(make_pair(_studentID, invalidEmailError7));
 
-                        cout << "INVALID EMAIL ADDRESSES:" << endl;
-                        cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                        cout << "\t" << "    ";
-                        cout << _studentID;
-                        cout << "\t\t\t";
-                        cout << "Email Address Contains An A Period (.) At Either The First Or Last Character." << endl << endl;;
-                        break;
-                    }
-                    else {
-                        continue;
-                    }
+                    cout << "INVALID EMAIL ADDRESSES:" << endl;
+                    cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                    cout << "\t" << "    ";
+                    cout << _studentID;
+                    cout << "\t\t\t";
+                    cout << "Email Address Contains An A Period (.) At Either The First Or Last Character." << endl << endl;;
+                    //break;
+                }
+                else if (_emailAddress.at(_emailAddressLength - 1) == '-') {
 
-                    
+                    string invalidEmailError8 = "Email Address Contains A Hyphen (-) As The Last Character.";
+
+                    invalidEmails.push_back(make_pair(_studentID, invalidEmailError8));
+
+                    cout << "INVALID EMAIL ADDRESSES:" << endl;
+                    cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                    cout << "\t" << "    ";
+                    cout << _studentID;
+                    cout << "\t\t\t";
+                    cout << "Email Address Contains A Hyphen (-) As The Last Character." << endl << endl;;
+                    //break;
+                }
+                else {
+                    cout << "No Errors" << endl;
+                    continue;
                 }
 
-
-
-
+                    
             }
+
             if (_emailAddress.find('.') != string::npos) {
 
                 while (_emailAddress.find(".", startingIndex) != string::npos) {

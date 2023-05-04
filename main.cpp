@@ -358,9 +358,9 @@ int main() {
     studentDPTest5->setStudentAge(45);
     studentDPTest5->setStudentFirstName("Barba");
     studentDPTest5->setStudentLastName("Bacon");
-    studentDPTest5->setStudentEmailAddress("Barba Bacon@@yahoo.com");
+    studentDPTest5->setStudentEmailAddress("Barba Bacon@@yahoo.com-");
 
-    studentDPTest3->setStudentEmailAddress("@testemaileremail.com");
+    studentDPTest3->setStudentEmailAddress("@-testemaileremail.com");
     studentDPTest2->setStudentEmailAddress(".testemail@email.com");
     studentDPTest1->setStudentEmailAddress("testingmail@electronicmail.com.");
 
