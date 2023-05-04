@@ -325,11 +325,11 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
                     }
                 }
 
-                DegreeProgram _degreeProgram = DegreeProgram::NETWORK;
-                _degreeProgram = degreeProgram;
+                //DegreeProgram degreeProgram = DegreeProgram::NETWORK;
+                degreeProgram = degreeProgram;
 
 
-                classRosterArray[currentStudentIndex] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, _degreeProgram);
+                classRosterArray[currentStudentIndex] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, degreeProgram);
                 currentStudentIndex++;
                 cout << "---- ---- ---- ---- ";
                 cout << endl << endl;
@@ -347,14 +347,21 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 
 void Roster::remove(string studentID) {
 
+    bool isFound = false;
+
     int deletedStudent = 0;
 
+
+ 
     for (int i = 0; i < numStudents; i++) {
     
         if (classRosterArray[i] != nullptr) {
         
             if (classRosterArray[i]->getStudentID() == studentID) {
-            
+
+                isFound = true;
+
+
                 cout << "FOUND - Deletion Beginning" << endl;
                 cout << "Setting Student Object Location Variable" << endl;
                 deletedStudent = i;
@@ -424,10 +431,12 @@ void Roster::printAll() {
         if (classRosterArray[i] != nullptr) {
             
             classRosterArray[i]->print();
-            
+
         }
         else {
+
             cout << "classRosterArray[" << i << "] is empty and set to a nullptr" << endl;
+
         }
 
     }
@@ -441,6 +450,7 @@ void Roster::printAll() {
 // Print Average Days In Course Function
 
 void Roster::printAverageDaysInCourse(string studentID) {
+
     int sumOfDays = 0;
     int numOfCourses = 0;
     double courseDayAvg = 0.0;
@@ -530,6 +540,9 @@ void Roster::printAverageDaysInCourse(string studentID) {
 void Roster::printInvalidEmails() {
 
     bool invalidAddressFound = false;
+    
+    
+    cout << "INVALID EMAIL ADDRESS" << endl;
 
     for (int i = 0; i < numStudents; i++) {
     
@@ -608,13 +621,29 @@ void Roster::printInvalidEmails() {
                 
                 // Checks If First Or Last Character Are Periods -- If First and/or Last characters are a period, an error message is printed. 
                 if ((ispunct(_emailAddress.at(0))) || (ispunct(_emailAddress.at(_emailAddressLength-1)))) {
-                    cout << "INVALID EMAIL ADDRESSES:" << endl;
-                    cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                    cout << "\t" << "    ";
-                    cout << _studentID;
-                    cout << "\t\t\t";
-                    cout << "Email Address Contains Has A Period As Either The First Or Last Character." << endl << endl;;
-                    break;
+                    
+                    if ((_emailAddress.at(0) == '@') || (_emailAddress.at(_emailAddressLength - 1) == '@')) {
+                        cout << "INVALID EMAIL ADDRESSES:" << endl;
+                        cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                        cout << "\t" << "    ";
+                        cout << _studentID;
+                        cout << "\t\t\t";
+                        cout << "Email Address Contains An At (@) Symbol At Either The First Or Last Character." << endl << endl;;
+                        break;
+                    }
+                    else if ((_emailAddress.at(0) == '.') || (_emailAddress.at(_emailAddressLength - 1) == '.')) {
+                        cout << "INVALID EMAIL ADDRESSES:" << endl;
+                        cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                        cout << "\t" << "    ";
+                        cout << _studentID;
+                        cout << "\t\t\t";
+                        cout << "Email Address Contains An A Period (.) At Either The First Or Last Character." << endl << endl;;
+                        break;
+                    }
+                    else {
+                        continue;
+                    }
+                    
                 }
 
             }

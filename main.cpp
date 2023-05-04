@@ -110,7 +110,6 @@ int main() {
     string inputData;
     string parsedVariableData[9] = {};
 
-
     string parsingWorker;
     string parsedVariable;
 
@@ -160,7 +159,7 @@ int main() {
     cout << endl;
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
 
-
+    
     Student* studentDPTest1 = classRoster.getStudent(1);
 
     if (studentDPTest1 != nullptr) {
@@ -243,7 +242,8 @@ int main() {
     cout << "\t";
     cout << "By DegreeProgram::NETWORK - Start" << endl;
     cout << "---- ---- ---- ---- " << endl;
-    classRoster.printByDegreeProgram(DegreeProgram::NETWORK);
+    //classRoster.printByDegreeProgram(DegreeProgram::NETWORK);
+    classRoster.printByDegreeProgram(NETWORK);
     cout << "---- ---- ---- ---- " << endl;
     cout << "\t";
     cout << "By DegreeProgram::NETWORK - End" << endl;
@@ -253,7 +253,8 @@ int main() {
     cout << "\t";
     cout << "By DegreeProgram::SOFTWARE - Start" << endl;
     cout << "---- ---- ---- ---- " << endl;
-    classRoster.printByDegreeProgram(DegreeProgram::SOFTWARE);
+    //classRoster.printByDegreeProgram(DegreeProgram::SOFTWARE);
+    classRoster.printByDegreeProgram(SOFTWARE);
     cout << "---- ---- ---- ---- " << endl;
     cout << "\t";
     cout << "By DegreeProgram::SOFTWARE - End" << endl;
@@ -263,7 +264,8 @@ int main() {
     cout << "\t";
     cout << "By DegreeProgram::SECURITY - Start" << endl;
     cout << "---- ---- ---- ---- " << endl;
-    classRoster.printByDegreeProgram(DegreeProgram::SECURITY);
+    //classRoster.printByDegreeProgram(DegreeProgram::SECURITY);
+    classRoster.printByDegreeProgram(SECURITY);
     cout << "---- ---- ---- ---- " << endl;
     cout << "\t";
     cout << "By DegreeProgram::SECURITY - End" << endl;
@@ -356,8 +358,9 @@ int main() {
     studentDPTest5->setStudentAge(45);
     studentDPTest5->setStudentFirstName("Barba");
     studentDPTest5->setStudentLastName("Bacon");
-    studentDPTest5->setStudentEmailAddress("Barba Bacon@yahoo.com");
+    studentDPTest5->setStudentEmailAddress("Barba Bacon@@yahoo.com");
 
+    studentDPTest3->setStudentEmailAddress("@testemaileremail.com");
     studentDPTest2->setStudentEmailAddress(".testemail@email.com");
     studentDPTest1->setStudentEmailAddress("testingmail@electronicmail.com.");
 

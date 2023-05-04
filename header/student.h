@@ -41,27 +41,14 @@ class Student {
 			//int daysInCourse[3] = { 0,0,0 };
 			int daysInCourse[3] = { 40,39,26 };
 
-            // TODO: DELETE THIS -- Will Be capturing and entering during calls/runtime
-			// Need To Delete These Variables, and input the information directly in to the array
-				
-				// Days In Course 1
-				int daysInCourse1 = 0;
-			
-				// Days In Course 1
-				int daysInCourse2 = 0;
-			
-				// Days In Course 1
-				int daysInCourse3 = 0;
-
-
-		// Degree Program Enumerated Variable. 
-                DegreeProgram degreeProgram = DegreeProgram::NETWORK;
+            // Degree Program Enumerated Variable. 
+            DegreeProgram degreeProgram = DegreeProgram::NETWORK;
 		
 		
             // TODO: DELETE THIS
 			// Probably need to delete and do it in real time instead. 
 			// Input Data Array 
-			string arrayInputData;
+			// string arrayInputData;
 
 
 		// VARIABLES - END
@@ -69,6 +56,8 @@ class Student {
 
 
 	public:
+
+        //
         // ==== ==== ==== ==== ==== ==== ==== ==== 
 		// MUTATORS - START
 
@@ -118,6 +107,7 @@ class Student {
         void print();
 
 		// MEMBER FUNCTIONS - END
+        // 
         // ==== ==== ==== ==== ==== ==== ==== ==== 
         // 
         // CONSTRUCTORS - START
@@ -131,6 +121,17 @@ class Student {
 
 
         // CONSTRUCTORS - END
+        // 
+        // ==== ==== ==== ==== ==== ==== ==== ==== 
+                // 
+        // ==== ==== ==== ==== ==== ==== ==== ==== 
+        // 
+        // DECONSTRUCTORS - START
+
+        // Default Constructor
+        //~Student();
+
+        // DECONSTRUCTORS - END
         // 
         // ==== ==== ==== ==== ==== ==== ==== ==== 
 };

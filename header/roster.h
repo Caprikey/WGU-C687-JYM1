@@ -30,33 +30,29 @@ class Roster {
         // Initializaing The Array Of Pointers With 5 Items
         __int64 initializationPointerArraySize = 5;
 
+
+
         
         // TODO: Delete. This is probably the wrong way to go about it.
         //const string studentData[];
 
     public:
         
+        // PUBLIC VARIABLES
+        //
+        // ==== 
+        //
+
+        int lastIndex = -1;
+
+
+        //
+        // ==== 
+        //
         // FUNCTION DECLARATIONS
         //
         // ==== ==== ==== ==== ==== ==== ==== ==== 
-        // 
-        // CONSTRUCTORS - START
 
-        Roster();
-        //Roster(int classSize);
-
-        // CONSTRUCTORS - END
-        // 
-        // ==== ==== ==== ==== ==== ==== ==== ==== 
-        //
-        // DECONSTRUCTORS - START
-        
-        ~Roster();
-
-        // DECONSTRUCTORS - END
-        // 
-        // ==== ==== ==== ==== ==== ==== ==== ==== 
-        // 
         // MEMBER FUNCTIONS - START
 
         // Add Function With All Required Parameters
@@ -77,7 +73,24 @@ class Roster {
 
         // MEMBER FUNCTIONS - END
         // ==== ==== ==== ==== ==== ==== ==== ==== 
+        // 
+        // CONSTRUCTORS - START
 
+        Roster();
+        //Roster(int classSize);
+
+        // CONSTRUCTORS - END
+        // 
+        // ==== ==== ==== ==== ==== ==== ==== ==== 
+        //
+        // DECONSTRUCTORS - START
+
+        ~Roster();
+
+        // DECONSTRUCTORS - END
+        // 
+        // ==== ==== ==== ==== ==== ==== ==== ==== 
+        // 
 
 
 
