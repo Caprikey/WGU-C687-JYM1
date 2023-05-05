@@ -44,6 +44,7 @@
     <None Include="text\ProjectRequirements.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="text\Code-042623-143000.txt">

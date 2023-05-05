@@ -70,9 +70,9 @@ const string studentData[] = {
 int main() {
 
     // CONSOLE WINDOW RESIZE AND MOVING CODE - START
-    
+
     // NOTE Reference Source for the above and the following code for resizing the console window from the following web site: https://cplusplus.com/forum/beginner/1481/
-    
+
     HWND console = GetConsoleWindow();
     RECT r;
     GetWindowRect(console, &r); //stores the console's current dimensions
@@ -115,12 +115,27 @@ int main() {
 
     /*
     classRoster.getInputSize();
- 
+
     for (int i = 0; i < inputDataSize; i++) {
         classRoster.parseInput(studentData[i]);
     }
     */
 
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+
+    Student** studentptr = classRoster.getAllStudents();
+    Student* firstStudent = studentptr[1];
+    cout << firstStudent->getStudentID() << endl;
+    
+
+    cout << endl;
+    cout << endl;
+
+    cout << classRoster.getCurrentStudentCount();
+    cout << endl;
+    cout << endl;
+
+    
     cout << "Print All Function Test - Start" << endl;
     classRoster.printAll();
     cout << "Print All Function Test - End" << endl;
@@ -293,13 +308,37 @@ int main() {
     cout << endl;
     cout << "Print Average Days In Course Test - END" << endl;
 
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+    classRoster.printAverageDaysInCourseAll(classRoster);
+
+    cout << endl;
+    cout << "Above Used Print Average Days In Course All";
+    cout << endl;
+    cout << endl;
+    cout << "---- ---- ---- ---- ---- ---- ---- ---- ";
+    cout << endl;
+    cout << endl;
+    cout << "Below Used A For Loop To Print Print Average Days In Course";
+    cout << endl;
+
+
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
+
+    for (int i = 0; i < classRoster.getCurrentStudentCount(); i++) {
+    
+        classRoster.printAverageDaysInCourse(classRoster.getStudent(i)->getStudentID());
+    
+    }
 
 
     cout << endl;
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
-
-
+    
     Student* studentDPTest4 = classRoster.getStudent(2);
     studentDPTest4->setStudentID("B2");
     studentDPTest4->setStudentAge(29);
@@ -342,7 +381,11 @@ int main() {
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
     cout << endl;
 
-    //TODO: Create Parsing function
+    cout << endl;
+    cout << "Current Student Count: ";
+    cout << classRoster.getCurrentStudentCount();
+    cout << endl;
+    cout << endl;
 
 
 
@@ -364,6 +407,17 @@ int main() {
     cout << endl;
 
 
+    cout << endl;
+    cout << "Current Student Count: ";
+    cout << classRoster.getCurrentStudentCount();
+    cout << endl;
+    cout << endl;
+
+
+
+    cout << endl;
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    cout << endl;
     classRoster.printAll();
 
     cout << endl;

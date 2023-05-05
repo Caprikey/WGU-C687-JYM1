@@ -368,7 +368,7 @@ void Roster::remove(string studentID) {
     int deletedStudent = 0;
 
 
- 
+    
     for (int i = 0; i < numStudents; i++) {
     
         if (classRosterArray[i] != nullptr) {
@@ -891,6 +891,30 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
 // TODO: DELETE FROM FINAL
+
+
+// Gets A Pointer To A Pointer of Student Objects. 
+
+
+Student** Roster::getAllStudents() {
+
+    return classRosterArray;
+
+}
+
+/*
+
+Use Like This:
+    Student** studentptr = classRoster.getAllStudents();
+    Student* firstStudent = studentptr[1];
+    firstStudent->getStudentID();
+
+*/
+
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+
 // Custom Function to Get Student Object by Array Index Value -- Used During Testing -- Can Be Deleted
 
 Student* Roster::getStudent(int i) {
@@ -904,6 +928,57 @@ Student* Roster::getStudent(int i) {
     */
     return classRosterArray[i];
 }
+
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+
+
+// Gets Current Non-NullPtr Pointers In classRosterArray
+int Roster::getCurrentStudentCount() {
+
+    int currentStudentCount = 0;
+
+    if (numStudents == (currentStudentIndex - 1)) {
+        
+        currentStudentCount = numStudents;
+    }
+    else {
+
+        for (int i = 0; i < numStudents; i++) {
+
+            if (classRosterArray[i] != nullptr) {
+                currentStudentCount++;
+            }
+        }
+
+    }
+   
+    return currentStudentCount;
+
+}
+
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+
+void Roster::printAverageDaysInCourseAll(const Roster& roster) {
+
+    for (int i = 0; i < getCurrentStudentCount(); i++) {
+    
+        string currentStudent = classRosterArray[i]->getStudentID();
+
+        printAverageDaysInCourse(currentStudent);
+
+    }
+
+
+}
+
+
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
 void Roster::parseInput(string studentData) {
 
@@ -942,6 +1017,11 @@ void Roster::parseInput(string studentData) {
     add(parsedVariableData[0], parsedVariableData[1], parsedVariableData[2], parsedVariableData[3], (stoi(parsedVariableData[4])), (stoi(parsedVariableData[5])), (stoi(parsedVariableData[6])), (stoi(parsedVariableData[7])), degreeProgram);
 
 };
+
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+
 
 void Roster::parseInput2() {
 
@@ -985,9 +1065,12 @@ void Roster::parseInput2() {
     }
 };
 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+
+
 int Roster::getInputSize() {
-
-
 
     inputDataSizeTest = sizeof(studentDataTest) / sizeof(studentDataTest[0]);
 
@@ -999,6 +1082,13 @@ int Roster::getInputSize() {
     return inputDataSizeTest;
 
 };
+
+
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+
+
 
 // MEMBER FUNCTIONS - END
 //

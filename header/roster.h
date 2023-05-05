@@ -76,6 +76,12 @@ class Roster {
         void parseInput2();
 
         int getInputSize();
+
+        Student** getAllStudents();
+
+        int getCurrentStudentCount();
+
+        void printAverageDaysInCourseAll(const Roster& roster);
         
         // MEMBER FUNCTIONS - END
         // ==== ==== ==== ==== ==== ==== ==== ==== 
