@@ -107,16 +107,19 @@ int main() {
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
 
 
-    //Roster classRoster;
-    Roster classRoster(inputDataSize);
+
+    Roster classRoster;
+    //Roster classRoster(inputDataSize);
 
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
 
+    /*
+    classRoster.getInputSize();
  
     for (int i = 0; i < inputDataSize; i++) {
         classRoster.parseInput(studentData[i]);
     }
-
+    */
 
     cout << "Print All Function Test - Start" << endl;
     classRoster.printAll();

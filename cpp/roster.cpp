@@ -12,9 +12,9 @@ using namespace std;
 
 // Roster Class
 
-/*
-const string studentData[5] = {"A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY","A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK","A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE","A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY","A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"};
-*/
+
+const string studentDataTest[] = {"A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY","A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK","A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE","A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY","A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"};
+
 
 //
 // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
@@ -68,20 +68,25 @@ Roster::Roster() {
     cout << endl;
     cout << "Setting Int numStudents variable equal to the inputSize result" << endl;
 
-    //numStudents = inputSize;
+    getInputSize();
+
+
+    numStudents = inputDataSizeTest;
     
     cout << "Int numStudents variable was updated with the inputSize result, " << numStudents << endl;
     cout << endl;
     cout << endl;
 
-    classRosterArray = new Student*[initializationPointerArraySize];
+    //classRosterArray = new Student*[initializationPointerArraySize];
+    classRosterArray = new Student*[inputDataSizeTest];
     cout << "\t";
     cout << "classRosterArray variable was created successfully and " << initializationPointerArraySize << " Student Pointers were created" << endl;
 
     cout << endl;
     cout << "\t";
     cout << "Constructor Pointer NullPtr Assignment Loop Starting" << endl;
-    for (int i = 0; i < initializationPointerArraySize; i++) {
+    //for (int i = 0; i < initializationPointerArraySize; i++) {
+    for (int i = 0; i < inputDataSizeTest; i++) {
 
         // Assigns classRosterArray Elements To Nullptr To Ensure All Pointer Elements Are Initialized. 
         classRosterArray[i] = nullptr;
@@ -93,7 +98,8 @@ Roster::Roster() {
     cout << endl;
     
     // TODO: Added Back numStudents Assignment with the InitializationPointerArraySize set to 5
-    numStudents = initializationPointerArraySize;
+    //numStudents = initializationPointerArraySize;
+    //numStudents = inputDataSizeTest;
     
     cout << "\t";
     cout << "Constructor Pointer Assignment To New Object Loop Started" << endl;
@@ -111,6 +117,8 @@ Roster::Roster() {
         cout << "Located at " << &classRosterArray[i] << endl;
     }
     */
+
+    parseInput2();
     cout << "\t";
     cout << "Constructor Pointer Assignment To New Object Loop Completed" << endl;
     cout << endl;
@@ -935,8 +943,62 @@ void Roster::parseInput(string studentData) {
 
 };
 
+void Roster::parseInput2() {
+
+    //stringstream inputParseData;
+    string parsedVariableData[9] = {};
+
+    string parsingWorker;
+    string parsedVariable;
+
+    for (int i = 0; i < inputDataSizeTest; i++) {
+
+        parsingWorker = studentDataTest[i];
+        stringstream inputParseData(parsingWorker);
+        int j = 0;
+
+        while (getline(inputParseData, parsedVariable, ',')) {
+            cout << parsedVariable << endl;
+            parsedVariableData[j++] = parsedVariable;
+
+        }
+
+        DegreeProgram degreeProgram;
+        degreeProgram = NETWORK;
+
+        if (parsedVariableData[8] == "NETWORK") {
+            std::cout << "Degree Program Is Network" << endl;
+            degreeProgram = NETWORK;
+        }
+        else if (parsedVariableData[8] == "SOFTWARE") {
+            std::cout << "Degree Program Is Software" << endl;
+            degreeProgram = SOFTWARE;
+        }
+        else if (parsedVariableData[8] == "SECURITY") {
+            std::cout << "Degree Program Is Security" << endl;
+            degreeProgram = SECURITY;
+        }
+
+        add(parsedVariableData[0], parsedVariableData[1], parsedVariableData[2], parsedVariableData[3], (stoi(parsedVariableData[4])), (stoi(parsedVariableData[5])), (stoi(parsedVariableData[6])), (stoi(parsedVariableData[7])), degreeProgram);
 
 
+    }
+};
+
+int Roster::getInputSize() {
+
+
+
+    inputDataSizeTest = sizeof(studentDataTest) / sizeof(studentDataTest[0]);
+
+    cout << "---- ---- ---- ---- " << endl;
+    cout << "I am from the getInputSize Function" << endl;
+    cout << "Input Size Is: " << inputDataSizeTest << endl;
+    cout << "---- ---- ---- ---- " << endl;
+
+    return inputDataSizeTest;
+
+};
 
 // MEMBER FUNCTIONS - END
 //

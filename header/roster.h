@@ -31,7 +31,7 @@ class Roster {
         __int64 initializationPointerArraySize = 5;
 
 
-
+        int inputDataSizeTest;
         
         // TODO: Delete. This is probably the wrong way to go about it.
         //const string studentData[];
@@ -72,6 +72,10 @@ class Roster {
         Student* getStudent(int i);
 
         void parseInput(string studentData);
+        
+        void parseInput2();
+
+        int getInputSize();
         
         // MEMBER FUNCTIONS - END
         // ==== ==== ==== ==== ==== ==== ==== ==== 
