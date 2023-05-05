@@ -155,59 +155,60 @@ Roster::Roster() {
 };
 
 */
-/*
+
 Roster::Roster(int classSize) {
     cout << "Constructor Successfully Started" << endl;
     cout << endl;
 
-    // numStudents Variable Is Set By Arguement From Paramaterized Constructor
-    numStudents = classSize;
+    // TODO: Not Sure If I Should Keep This Here or Remove It and Find A Better Way To Calculate The Size
+    // IDEA: Parse The Data At The Same Time I'm Performing The Size/Element Count. Possibly Peform The Parseing After The Size Count.
 
-    cout << "Int numStudents variable was updated with the inputSize result, " << numStudents << endl;
-    cout << endl;
-    cout << endl;
 
-    classRosterArray = new Student * [numStudents];
-    cout << "\t";
-    cout << "classRosterArray variable was created successfully and " << numStudents << " Student Pointers were created" << endl;
+cout << "Int numStudents variable is currently set to: " << numStudents << endl;
+cout << "Int inputSize variable is currently set to: " << inputSize << endl;
 
-    cout << endl;
-    cout << "\t";
-    cout << "Constructor Pointer NullPtr Assignment Loop Starting" << endl;
-    for (int i = 0; i < numStudents; i++) {
+cout << endl;
 
-        // Assigns classRosterArray Elements To Nullptr To Ensure All Pointer Elements Are Initialized. 
-        classRosterArray[i] = nullptr;
-        cout << "\t\t";
-        cout << "classRosterArray[" << i << "] was successfully assigned as nullptr" << endl;
-    }
-    cout << "\t";
-    cout << "Constructor Pointer NullPtr Assignment Loop Completed" << endl;
-    cout << endl;
+cout << "Getting Size of Student Data Input From Class Constructor Paramember - Start" << endl;
 
-    cout << "\t";
-    cout << "Constructor Pointer Assignment To New Object Loop Started" << endl;
-    cout << endl;
-    for (int i = 0; i < numStudents; i++) {
+cout << classSize; 
 
-        // For Loop To Create A New Student Object And Assigns It To A classRosterArray Element
-        classRosterArray[i] = new Student();
-        cout << "\t\t";
-        cout << "classRosterArray[" << i << "] was successfully assigned the address of the newly created Student Object" << endl;
-        cout << "\t\t\t";
-        cout << "Located at " << &classRosterArray[i] << endl;
-    }
-    cout << "\t";
-    cout << "Constructor Pointer Assignment To New Object Loop Completed" << endl;
-    cout << endl;
-    cout << endl;
+cout << "Getting Size of Student Data Input From Class Constructor Paramember - End" << endl;
 
-    cout << endl;
-    cout << "Constructor Successfully Completed" << endl;
+cout << endl;
+cout << "studentData Input String Array has a total of " << classSize << " elements." << endl;
+
+cout << endl;
+cout << "Setting Int numStudents variable equal to the classSize result" << endl;
+
+numStudents = classSize;
+
+cout << "Int numStudents variable was updated with the inputSize result, " << numStudents << endl;
+cout << endl;
+cout << endl;
+
+classRosterArray = new Student * [numStudents];
+cout << "\t";
+cout << "classRosterArray variable was created successfully and " << numStudents << " Student Pointers were created" << endl;
+
+cout << endl;
+cout << "\t";
+cout << "Constructor Pointer NullPtr Assignment Loop Starting" << endl;
+for (int i = 0; i < numStudents; i++) {
+
+    // Assigns classRosterArray Elements To Nullptr To Ensure All Pointer Elements Are Initialized. 
+    classRosterArray[i] = nullptr;
+    cout << "\t\t";
+    cout << "classRosterArray[" << i << "] was successfully assigned as nullptr" << endl;
+}
+cout << "\t";
+cout << "Constructor Pointer NullPtr Assignment Loop Completed" << endl;
+cout << endl;
+
+cout << endl;
+cout << "Constructor Successfully Completed" << endl;
 
 };
-*/
-
 
 
 
@@ -304,6 +305,7 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
     cout << "Current Student Index: " << currentStudentIndex << endl;
     //++currentStudentIndex;
     ++currentStudentIndex;
+
         if (classRosterArray[currentStudentIndex] == nullptr) {
             cout << endl;
             cout << "Empty Array Location Found" << endl;
@@ -763,7 +765,7 @@ void Roster::printInvalidEmails() {
                             }
 
                         }
-                        else if (_emailAddress.at(workingIndex) = _emailAddressLength) {
+                        else if (_emailAddress.at(workingIndex) == _emailAddressLength) {
 
                             if (_emailAddress.at(workingIndex + -1) == '.') {
 
@@ -782,7 +784,7 @@ void Roster::printInvalidEmails() {
 
 
                         }
-                        else if (!(_emailAddress.at(workingIndex) = 0) && (!(_emailAddress.at(workingIndex) = _emailAddressLength))) {
+                        else if (!(_emailAddress.at(workingIndex) == 0) && (!(_emailAddress.at(workingIndex) == _emailAddressLength))) {
 
                             if ((_emailAddress.at(workingIndex - 1) == '.') || (_emailAddress.at(workingIndex + 1) == '.')) {
 
@@ -894,6 +896,45 @@ Student* Roster::getStudent(int i) {
     */
     return classRosterArray[i];
 }
+
+void Roster::parseInput(string studentData) {
+
+    //stringstream inputParseData;
+    string parsedVariableData[9] = {};
+
+    string parsingWorker;
+    string parsedVariable;
+
+    parsingWorker = studentData;
+    stringstream inputParseData(parsingWorker);
+    int j = 0;
+
+    while (getline(inputParseData, parsedVariable, ',')) {
+        cout << parsedVariable << endl;
+        parsedVariableData[j++] = parsedVariable;
+
+    }
+
+    DegreeProgram degreeProgram;
+    degreeProgram = NETWORK;
+
+    if (parsedVariableData[8] == "NETWORK") {
+        std::cout << "Degree Program Is Network" << endl;
+        degreeProgram = NETWORK;
+    }
+    else if (parsedVariableData[8] == "SOFTWARE") {
+        std::cout << "Degree Program Is Software" << endl;
+        degreeProgram = SOFTWARE;
+    }
+    else if (parsedVariableData[8] == "SECURITY") {
+        std::cout << "Degree Program Is Security" << endl;
+        degreeProgram = SECURITY;
+    }
+
+    add(parsedVariableData[0], parsedVariableData[1], parsedVariableData[2], parsedVariableData[3], (stoi(parsedVariableData[4])), (stoi(parsedVariableData[5])), (stoi(parsedVariableData[6])), (stoi(parsedVariableData[7])), degreeProgram);
+
+};
+
 
 
 

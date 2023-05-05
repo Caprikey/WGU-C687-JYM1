@@ -71,13 +71,15 @@ class Roster {
         // TODO: DELETE FROM FINAL -- CREATED FOR TESTING
         Student* getStudent(int i);
 
+        void parseInput(string studentData);
+        
         // MEMBER FUNCTIONS - END
         // ==== ==== ==== ==== ==== ==== ==== ==== 
         // 
         // CONSTRUCTORS - START
 
         Roster();
-        //Roster(int classSize);
+        Roster(int classSize);
 
         // CONSTRUCTORS - END
         // 
