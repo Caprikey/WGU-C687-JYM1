@@ -19,50 +19,66 @@ class Roster {
         // Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion.
         __int64 numStudents = 0;
 
-        int currentStudentIndex = -1;
+        // Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion. 
+        __int64 currentStudentIndex = -1;
 
         // Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion. 
         __int64 inputSize = 0;
 
-        // Initializaing The Array Of Pointers With 25 Items To Start
-        //__int64 initializationPointerArraySize = 25;
+        // Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion. 
+        // Set By getInputSize() function
+        __int64 inputDataSize;
         
-        // Initializaing The Array Of Pointers With 5 Items
-        __int64 initializationPointerArraySize = 5;
-
-
-        int inputDataSizeTest;
-        
-        // TODO: Delete. This is probably the wrong way to go about it.
-        //const string studentData[];
 
     public:
-        
+
+        // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
         // PUBLIC VARIABLES
         //
-        // ==== 
+        // ---- ---- ---- ---- ---- ---- ---- ---- 
         //
-
-        int lastIndex = -1;
 
 
         //
-        // ==== 
+        // ---- ---- ---- ---- ---- ---- ---- ---- 
+        //
+        // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
         //
         // FUNCTION DECLARATIONS
         //
-        // ==== ==== ==== ==== ==== ==== ==== ==== 
+        // CONSTRUCTORS - START
+        //
 
+            Roster();
+
+
+        //
+        // CONSTRUCTORS - END
+        // 
+        // ==== ==== ==== ==== ==== ==== ==== ==== 
+        //
+        // DECONSTRUCTORS - START
+        //
+
+            ~Roster();
+
+        //
+        // DECONSTRUCTORS - END
+        // 
+        // ==== ==== ==== ==== ==== ==== ==== ==== 
+        // 
         // MEMBER FUNCTIONS - START
 
         // Add Function With All Required Parameters
         void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram);
-        
+
         void remove(string studentID);
 
         void printAll();
 
         void printAverageDaysInCourse(string studentID);
+
+        void printAverageDaysInCourseAll(const Roster& roster);
 
         void printInvalidEmails();
 
@@ -71,39 +87,18 @@ class Roster {
         // TODO: DELETE FROM FINAL -- CREATED FOR TESTING
         Student* getStudent(int i);
 
-        void parseInput(string studentData);
-        
-        void parseInput2();
+        void parseInputData();
 
-        int getInputSize();
+        __int64 getInputSize();
 
         Student** getAllStudents();
 
-        int getCurrentStudentCount();
+        __int64 getCurrentStudentCount();
 
-        void printAverageDaysInCourseAll(const Roster& roster);
-        
-        // MEMBER FUNCTIONS - END
-        // ==== ==== ==== ==== ==== ==== ==== ==== 
-        // 
-        // CONSTRUCTORS - START
-
-        Roster();
-        Roster(int classSize);
-
-        // CONSTRUCTORS - END
-        // 
-        // ==== ==== ==== ==== ==== ==== ==== ==== 
         //
-        // DECONSTRUCTORS - START
-
-        ~Roster();
-
-        // DECONSTRUCTORS - END
+        // MEMBER FUNCTIONS - END
+        // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
         // 
-        // ==== ==== ==== ==== ==== ==== ==== ==== 
-        // 
-
 
 
 };

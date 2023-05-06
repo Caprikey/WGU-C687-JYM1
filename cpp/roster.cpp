@@ -13,8 +13,16 @@ using namespace std;
 // Roster Class
 
 
-const string studentDataTest[] = {"A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY","A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK","A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE","A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY","A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"};
+// Project Required:: Input Data:
+    // Student Data Table Arrary Input For PRFA YMJ1
 
+const string studentData[] = {
+        "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
+        "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
+        "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+        "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+        "A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
+};
 
 //
 // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
@@ -25,201 +33,23 @@ const string studentDataTest[] = {"A1,John,Smith,John1989@gm ail.com,20,30,35,40
 // Constructor With Debug Comments
 
 Roster::Roster() {
-    cout << "Constructor Successfully Started" << endl;
-    cout << endl;
-
-    // TODO: Not Sure If I Should Keep This Here or Remove It and Find A Better Way To Calculate The Size
-    // IDEA: Parse The Data At The Same Time I'm Performing The Size/Element Count. Possibly Peform The Parseing After The Size Count. 
-
-    /*
-    const string studentData[] = {
-        "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
-        "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
-        "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
-        "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
-        "A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
-    };
-    */
-
-
-    cout << "Int numStudents variable is currently set to: " << numStudents << endl;
-    cout << "Int inputSize variable is currently set to: " << inputSize << endl;
-
-    cout << endl;
-
-    cout << "Calculating Size of Student Data Input Array - Start" << endl;
-
-    // This was used with the above commented out studentData Array.
-    //inputSize = *(&studentData + 1) - studentData;
-    // string len = *(studentData + 1);
-
-    
-    // NOT SURE IF THIS WILL WORK
-    //inputSize = studentData->size();
-
-    // NOTE: May have to make a for loop to calculate the array size as a possible work around but that would be frowned above.
-    // FOR LOOP
-
-    cout << "Calculating Size of Student Data Input Array - End" << endl;
-
-    cout << endl;
-    cout << "studentData Input String Array has a total of " << inputSize << " elements." << endl;
-
-    cout << endl;
-    cout << "Setting Int numStudents variable equal to the inputSize result" << endl;
 
     getInputSize();
 
+    numStudents = inputDataSize;
 
-    numStudents = inputDataSizeTest;
-    
-    cout << "Int numStudents variable was updated with the inputSize result, " << numStudents << endl;
-    cout << endl;
-    cout << endl;
+    classRosterArray = new Student*[numStudents];
 
-    //classRosterArray = new Student*[initializationPointerArraySize];
-    classRosterArray = new Student*[inputDataSizeTest];
-    cout << "\t";
-    cout << "classRosterArray variable was created successfully and " << initializationPointerArraySize << " Student Pointers were created" << endl;
-
-    cout << endl;
-    cout << "\t";
-    cout << "Constructor Pointer NullPtr Assignment Loop Starting" << endl;
-    //for (int i = 0; i < initializationPointerArraySize; i++) {
-    for (int i = 0; i < inputDataSizeTest; i++) {
+    for (int i = 0; i < numStudents; i++) {
 
         // Assigns classRosterArray Elements To Nullptr To Ensure All Pointer Elements Are Initialized. 
         classRosterArray[i] = nullptr;
-        cout << "\t\t";
-        cout << "classRosterArray[" << i << "] was successfully assigned as nullptr" << endl;
+
     }
-    cout << "\t";
-    cout << "Constructor Pointer NullPtr Assignment Loop Completed" << endl;
-    cout << endl;
-    
-    // TODO: Added Back numStudents Assignment with the InitializationPointerArraySize set to 5
-    //numStudents = initializationPointerArraySize;
-    //numStudents = inputDataSizeTest;
-    
-    cout << "\t";
-    cout << "Constructor Pointer Assignment To New Object Loop Started" << endl;
-    cout << endl;
 
-    //TODO: Need To Remove the Object Creation And Move It To Add Function. 
-
-    /*
-    for (int i = 0; i < numStudents; i++) {
-
-        classRosterArray[i] = new Student();
-        cout << "\t\t";
-        cout << "classRosterArray[" << i << "] was successfully assigned the address of the newly created Student Object" << endl;
-        cout << "\t\t\t";
-        cout << "Located at " << &classRosterArray[i] << endl;
-    }
-    */
-
-    parseInput2();
-    cout << "\t";
-    cout << "Constructor Pointer Assignment To New Object Loop Completed" << endl;
-    cout << endl;
-    cout << endl;
-
-    
-    
-
-    cout << endl;
-    cout << "Constructor Successfully Completed" << endl;
+    parseInputData();
 
 };
-
-/*
-// TODO: Uncomment From Final
-// Constructor Without Debug Comments
- 
-Roster::Roster() {
-    
-    const string studentData[] = {
-        "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
-        "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
-        "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
-        "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
-        "A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
-    };
-
-    inputSize = *(&studentData + 1) - studentData;
-
-    numStudents = inputSize;
-
-    classRosterArray = new Student * [numStudents];
-
-    for (int i = 0; i < numStudents; i++) {
-        classRosterArray[i] = nullptr;
-    }
-
-    for (int i = 0; i < numStudents; i++) {
-        classRosterArray[i] = new Student();
-    }
-
-};
-
-*/
-
-Roster::Roster(int classSize) {
-    cout << "Constructor Successfully Started" << endl;
-    cout << endl;
-
-    // TODO: Not Sure If I Should Keep This Here or Remove It and Find A Better Way To Calculate The Size
-    // IDEA: Parse The Data At The Same Time I'm Performing The Size/Element Count. Possibly Peform The Parseing After The Size Count.
-
-
-cout << "Int numStudents variable is currently set to: " << numStudents << endl;
-cout << "Int inputSize variable is currently set to: " << inputSize << endl;
-
-cout << endl;
-
-cout << "Getting Size of Student Data Input From Class Constructor Paramember - Start" << endl;
-
-cout << classSize; 
-
-cout << "Getting Size of Student Data Input From Class Constructor Paramember - End" << endl;
-
-cout << endl;
-cout << "studentData Input String Array has a total of " << classSize << " elements." << endl;
-
-cout << endl;
-cout << "Setting Int numStudents variable equal to the classSize result" << endl;
-
-numStudents = classSize;
-
-cout << "Int numStudents variable was updated with the inputSize result, " << numStudents << endl;
-cout << endl;
-cout << endl;
-
-classRosterArray = new Student * [numStudents];
-cout << "\t";
-cout << "classRosterArray variable was created successfully and " << numStudents << " Student Pointers were created" << endl;
-
-cout << endl;
-cout << "\t";
-cout << "Constructor Pointer NullPtr Assignment Loop Starting" << endl;
-for (int i = 0; i < numStudents; i++) {
-
-    // Assigns classRosterArray Elements To Nullptr To Ensure All Pointer Elements Are Initialized. 
-    classRosterArray[i] = nullptr;
-    cout << "\t\t";
-    cout << "classRosterArray[" << i << "] was successfully assigned as nullptr" << endl;
-}
-cout << "\t";
-cout << "Constructor Pointer NullPtr Assignment Loop Completed" << endl;
-cout << endl;
-
-cout << endl;
-cout << "Constructor Successfully Completed" << endl;
-
-};
-
-
-
 
 // CONSTRUCTORS - END
 //
@@ -231,52 +61,12 @@ cout << "Constructor Successfully Completed" << endl;
 // Deconstructor With Debug Comments
 
 Roster::~Roster() {
-    cout << "Deconstructor Successfully Started" << endl;
-    cout << endl;
-
-    cout << "\t";
-    cout << "Array Of Pointer Object Deletion And Reference Assignment Loop Successfully Started" << endl;
-    for (int i = 0; i < numStudents; i++) {
-        if (classRosterArray[i] != nullptr) {
-            delete classRosterArray[i];
-            cout << "\t\t";
-            cout << "Array Of Pointers Element Object Was Deleted" << endl;
-
-            classRosterArray[i] = nullptr;
-            cout << "\t\t";
-            cout << "Array Of Pointers Element Was Set To NullPtr" << endl;
-        }
-
-    }
-
-    cout << "\t";
-    cout << "Array Of Pointer Object Deletion And Reference Assignment Loop Successfully Completed" << endl;
-
-    cout << endl;
-
-
-    delete[] classRosterArray;
-    cout << "\t";
-    cout << "Array Of Pointers Entity Was Deleted Successfully" << endl;
-
-    cout << endl;
-
-    cout << "Deconstructor Successfully Completed" << endl;
-};
-
-
-/*
-// TODO: Uncomment From Final
-// Deconstructor Without Debug Comments
-
-Roster::~Roster() {
 
     for (int i = 0; i < numStudents; i++) {
-        
-        if (classRosterArray[i] != nullptr) {
-            
-            delete classRosterArray[i];
 
+        if (classRosterArray[i] != nullptr) {
+
+            delete classRosterArray[i];
             classRosterArray[i] = nullptr;
 
         }
@@ -286,7 +76,6 @@ Roster::~Roster() {
     delete[] classRosterArray;
 
 };
-*/
 
 // DECONSTRUCTORS - END
 //
@@ -306,125 +95,74 @@ Roster::~Roster() {
 // Add Function With All Required Parameters
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
 
-    // IDEA: Perform a loop to check all index positions first for null ptr. If a nullptr is found that is not at the end, perform sort of array. Then update currentStudentIndex and then add new student?
-    // 
-    // for (int i = 0; i < numStudents; i++) {
-    cout << endl;
-    cout << "Current Student Index: " << currentStudentIndex << endl;
-    //++currentStudentIndex;
     ++currentStudentIndex;
 
-        if (classRosterArray[currentStudentIndex] == nullptr) {
-            cout << endl;
-            cout << "Empty Array Location Found" << endl;
-            cout << "Creating daysInCourse[] Int Array and populating It With Parameters: daysInCourse1, daysInCourse2, daysInCourse3" << endl;
+    if (classRosterArray[currentStudentIndex] == nullptr) {
 
-                int daysInCourse[3] = {};
+        int daysInCourse[3] = {};
                 
-                daysInCourse[0] = daysInCourse1;
-                daysInCourse[1] = daysInCourse2;
-                daysInCourse[2] = daysInCourse3;
+        daysInCourse[0] = daysInCourse1;
+        daysInCourse[1] = daysInCourse2;
+        daysInCourse[2] = daysInCourse3;
 
-                cout << "Population Of daysInCourse Int Array Completed" << endl;
-                cout << "Int Array daysInCourse[] = {";
-                
-                for (int j = 0; j < 3; j++) {
-                    if (j < 2) {
-                        cout << daysInCourse[j];
-                        cout << ", ";
-                    }
-                    else {
-                        cout << daysInCourse[j];
-                        cout << "}" << endl << endl;
-                    }
-                }
+        degreeProgram = degreeProgram;
 
-                //DegreeProgram degreeProgram = DegreeProgram::NETWORK;
-                degreeProgram = degreeProgram;
+        classRosterArray[currentStudentIndex] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, degreeProgram);
 
-
-
-                classRosterArray[currentStudentIndex] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, degreeProgram);
-
-                cout << "Updated Student Index: " << currentStudentIndex << endl;
-                cout << "---- ---- ---- ---- ";
-                cout << endl << endl;
-        }
+    }
     
-    // }
 };
 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-// TODO: Completed Remove Function
-// TODO: Condense If Statements Into A Single Logical Operator 'OR' STATEMENT
 
 void Roster::remove(string studentID) {
 
     bool isFound = false;
-
     int deletedStudent = 0;
 
-
-    
     for (int i = 0; i < numStudents; i++) {
     
-        if (classRosterArray[i] != nullptr) {
-        
+        if (classRosterArray[i] != nullptr) {        
+            
             if (classRosterArray[i]->getStudentID() == studentID) {
 
                 isFound = true;
-
-
-                cout << "FOUND - Deletion Beginning" << endl;
-                cout << "Setting Student Object Location Variable" << endl;
                 deletedStudent = i;
-                cout << deletedStudent << endl;
 
-                cout << "Deleting Object" << endl;
                 delete classRosterArray[i];
-                cout << "Deletion Successful" << endl;
 
                 classRosterArray[i] = nullptr;
                 --currentStudentIndex;
-            
+
+                break;
             }
             else {
-                
+                // TODO: Fix Error Message And Loop Exit
+                bool isFound = false;
+                cout << "ERROR: ";
                 cout << "A Student with that ID was not found. Please try again." << endl;
-            
             }
-        
+
         }
-    
+
+        if (isFound) {
+            
+            break;
+            
+        }
+
+
     }
-
-    cout << endl;
-    cout << "---- ---- ---- ---- " << endl;
-    cout << endl;
-
-
-    printAll();
-
-    cout << endl;
-    cout << "---- ---- ---- ---- " << endl;
-    cout << endl;
-
-    // This loop moves the newly deleted student to the end of the array index. 
-    // Ensuring that the open spots are at the end of the array. 
-
 
     for (int j = deletedStudent; j < numStudents-1; j++) {
+
         classRosterArray[j] = classRosterArray[j + 1];
-        classRosterArray[j + 1] = nullptr;
-    
-    
+        classRosterArray[j + 1] = nullptr;    
+
     }
-
-
-
 };
 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
@@ -468,50 +206,30 @@ void Roster::printAll() {
 
 void Roster::printAverageDaysInCourse(string studentID) {
 
+    int NumOfCoursesArraySize = 3;
     int sumOfDays = 0;
     int numOfCourses = 0;
     double courseDayAvg = 0.0;
-
-    for (int i = 0; i < numStudents; i++) {
+        
+        for (int i = 0; i < numStudents; i++) {
 
         if (classRosterArray[i] != nullptr) {
 
             if (classRosterArray[i]->getStudentID() == studentID) {
 
+                //
+                //cout << "Student ID: " << classRosterArray[i]->getStudentID() << "\t\t";
+                
+                cout << "\t";
+                cout << classRosterArray[i]->getStudentID();
+
                 // TODO: FIX Array Capture Code -- Need to find a way to set the j loop max dynamically, this way num of courses will update as the array changes
 
-                cout << "FOUND" << endl;
-                cout << i << endl;
-                cout << classRosterArray[i]->getStudentDaysInCourse();
-                cout << endl;
-                cout << "days In Course: {";
-                for (int j = 0; j < 3; j++) {
-                    if (j != 2) {
-                        cout << classRosterArray[i]->getStudentDaysInCourse()[j];
-
-                        cout << ", ";
-                    }
-                    else {
-                        cout << classRosterArray[i]->getStudentDaysInCourse()[j];
-                    }
+                for (int j = 0; j < NumOfCoursesArraySize; j++) {
                     
                     sumOfDays += classRosterArray[i]->getStudentDaysInCourse()[j];
                     numOfCourses += 1;
                 }
-
-                cout << "}";
-                cout << endl;
-
-                // TODO: Is it possible to get the size of the array? Current issue is sizeof(classRosterArray[i]->getStudentDaysInCourse()) pulls a pointer not the array itself.
-
-                cout << "Sum Of Array Items: " << sumOfDays << endl;
-                cout << endl;
-
-                cout << "Total Courses Taken: " << numOfCourses << endl;
-                cout << endl;
-
-                cout << "Performing Static_Cast Type Conversion From Int To Double On numOfCourses Variable." << endl;
-                cout << "Performing Division Of Sum of Days By the Static_casted numOfCourse Variable to generate the average days in courses" << endl;
 
                 // Total Number Of Days, sumOfDays Is calculated in the loop, Total Number Of Courses is also calculated In The Loop; Number Of Courses is then static_casted into double format for division.  
                 courseDayAvg = (sumOfDays / static_cast<double>(numOfCourses));
@@ -519,8 +237,9 @@ void Roster::printAverageDaysInCourse(string studentID) {
                 // Average Value Is Formated With "Fixed" function to set fixed floating-point notation
                 // Average value Is formated With "setprecision" function to format the floating-point notation to a specific value
 
-                cout << "Average Days In Courses: " << fixed << setprecision(2) << courseDayAvg << endl;
-
+                //cout << "Average Days In Courses: " << fixed << setprecision(2) << courseDayAvg << endl;
+                cout << "\t\t";
+                cout << fixed << setprecision(2) << courseDayAvg << endl;
                 
             }
 
@@ -551,7 +270,7 @@ void Roster::printAverageDaysInCourse(string studentID) {
                 // Allowed With Exception: Hyphen, as long as it is not the first or last character.
                 
             // There is more information on the above web address. 
-    // 
+
         // IDEA: Get Length/Size of email Address. Loop through each character, check for spaces first. 
 
 void Roster::printInvalidEmails() {
@@ -559,7 +278,7 @@ void Roster::printInvalidEmails() {
     // Creates a Vector that accepts a pair of two string data types as a single element.  
     vector<pair<string, string>> invalidEmails;
     
-    cout << "INVALID EMAIL ADDRESS" << endl;
+    //DELETE: cout << "INVALID EMAIL ADDRESS" << endl;
 
     for (int i = 0; i < numStudents; i++) {
     
@@ -579,15 +298,13 @@ void Roster::printInvalidEmails() {
             size_t _emailAddressLength = _emailAddress.length();
 
             // Debugging Print Out of Temp Variable Values For Current Student In Loop
-            cout << "---- ---- ---- ---- " << endl;
-            cout << _emailAddress << endl;
-            cout << _studentID << endl;
-            cout << _emailAddressLength << endl;
-            cout << "---- ---- ---- ---- " << endl;
+            //DELETE: cout << "---- ---- ---- ---- " << endl;
+            //DELETE: cout << _emailAddress << endl;
+            //DELETE: cout << _studentID << endl;
+            //DELETE: cout << _emailAddressLength << endl;
+            //DELETE: cout << "---- ---- ---- ---- " << endl;
 
             // START OF EMAIL CHECK ---- ---- ---- ---- ---- ---- ---- ----  
-
-
 
             // Checks Email Address To Verify That An At (@) Symbol Is Present AND That Only One (1) Is Present. 
 
@@ -613,12 +330,12 @@ void Roster::printInvalidEmails() {
 
                         invalidEmails.push_back(make_pair(_studentID, invalidEmailError1));
 
-                        cout << "INVALID EMAIL ADDRESSES:" << endl;
-                        cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                        cout << "\t" << "    ";
-                        cout << _studentID;
-                        cout << "\t\t\t";
-                        cout << "Email Address Contains More Than One At (@) Symbol." << endl << endl;;
+                        //DELETE: cout << "INVALID EMAIL ADDRESSES:" << endl;
+                        //DELETE: cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                        //DELETE: cout << "\t" << "    ";
+                        //DELETE: cout << _studentID;
+                        //DELETE: cout << "\t\t\t";
+                        //DELETE: cout << "Email Address Contains More Than One At (@) Symbol." << endl << endl;;
                         //break;
                     } 
                     startingIndex = (workingIndex + 1);
@@ -637,12 +354,12 @@ void Roster::printInvalidEmails() {
 
                 invalidEmails.push_back(make_pair(_studentID, invalidEmailError2));
 
-                cout << "INVALID EMAIL ADDRESSES:" << endl;
-                cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                cout << "\t" << "    ";
-                cout << _studentID;
-                cout << "\t\t\t";
-                cout << "Email Address Does Not Contain A At (@) Symbol." << endl << endl;;
+                //DELETE: cout << "INVALID EMAIL ADDRESSES:" << endl;
+                //DELETE: cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                //DELETE: cout << "\t" << "    ";
+                //DELETE: cout << _studentID;
+                //DELETE: cout << "\t\t\t";
+                //DELETE: cout << "Email Address Does Not Contain A At (@) Symbol." << endl << endl;;
                 //break;
             
             }
@@ -657,12 +374,12 @@ void Roster::printInvalidEmails() {
 
                     invalidEmails.push_back(make_pair(_studentID, invalidEmailError9));
 
-                    cout << "INVALID EMAIL ADDRESSES:" << endl;
-                    cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                    cout << "\t" << "    ";
-                    cout << _studentID;
-                    cout << "\t\t\t";
-                    cout << "Email Address Contains A Hyphen (-) Symbol After The At (@) Symbol and As The First Character Of The Domain Address" << endl << endl;;
+                    //DELETE: cout << "INVALID EMAIL ADDRESSES:" << endl;
+                    //DELETE: cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                    //DELETE: cout << "\t" << "    ";
+                    //DELETE: cout << _studentID;
+                    //DELETE: cout << "\t\t\t";
+                    //DELETE: cout << "Email Address Contains A Hyphen (-) Symbol After The At (@) Symbol and As The First Character Of The Domain Address" << endl << endl;;
                     //break;
                 }
             }
@@ -681,12 +398,12 @@ void Roster::printInvalidEmails() {
 
                     invalidEmails.push_back(make_pair(_studentID, invalidEmailError5));
 
-                    cout << "INVALID EMAIL ADDRESSES:" << endl;
-                    cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                    cout << "\t" << "    ";
-                    cout << _studentID;
-                    cout << "\t\t\t";
-                    cout << "Email Address Contains A Space." << endl << endl;;
+                    //DELETE: cout << "INVALID EMAIL ADDRESSES:" << endl;
+                    //DELETE: cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                    //DELETE: cout << "\t" << "    ";
+                    //DELETE: cout << _studentID;
+                    //DELETE: cout << "\t\t\t";
+                    //DELETE: cout << "Email Address Contains A Space." << endl << endl;;
                     //break;
                 }
             }
@@ -701,12 +418,12 @@ void Roster::printInvalidEmails() {
 
                     invalidEmails.push_back(make_pair(_studentID, invalidEmailError6));
 
-                    cout << "INVALID EMAIL ADDRESSES:" << endl;
-                    cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                    cout << "\t" << "    ";
-                    cout << _studentID;
-                    cout << "\t\t\t";
-                    cout << "Email Address Contains An At (@) Symbol At Either The First Or Last Character." << endl << endl;;
+                    //DELETE: cout << "INVALID EMAIL ADDRESSES:" << endl;
+                    //DELETE: cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                    //DELETE: cout << "\t" << "    ";
+                    //DELETE: cout << _studentID;
+                    //DELETE: cout << "\t\t\t";
+                    //DELETE: cout << "Email Address Contains An At (@) Symbol At Either The First Or Last Character." << endl << endl;;
                     //break;
                 }
                 else if ((_emailAddress.at(0) == '.') || (_emailAddress.at(_emailAddressLength - 1) == '.')) {
@@ -715,12 +432,12 @@ void Roster::printInvalidEmails() {
 
                     invalidEmails.push_back(make_pair(_studentID, invalidEmailError7));
 
-                    cout << "INVALID EMAIL ADDRESSES:" << endl;
-                    cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                    cout << "\t" << "    ";
-                    cout << _studentID;
-                    cout << "\t\t\t";
-                    cout << "Email Address Contains An A Period (.) At Either The First Or Last Character." << endl << endl;;
+                    //DELETE: cout << "INVALID EMAIL ADDRESSES:" << endl;
+                    //DELETE: cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                    //DELETE: cout << "\t" << "    ";
+                    //DELETE: cout << _studentID;
+                    //DELETE: cout << "\t\t\t";
+                    //DELETE: cout << "Email Address Contains An A Period (.) At Either The First Or Last Character." << endl << endl;;
                     //break;
                 }
                 else if (_emailAddress.at(_emailAddressLength - 1) == '-') {
@@ -729,12 +446,12 @@ void Roster::printInvalidEmails() {
 
                     invalidEmails.push_back(make_pair(_studentID, invalidEmailError8));
 
-                    cout << "INVALID EMAIL ADDRESSES:" << endl;
-                    cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                    cout << "\t" << "    ";
-                    cout << _studentID;
-                    cout << "\t\t\t";
-                    cout << "Email Address Contains A Hyphen (-) As The Last Character." << endl << endl;;
+                    //DELETE: cout << "INVALID EMAIL ADDRESSES:" << endl;
+                    //DELETE: cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                    //DELETE: cout << "\t" << "    ";
+                    //DELETE: cout << _studentID;
+                    //DELETE: cout << "\t\t\t";
+                    //DELETE: cout << "Email Address Contains A Hyphen (-) As The Last Character." << endl << endl;;
                     //break;
                 }
                 else {
@@ -763,12 +480,12 @@ void Roster::printInvalidEmails() {
 
                                 invalidEmails.push_back(make_pair(_studentID, invalidEmailError3));
 
-                                cout << "INVALID EMAIL ADDRESSES:" << endl;
-                                cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                                cout << "\t" << "    ";
-                                cout << _studentID;
-                                cout << "\t\t\t";
-                                cout << "Email Address Contains More Than One Period (.) Symbol In A Row." << endl << endl;;
+                                //DELETE: cout << "INVALID EMAIL ADDRESSES:" << endl;
+                                //DELETE: cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                                //DELETE: cout << "\t" << "    ";
+                                //DELETE: cout << _studentID;
+                                //DELETE: cout << "\t\t\t";
+                                //DELETE: cout << "Email Address Contains More Than One Period (.) Symbol In A Row." << endl << endl;;
                                 //break;
                             }
 
@@ -781,12 +498,12 @@ void Roster::printInvalidEmails() {
 
                                 invalidEmails.push_back(make_pair(_studentID, invalidEmailError3));
 
-                                cout << "INVALID EMAIL ADDRESSES:" << endl;
-                                cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                                cout << "\t" << "    ";
-                                cout << _studentID;
-                                cout << "\t\t\t";
-                                cout << "Email Address Contains More Than One Period (.) Symbol In A Row." << endl << endl;;
+                                //DELETE: cout << "INVALID EMAIL ADDRESSES:" << endl;
+                                //DELETE: cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                                //DELETE: cout << "\t" << "    ";
+                                //DELETE: cout << _studentID;
+                                //DELETE: cout << "\t\t\t";
+                                //DELETE: cout << "Email Address Contains More Than One Period (.) Symbol In A Row." << endl << endl;;
                                 // break;
                             }
 
@@ -800,12 +517,12 @@ void Roster::printInvalidEmails() {
 
                                 invalidEmails.push_back(make_pair(_studentID, invalidEmailError3));
 
-                                cout << "INVALID EMAIL ADDRESSES:" << endl;
-                                cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                                cout << "\t" << "    ";
-                                cout << _studentID;
-                                cout << "\t\t\t";
-                                cout << "Email Address Contains More Than One Period (.) Symbol In A Row." << endl << endl;;
+                                //DELETE: cout << "INVALID EMAIL ADDRESSES:" << endl;
+                                //DELETE: cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                                //DELETE: cout << "\t" << "    ";
+                                //DELETE: cout << _studentID;
+                                //DELETE: cout << "\t\t\t";
+                                //DELETE: cout << "Email Address Contains More Than One Period (.) Symbol In A Row." << endl << endl;;
                                 //break;
                             }
 
@@ -825,12 +542,12 @@ void Roster::printInvalidEmails() {
 
                 invalidEmails.push_back(make_pair(_studentID, invalidEmailError4));
 
-                cout << "INVALID EMAIL ADDRESSES:" << endl;
-                cout << "Student ID:" << "\t\t" << "Reason:" << endl;
-                cout << "\t" << "    ";
-                cout << _studentID;
-                cout << "\t\t\t";
-                cout << "Email Address Does Not Contain A Period (.) Symbol." << endl << endl;;
+                //DELETE: cout << "INVALID EMAIL ADDRESSES:" << endl;
+                //DELETE: cout << "Student ID:" << "\t\t" << "Reason:" << endl;
+                //DELETE: cout << "\t" << "    ";
+                //DELETE: cout << _studentID;
+                //DELETE: cout << "\t\t\t";
+                //DELETE: cout << "Email Address Does Not Contain A Period (.) Symbol." << endl << endl;;
                 //break;
 
             }
@@ -839,8 +556,8 @@ void Roster::printInvalidEmails() {
     
     }
 
-    cout << "---- ---- ---- ---- ---- ---- ---- ---- " << endl;
-    cout << endl;
+    //DELETE: cout << "---- ---- ---- ---- ---- ---- ---- ---- " << endl;
+    //DELETE: cout << endl;
 
 
     if (!invalidEmails.empty()) {
@@ -935,9 +652,9 @@ Student* Roster::getStudent(int i) {
 
 
 // Gets Current Non-NullPtr Pointers In classRosterArray
-int Roster::getCurrentStudentCount() {
+__int64 Roster::getCurrentStudentCount() {
 
-    int currentStudentCount = 0;
+    __int64 currentStudentCount = 0;
 
     if (numStudents == (currentStudentIndex - 1)) {
         
@@ -980,65 +697,21 @@ void Roster::printAverageDaysInCourseAll(const Roster& roster) {
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-void Roster::parseInput(string studentData) {
+void Roster::parseInputData() {
 
-    //stringstream inputParseData;
     string parsedVariableData[9] = {};
 
     string parsingWorker;
     string parsedVariable;
 
-    parsingWorker = studentData;
-    stringstream inputParseData(parsingWorker);
-    int j = 0;
+    for (int i = 0; i < numStudents; i++) {
 
-    while (getline(inputParseData, parsedVariable, ',')) {
-        cout << parsedVariable << endl;
-        parsedVariableData[j++] = parsedVariable;
-
-    }
-
-    DegreeProgram degreeProgram;
-    degreeProgram = NETWORK;
-
-    if (parsedVariableData[8] == "NETWORK") {
-        std::cout << "Degree Program Is Network" << endl;
-        degreeProgram = NETWORK;
-    }
-    else if (parsedVariableData[8] == "SOFTWARE") {
-        std::cout << "Degree Program Is Software" << endl;
-        degreeProgram = SOFTWARE;
-    }
-    else if (parsedVariableData[8] == "SECURITY") {
-        std::cout << "Degree Program Is Security" << endl;
-        degreeProgram = SECURITY;
-    }
-
-    add(parsedVariableData[0], parsedVariableData[1], parsedVariableData[2], parsedVariableData[3], (stoi(parsedVariableData[4])), (stoi(parsedVariableData[5])), (stoi(parsedVariableData[6])), (stoi(parsedVariableData[7])), degreeProgram);
-
-};
-
-// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
-// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
-// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
-
-
-void Roster::parseInput2() {
-
-    //stringstream inputParseData;
-    string parsedVariableData[9] = {};
-
-    string parsingWorker;
-    string parsedVariable;
-
-    for (int i = 0; i < inputDataSizeTest; i++) {
-
-        parsingWorker = studentDataTest[i];
+        parsingWorker = studentData[i];
         stringstream inputParseData(parsingWorker);
         int j = 0;
 
         while (getline(inputParseData, parsedVariable, ',')) {
-            cout << parsedVariable << endl;
+            //cout << parsedVariable << endl;
             parsedVariableData[j++] = parsedVariable;
 
         }
@@ -1047,20 +720,19 @@ void Roster::parseInput2() {
         degreeProgram = NETWORK;
 
         if (parsedVariableData[8] == "NETWORK") {
-            std::cout << "Degree Program Is Network" << endl;
+            //std::cout << "Degree Program Is Network" << endl;
             degreeProgram = NETWORK;
         }
         else if (parsedVariableData[8] == "SOFTWARE") {
-            std::cout << "Degree Program Is Software" << endl;
+            //std::cout << "Degree Program Is Software" << endl;
             degreeProgram = SOFTWARE;
         }
         else if (parsedVariableData[8] == "SECURITY") {
-            std::cout << "Degree Program Is Security" << endl;
+            //std::cout << "Degree Program Is Security" << endl;
             degreeProgram = SECURITY;
         }
 
         add(parsedVariableData[0], parsedVariableData[1], parsedVariableData[2], parsedVariableData[3], (stoi(parsedVariableData[4])), (stoi(parsedVariableData[5])), (stoi(parsedVariableData[6])), (stoi(parsedVariableData[7])), degreeProgram);
-
 
     }
 };
@@ -1070,16 +742,11 @@ void Roster::parseInput2() {
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
 
-int Roster::getInputSize() {
+__int64 Roster::getInputSize() {
 
-    inputDataSizeTest = sizeof(studentDataTest) / sizeof(studentDataTest[0]);
+    inputDataSize = sizeof(studentData) / sizeof(studentData[0]);
 
-    cout << "---- ---- ---- ---- " << endl;
-    cout << "I am from the getInputSize Function" << endl;
-    cout << "Input Size Is: " << inputDataSizeTest << endl;
-    cout << "---- ---- ---- ---- " << endl;
-
-    return inputDataSizeTest;
+    return inputDataSize;
 
 };
 

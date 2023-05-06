@@ -50,7 +50,7 @@ class Student {
 			// Input Data Array 
 			// string arrayInputData;
 
-
+        //
 		// VARIABLES - END
         // ==== ==== ==== ==== ==== ==== ==== ==== 
 
@@ -59,6 +59,7 @@ class Student {
 
         //
         // ==== ==== ==== ==== ==== ==== ==== ==== 
+        // 
 		// MUTATORS - START
 
         void setStudentID(string studentID);
@@ -123,13 +124,13 @@ class Student {
         // CONSTRUCTORS - END
         // 
         // ==== ==== ==== ==== ==== ==== ==== ==== 
-                // 
+        // 
         // ==== ==== ==== ==== ==== ==== ==== ==== 
         // 
         // DECONSTRUCTORS - START
 
         // Default Constructor
-        //~Student();
+        ~Student();
 
         // DECONSTRUCTORS - END
         // 
