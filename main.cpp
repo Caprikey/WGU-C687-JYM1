@@ -28,26 +28,69 @@
 #include <windows.h>
 
 // HEADER AND DEFINITION For Resizing A Console Window -- END
-
+// 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+// ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+//
+// Namespaces - START
+//
 
 
 using namespace std;
 
+//
+// Namespaces - END
+//
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
-
-
+//
 // WGU STUDENT INFORMATION - START
 
-//TODO: ADD WGU STUDENT REQUIRED INFO 
+class WGU {
+
+private:
+
+    string wguSchoolTitle = "Western Governors University";
+    string wguCourseTitle = "Scripting And Programming - Applications - C867";
+    string wguExamTitle = "Performance Assessment - JYM1";
+    string wguCourseProgrammingLanguage = "C++";
+    string wguStudentID = "007003568";
+    string wguStudentName = "Danty Cook";
+
+public:
+
+    // Constructor
+
+    WGU() {
+
+        cout << wguSchoolTitle << endl;
+
+        cout << wguCourseTitle << endl;
+        cout << wguExamTitle << endl;
+        cout << "Written In: " << wguCourseProgrammingLanguage << endl;
+        cout << "Student ID: " << wguStudentID << endl;
+        cout << "Student Name: " << wguStudentName << endl;
+
+    }
+
+    // Deconstructor
+
+    ~WGU() {
+
+    }
+
+};
 
 // WGU STUDENT INFORMATION - END
-
-
+//
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+//
+// MAIN FUNCTION - START 
+// 
 
 int main() {
 
@@ -82,10 +125,16 @@ int main() {
 
     // CONSOLE WINDOW RESIZE AND MOVING CODE - START
     // 
-
+    //
     // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    //
+
+    WGU itsAMe;
 
     //
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+    //
+
     Roster classRoster;
 
 
@@ -172,3 +221,8 @@ int main() {
     
     return 0;
 }
+
+//
+// MAIN FUNCTION - END
+// 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
