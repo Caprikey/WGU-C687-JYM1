@@ -350,7 +350,7 @@ void Roster::printInvalidEmails() {
 
             } else {
 
-                string invalidEmailError2 = "Email Address Does Not Contain A At (@) Symbol.";
+                string invalidEmailError2 = "Email Address Does Not Contain An At (@) Symbol.";
 
                 invalidEmails.push_back(make_pair(_studentID, invalidEmailError2));
 
