@@ -151,10 +151,13 @@ void Roster::remove(string studentID) {
 
     }
 
-    for (int j = deletedStudent; j < numStudents-1; j++) {
+    if (isFound) {
+        for (int j = deletedStudent; j < numStudents - 1; j++) {
 
-        classRosterArray[j] = classRosterArray[j + 1];
-        classRosterArray[j + 1] = nullptr;    
+            classRosterArray[j] = classRosterArray[j + 1];
+            classRosterArray[j + 1] = nullptr;
+
+        }
 
     }
 };
