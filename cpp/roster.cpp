@@ -21,7 +21,7 @@ const string studentData[] = {
         "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
         "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
         "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
-        "A5,Danty,Cook,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
+        "A5,Danty,Cook ,DCoo230@wgu.edu,34,77,42,60,SOFTWARE"
 };
 
 //
@@ -169,14 +169,35 @@ void Roster::remove(string studentID) {
 // Print All Function
 
 void Roster::printAll() {
-            
-    cout << "S.ID:" << "\t";
-    cout << "First Name: " << "\t\t";
-    cout << "Last Name: " << "\t\t";
-    cout << "Age: " << "\t";
-    cout << "Days In Course []:" << "\t";
-    cout << "Degree Program: ";
+
+
+    //cout << "Current Enrolled Students: " << endl;
+    
+    cout.fill(' ');
+    cout.width(75);
+    cout << right << "Current Enrolled Students:" << endl;
+    
     cout << endl;
+
+    cout << "Student ID" << "\t";
+    cout << "First Name" << "\t\t";
+    cout << "Last Name" << "\t\t";
+    cout << "Age" << "\t";
+    //cout << "Days In Course []" << "\t";
+    
+    cout.width(27);
+    cout << left << "Days In Course []";
+
+
+    //cout << "Degree Program";
+
+    cout.width(14);
+    cout << left << "Degree Program";
+    
+    cout << endl;
+    cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ";
+    cout << endl;
+
 
     for (int i = 0; i < numStudents; i++) {
             
@@ -187,7 +208,20 @@ void Roster::printAll() {
         }
         else {
 
-            cout << "classRosterArray[" << i << "] is empty and set to a nullptr" << endl;
+            cout << endl;
+            cout << endl;
+            //cout << "Current Available Seats In Class" << endl;
+            
+            cout.fill(' ');
+            cout.width(78);
+            cout << right << "Current Available Seats In Class" << endl;
+
+            cout << endl;
+
+            cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ";
+            cout << endl;
+            cout << "Seat " << i + 1 << " is avaible." << endl;
+            //cout << "classRosterArray[" << i << "] is empty and set to a nullptr" << endl;
 
         }
 
@@ -559,11 +593,23 @@ void Roster::printInvalidEmails() {
 
     if (!invalidEmails.empty()) {
     
-        cout << "Invalid Email Address Results:" << endl;
+        //cout << "Invalid Email Address Results:" << endl;
+
+        cout.width(77);
+        cout << right << "Invalid Email Address Results" << endl;
+
+        cout << endl;
+        cout.width(19);
+        cout << left << "Student ID";
+        cout << "| Reason: ";
+        cout << endl;
+        cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ";
+        cout << endl;
+        
 
         for (auto const& invalidEmail : invalidEmails) {
         
-            cout << "Student ID: " << invalidEmail.first << ", Reason: " << invalidEmail.second << endl;
+            cout << "Student ID: " << invalidEmail.first << "     | Reason: " << invalidEmail.second << endl;
         
         }
     
@@ -583,6 +629,44 @@ void Roster::printInvalidEmails() {
 
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 
+    cout.width(75);
+    cout << right << "Search By Degree Program:" << endl;
+    
+    cout.width(66);
+    
+    if (degreeProgram == NETWORK) {
+        cout << right << "NETWORK";
+    }
+    else if (degreeProgram == SOFTWARE) {
+        cout << right << "SOFTWARE";
+    }
+    else if (degreeProgram == SECURITY) {
+        cout << right << "SECURITY";
+    }
+    
+    cout << endl;
+    cout << endl;
+
+    cout << "Student ID" << "\t";
+    cout << "First Name" << "\t\t";
+    cout << "Last Name" << "\t\t";
+    cout << "Age" << "\t";
+    //cout << "Days In Course []" << "\t";
+
+    cout.width(27);
+    cout << left << "Days In Course []";
+
+
+    //cout << "Degree Program";
+
+    cout.width(14);
+    cout << left << "Degree Program";
+    
+    cout << endl;
+    cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ";
+    cout << endl;
+
+
     for (int i = 0; i < numStudents; i++) {
     
         if (classRosterArray[i] != nullptr) {
@@ -592,6 +676,12 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
                 classRosterArray[i]->print();
                 continue;
 
+            }
+            else {
+                
+                "No Students Were Found";
+
+                
             }
         
         }
@@ -609,13 +699,13 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 
 // Gets A Pointer To A Pointer of Student Objects. 
 
-
+/*
 Student** Roster::getAllStudents() {
 
     return classRosterArray;
 
 }
-
+*/
 /*
 
 Use Like This:
@@ -662,7 +752,9 @@ __int64 Roster::getCurrentStudentCount() {
         for (int i = 0; i < numStudents; i++) {
 
             if (classRosterArray[i] != nullptr) {
+
                 currentStudentCount++;
+
             }
         }
 

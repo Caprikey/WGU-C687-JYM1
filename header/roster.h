@@ -91,7 +91,7 @@ class Roster {
 
         __int64 getInputSize();
 
-        Student** getAllStudents();
+        //Student** getAllStudents();
 
         __int64 getCurrentStudentCount();
 

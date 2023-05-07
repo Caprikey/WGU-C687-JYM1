@@ -1,7 +1,8 @@
 #include "..\header\student.h"
 #include "..\header\degree.h"
 
-#include <iomanip> 
+#include <iomanip>
+#include <iostream>
 
 using namespace std;
 
@@ -127,10 +128,38 @@ using namespace std;
 // MEMBER FUNCTIONS - START
 
     void Student::print() {
-        cout << this->getStudentID() << "\t";
-        cout << "First Name: " << this->getStudentFirstName() << "\t";
-        cout << "Last Name: " << this->getStudentLastName() << "\t";
-        cout << "Age: " << this->getStudentAge() << "\t";
+
+
+        //cout.width(10);
+        //cout << left << this->getStudentID() << "\t"
+        cout.width(8);
+        cout << left << this->getStudentID() << "\t";
+        
+        //cout.width(18);
+        //cout << left << "First Name: " << left << this->getStudentFirstName() << "\t";
+        
+        cout << "First Name: ";
+        
+        cout.width(5);
+        cout << left << this->getStudentFirstName();
+        cout << "\t";
+
+
+        cout << "Last Name: ";
+
+        cout.width(8);
+        cout << left << this->getStudentLastName();
+
+        cout << "\t";
+
+        cout << "Age: ";
+        cout.width(2);
+        cout << left << this->getStudentAge();
+        cout << "\t";
+
+        //cout << "Age: " << this->getStudentAge() << "\t";
+        //cout.width(26);
+        //cout << left << "daysInCourse: ";
         cout << "daysInCourse: ";
 
         cout << "{";
@@ -145,16 +174,19 @@ using namespace std;
         }
         cout << "} ";
 
-        cout << setw(28) << "Degree Program: ";
+        
+        cout << "Degree Program: ";
+        cout.width(8);
+        
 
         if (this->degreeProgram == DegreeProgram::NETWORK) {
-            cout << "NETWORK";
+            cout << left << "NETWORK";
         }
         else if (this->degreeProgram == DegreeProgram::SOFTWARE) {
-            cout << "SOFTWARE";
+            cout << left << "SOFTWARE";
         }
         else if (this->degreeProgram == DegreeProgram::SECURITY) {
-            cout << "SECURITY";
+            cout << left << "SECURITY";
         }
         else {
             cout << "ERROR -- DEBUG NEEDED";

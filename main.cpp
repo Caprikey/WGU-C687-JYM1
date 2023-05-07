@@ -160,6 +160,8 @@ int main() {
     // 
     cout << "Students' Average Days In Course: " << endl;
     cout << "Student ID \t Average Days In Course" << endl;
+    cout << "---- ---- ---- ---- ---- ---- ---- ---- ----";
+    cout << endl;
     //
     for (int i = 0; i < classRoster.getCurrentStudentCount(); i++) {
 
@@ -175,6 +177,8 @@ int main() {
     // 
     cout << "Students' Average Days In Course: " << endl;
     cout << "Student ID \t Average Days In Course" << endl;
+    cout << "---- ---- ---- ---- ---- ---- ---- ---- ----";
+    cout << endl;
     //
     classRoster.printAverageDaysInCourseAll(classRoster);
 
