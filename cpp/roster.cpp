@@ -137,23 +137,17 @@ void Roster::remove(string studentID) {
                 classRosterArray[i] = nullptr;
                 --currentStudentIndex;
 
+                cout << "Student " << studentID << " has been removed successfully.";
                 break;
             }
-            else {
-                // TODO: Fix Error Message And Loop Exit
-                bool isFound = false;
-                cout << "ERROR: ";
-                cout << "A Student with that ID was not found. Please try again." << endl;
-            }
 
         }
 
-        if (isFound) {
-            
-            break;
-            
-        }
+    }
 
+    if (!isFound) {
+        cout << "ERROR: ";
+        cout << "A Student with that ID was not found. Please try again." << endl;
 
     }
 
