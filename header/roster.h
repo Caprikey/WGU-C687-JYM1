@@ -30,6 +30,10 @@ class Roster {
         __int64 inputDataSize;
         
 
+        // Roster Class Debugging Flag
+        bool debugging = false;
+
+
     public:
 
         // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
