@@ -83,7 +83,7 @@ Roster::~Roster() {
 
     }
 
-    // Delete Deletes The classRosterArray, Array Of Pointers, After All Objects Have Been Deleted and Their Elements Have Been Set To NullPtr
+    // Delete Function Performs A Deletion On The classRosterArray, Array Of Pointers, After All Objects Have Been Deleted and Their Elements Have Been Set To NullPtr
     delete[] classRosterArray;
 
 };
@@ -216,9 +216,10 @@ void Roster::remove(string studentID) {
 
 void Roster::printAll() {
 
-
+    // Standard Output
     //cout << "Current Enrolled Students: " << endl;
     
+    //Stylized Output
     cout.fill(' ');
     cout.width(75);
     cout << right << "Current Enrolled Students:" << endl;
@@ -229,14 +230,18 @@ void Roster::printAll() {
     cout << "First Name" << "\t\t";
     cout << "Last Name" << "\t\t";
     cout << "Age" << "\t";
+    
+    // Standard Output
     //cout << "Days In Course []" << "\t";
     
+    //Stylized Output
     cout.width(27);
     cout << left << "Days In Course []";
 
-
+    // Standard Output
     //cout << "Degree Program";
 
+    //Stylized Output
     cout.width(14);
     cout << left << "Degree Program";
     
@@ -244,11 +249,13 @@ void Roster::printAll() {
     cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ";
     cout << endl;
 
-
+    // For Loop To Iterate From i=0 to i < numStudents; Passing Index i To The classRosterArray[i].
     for (int i = 0; i < numStudents; i++) {
-            
+        
+        // If Statement Verifies If The classRosterArray Element Located At The Position Of i Is Not A NullPtr
         if (classRosterArray[i] != nullptr) {
             
+            // Performs The Student Object Print Function For The Student Object Located At Index i Of The classRosterArray
             classRosterArray[i]->print();
 
         }
@@ -256,8 +263,10 @@ void Roster::printAll() {
 
             cout << endl;
             cout << endl;
+            // Standard Output
             //cout << "Current Available Seats In Class" << endl;
             
+            // Stylized Output
             cout.fill(' ');
             cout.width(78);
             cout << right << "Current Available Seats In Class" << endl;
@@ -283,6 +292,7 @@ void Roster::printAll() {
 
 void Roster::printAverageDaysInCourse(string studentID) {
 
+    // Sets Temporary Variables And Initializes THem
     int NumOfCoursesArraySize = 3;
     int sumOfDays = 0;
     int numOfCourses = 0;
@@ -297,8 +307,6 @@ void Roster::printAverageDaysInCourse(string studentID) {
             // If Statment Uses The getStudentID Accessor From The Student Object Located At The classRosterArray Index Position Of i And Verifies If It Matches The studentID Arument Received. 
             if (classRosterArray[i]->getStudentID() == studentID) {
 
-                //
-                //cout << "Student ID: " << classRosterArray[i]->getStudentID() << "\t\t";
                 
                 cout << "\t";
                 cout << classRosterArray[i]->getStudentID();
@@ -404,24 +412,25 @@ void Roster::printInvalidEmails() {
 
             //Start of At Symbol
 
-            //
+            //If Statement Checks If The Find Function Search Of The Email Address String For An At (@) Symbol Returns No Position.
             if (_emailAddress.find("@") != string::npos) {
 
-                //
+                //While Loop Continues As Long As The Find Function Search Of The Email Address String For An At (@) Symbol Does Not Return No Position.
                 while (_emailAddress.find("@", startingIndex) != string::npos) {
 
-                    //
+                    //The Location Of This Iterations At (@) Symbol Found Using The Find Function On The Email Address String Starting At the startingIndex Is Set To The workingIndex Variable
                     workingIndex = _emailAddress.find("@", startingIndex);
                     
-                    //
+                    // countAtSymbols Variable Is Incremented By One (1)
                     countAtSymbols++;
 
-                    // 
+                    // If Statement Checks if countAtSymbols variable has a value greater than One (1)
                     if (countAtSymbols > 1) {
-                        //invalidAddressFound = true;
-
+ 
+                        // Email Error Message 1 String -- Email Address Has More Than One At (@) Symbol
                         string invalidEmailError1 = "Email Address Contains More Than One At (@) Symbol";
 
+                        // Student ID and Error Message Are Paired As A Single String Element Using Make_Pair Function And Inserted Into The invalidEmails Vector Using The Push_Back Function
                         invalidEmails.push_back(make_pair(_studentID, invalidEmailError1));
 
                         if (debugging) {
@@ -455,10 +464,13 @@ void Roster::printInvalidEmails() {
             // If Not True -- Pushes Email Error Message To Vector.
             else {
 
+                // Email Error Message 2 String -- Email Address Does Not Contain An At (@) Symbol.
                 string invalidEmailError2 = "Email Address Does Not Contain An At (@) Symbol.";
 
+                // Student ID and Error Message Are Paired As A Single String Element Using Make_Pair Function And Inserted Into The invalidEmails Vector Using The Push_Back Function
                 invalidEmails.push_back(make_pair(_studentID, invalidEmailError2));
 
+                // If Statement Checks If Debugging Variable Is Set To True
                 if (debugging) {
                     
                     cout << "INVALID EMAIL ADDRESSES:" << endl;
@@ -482,10 +494,13 @@ void Roster::printInvalidEmails() {
                 // If Statement Checks If The Character At singleAtSymbolIndex + 1 In The Email String Is A Hyphen (If There Is Only One At (@) Symbol, Is The Next Character A Hypen (i.e. @-domain.com ))
                 if (_emailAddress.at(singleAtSymbolIndex + 1) == '-') {
 
+                    // Email Error Message 9 String -- Email Address Contains A Hyphen (-) Symbol After The At (@) Symbol and As The First Character Of The Domain Address
                     string invalidEmailError9 = "Email Address Contains A Hyphen (-) Symbol After The At (@) Symbol and As The First Character Of The Domain Address";
 
+                    // Student ID and Error Message Are Paired As A Single String Element Using Make_Pair Function And Inserted Into The invalidEmails Vector Using The Push_Back Function
                     invalidEmails.push_back(make_pair(_studentID, invalidEmailError9));
 
+                    // If Statement Checks If Debugging Variable Is Set To True
                     if (debugging) {
 
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
@@ -511,10 +526,13 @@ void Roster::printInvalidEmails() {
                 // If Statement Checks If Current Character is a Space -- If A space is detected, and error message is printed.         
                 if (isspace(_emailAddress.at(j))) {
 
+                    // Email Error Message 5 String -- Email Address Contains A Space.
                     string invalidEmailError5 = "Email Address Contains A Space.";
 
+                    // Student ID and Error Message Are Paired As A Single String Element Using Make_Pair Function And Inserted Into The invalidEmails Vector Using The Push_Back Function
                     invalidEmails.push_back(make_pair(_studentID, invalidEmailError5));
 
+                    // If Statement Checks If Debugging Variable Is Set To True
                     if (debugging) {
 
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
@@ -539,10 +557,13 @@ void Roster::printInvalidEmails() {
                 // If Statement Checks If The Character At Position 0 Or Position Email Total Size Minus 1 Are An At (@) Symbol
                 if ((_emailAddress.at(0) == '@') || (_emailAddress.at(_emailAddressLength - 1) == '@')) {
 
+                    // Email Error Message 6 String -- Email Address Contains An At (@) Symbol At Either The First Or Last Character.
                     string invalidEmailError6 = "Email Address Contains An At (@) Symbol At Either The First Or Last Character.";
 
+                    // Student ID and Error Message Are Paired As A Single String Element Using Make_Pair Function And Inserted Into The invalidEmails Vector Using The Push_Back Function
                     invalidEmails.push_back(make_pair(_studentID, invalidEmailError6));
 
+                    // If Statement Checks If Debugging Variable Is Set To True
                     if (debugging) {
 
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
@@ -560,10 +581,14 @@ void Roster::printInvalidEmails() {
                 // If Statement Checks If The Character At Position 0 Or Position Email Total Size Minus 1 Are A Period (.) Symbol
                 else if ((_emailAddress.at(0) == '.') || (_emailAddress.at(_emailAddressLength - 1) == '.')) {
 
+                    // Email Error Message 7 String -- 
+                    // Email Error Message 7 String -- 
                     string invalidEmailError7 = "Email Address Contains An A Period (.) At Either The First Or Last Character.";
 
+                    // Student ID and Error Message Are Paired As A Single String Element Using Make_Pair Function And Inserted Into The invalidEmails Vector Using The Push_Back Function
                     invalidEmails.push_back(make_pair(_studentID, invalidEmailError7));
 
+                    // If Statement Checks If Debugging Variable Is Set To True
                     if (debugging) {
 
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
@@ -582,10 +607,13 @@ void Roster::printInvalidEmails() {
                 // If Statement Checks If The Last Charager Of The Email (Email Total Minus 1) Is A Hyphen (-) Symbol
                 else if (_emailAddress.at(_emailAddressLength - 1) == '-') {
 
+                    // Email Error Message 8 String -- Email Address Contains A Hyphen (-) As The Last Character
                     string invalidEmailError8 = "Email Address Contains A Hyphen (-) As The Last Character.";
 
+                    // Student ID and Error Message Are Paired As A Single String Element Using Make_Pair Function And Inserted Into The invalidEmails Vector Using The Push_Back Function
                     invalidEmails.push_back(make_pair(_studentID, invalidEmailError8));
 
+                    // If Statement Checks If Debugging Variable Is Set To True
                     if (debugging) {
 
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
@@ -600,8 +628,10 @@ void Roster::printInvalidEmails() {
                     //break;
 
                 }
+                // If Not True, Print No Errors
                 else {
-
+                    
+                    // If STatement Checks If Debugging Variable Is Set To True
                     if (debugging) {
 
                         cout << "No Errors" << endl;
@@ -636,10 +666,13 @@ void Roster::printInvalidEmails() {
                             // If Statment Checks If Character At workingIndex + 1 Position Is A Period; Checks If The Character After The Current Period Is Also A Period (..)
                             if (_emailAddress.at(workingIndex + 1) == '.') {
 
+                                // Email Error Message 3 String -- Email Address Contains More Than One Period (.) Symbol In A Row
                                 string invalidEmailError3 = "Email Address Contains More Than One Period (.) Symbol In A Row.";
 
+                                // Student ID and Error Message Are Paired As A Single String Element Using Make_Pair Function And Inserted Into The invalidEmails Vector Using The Push_Back Function
                                 invalidEmails.push_back(make_pair(_studentID, invalidEmailError3));
 
+                                // If Statement Checks If Debugging Variable Is Set To True
                                 if (debugging){
 
                                     cout << "INVALID EMAIL ADDRESSES:" << endl;
@@ -663,10 +696,13 @@ void Roster::printInvalidEmails() {
                             // If Statment Checks If Character At workingIndex - 1 Position Is A Period; Checks If The Character Before The Current Period Is Also A Period (..)
                             if (_emailAddress.at(workingIndex + -1) == '.') {
 
+                                // Email Error Message 3 String -- Email Address Contains More Than One Period (.) Symbol In A Row.
                                 string invalidEmailError3 = "Email Address Contains More Than One Period (.) Symbol In A Row.";
 
+                                // Student ID and Error Message Are Paired As A Single String Element Using Make_Pair Function And Inserted Into The invalidEmails Vector Using The Push_Back Function
                                 invalidEmails.push_back(make_pair(_studentID, invalidEmailError3));
 
+                                // If Statement Checks If Debugging Variable Is Set To True
                                 if (debugging) {
 
                                     cout << "INVALID EMAIL ADDRESSES:" << endl;
@@ -691,10 +727,13 @@ void Roster::printInvalidEmails() {
                             // If Statement Checks If The Character At Position workingIndex - 1 OR workingIndex + 1 Are A Period 
                             if ((_emailAddress.at(workingIndex - 1) == '.') || (_emailAddress.at(workingIndex + 1) == '.')) {
 
+                                // Email Error Message 3 String -- Email Address Contains More Than One Period (.) Symbol In A Row.
                                 string invalidEmailError3 = "Email Address Contains More Than One Period (.) Symbol In A Row.";
 
+                                // Student ID and Error Message Are Paired As A Single String Element Using Make_Pair Function And Inserted Into The invalidEmails Vector Using The Push_Back Function
                                 invalidEmails.push_back(make_pair(_studentID, invalidEmailError3));
 
+                                // If Statement Checks If Debugging Variable Is Set To True
                                 if (debugging) {
                                     
                                     cout << "INVALID EMAIL ADDRESSES:" << endl;
@@ -717,16 +756,20 @@ void Roster::printInvalidEmails() {
 
                     }
 
+                    // startingIndex Value Is Set To The Value of workingIndex + 1
                     startingIndex = (workingIndex + 1);
 
                 }
             }
             else {
 
+                // Email Error Message 4 String -- Email Address Does Not Contain A Period (.) Symbol.
                 string invalidEmailError4 = "Email Address Does Not Contain A Period (.) Symbol.";
 
+                // Student ID and Error Message Are Paired As A Single String Element Using Make_Pair Function And Inserted Into The invalidEmails Vector Using The Push_Back Function
                 invalidEmails.push_back(make_pair(_studentID, invalidEmailError4));
 
+                // If Statement Checks If Debugging Variable Is Set To True
                 if (debugging){
                 
                     cout << "INVALID EMAIL ADDRESSES:" << endl;
@@ -746,6 +789,7 @@ void Roster::printInvalidEmails() {
     
     }
 
+    // If Statement Checks If Debugging Variable Is Set To True
     if (debugging) {
 
         cout << "---- ---- ---- ---- ---- ---- ---- ---- " << endl;
@@ -753,12 +797,13 @@ void Roster::printInvalidEmails() {
 
     }
 
-
+    // If Statment Checks If Vector Is Empty
     if (!invalidEmails.empty()) {
     
-
+        // Standard Output
         //cout << "Invalid Email Address Results:" << endl;
 
+        // Stylized Output
         cout.width(77);
         cout << right << "Invalid Email Address Results" << endl;
 
@@ -770,14 +815,16 @@ void Roster::printInvalidEmails() {
         cout << "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ";
         cout << endl;
         
-
+        // For Loop That Uses The Pair Data Type To Iterate Over Each Element In The Vector
         for (auto const& invalidEmail : invalidEmails) {
         
+            // Output Prints Out The Pair.first Element, the studentID and then the Pair.second element, the Error Reason
             cout << "Student ID: " << invalidEmail.first << "     | Reason: " << invalidEmail.second << endl;
         
         }
     
     }
+    // If Not True -- Print No Invalid Addresses Found
     else {
     
         cout << "No Invalid Emails Were Found." << endl;
@@ -792,6 +839,9 @@ void Roster::printInvalidEmails() {
 // Print By Degree Program Function 
 
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
+
+    int isFoundDegree = false;
+
 
     cout.width(75);
     cout << right << "Search By Degree Program:" << endl;
@@ -838,7 +888,10 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 
             // If Statment Uses The getStudentDegreeProgram() Accessor From The Student Object Located At The classRosterArray Index Position Of i And Verifies If It Matches The degreeProgram Arument Received. 
             if (classRosterArray[i]->getStudentDegreeProgram() == degreeProgram) {
-        
+                
+                // Sets isFoundDegree Variable To True For Use In No-Student Found If Statement.
+                isFoundDegree = true;
+
                 // If True -- The Print Function For The Student Object Located At The classRosterArray Element Located At The Position Of i
                 classRosterArray[i]->print();
 
@@ -846,16 +899,28 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
                 continue;
 
             }
-            // If Not True
-            else {
-                
-                // Error Message Is Printed. 
-                cout << "No Students Were Found" << endl;
-                
-            }
         
         }
 
+    }
+
+    if (!isFoundDegree) {
+
+        // Error Message Is Printed. 
+        cout << "ERROR: No Students In The ";
+        
+        if (degreeProgram == NETWORK) {
+            cout << right << "NETWORK";
+        }
+        else if (degreeProgram == SOFTWARE) {
+            cout << right << "SOFTWARE";
+        }
+        else if (degreeProgram == SECURITY) {
+            cout << right << "SECURITY";
+        }
+
+        cout << " Degree Program Were Found." << endl;
+    
     }
 
 };

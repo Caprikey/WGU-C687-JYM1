@@ -157,12 +157,23 @@ int main() {
     // ---- ---- ---- ---- 
     cout << endl;
     
-    // 
+    /*
+    
+    Print Average Days In Course For The Students
+    Performs Loop In The Main Body.
+    
+    Uses A Roster Function To Get Current Student Count To Return The For Loop Max. 
+    Using The For Loop, The Current getStudentID Student Object Accessor Is Called 
+    Using The getStudentID Roster Function Using The Current Iteration Of i
+    This Passes The Student ID To The printAverageDaysInCourse Roster Function.
+
+    */
+
     cout << "Students' Average Days In Course: " << endl;
     cout << "Student ID \t Average Days In Course" << endl;
     cout << "---- ---- ---- ---- ---- ---- ---- ---- ----";
     cout << endl;
-    //
+
     for (int i = 0; i < classRoster.getCurrentStudentCount(); i++) {
 
         classRoster.printAverageDaysInCourse(classRoster.getStudent(i)->getStudentID());
@@ -174,12 +185,26 @@ int main() {
     // ---- ---- ---- ---- 
     cout << endl;
     
-    // 
+    /*
+
+    Print Average Days In Course For The Students
+    Performs Loop In The Roster Class
+
+    Uses A Roster Function To Get Current Student Count To Return The For Loop Max.
+    Using The For Loop, The Current getStudentID Student Object Accessor Is Called
+    Using The getStudentID Roster Function Using The Current Iteration Of i
+    This Passes The Student ID To The printAverageDaysInCourse Roster Function.
+    
+    This function Works Essentially The Same, But It Takes A Roster Object From Main
+    Then Performs Everything Else In The Class
+
+    */
+
     cout << "Students' Average Days In Course: " << endl;
     cout << "Student ID \t Average Days In Course" << endl;
     cout << "---- ---- ---- ---- ---- ---- ---- ---- ----";
     cout << endl;
-    //
+
     classRoster.printAverageDaysInCourseAll(classRoster);
 
     cout << endl;
