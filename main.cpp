@@ -17,6 +17,7 @@
 
 #include <sstream>
 
+// Added As A Recommendation To Fix Visual Studio Compiling Issues. -- "Known Issue"
 #include "header\stdafx.h"
 
 #include "header\degree.h"
