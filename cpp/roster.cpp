@@ -1,4 +1,13 @@
-#include "..\header\roster.h"
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// 
+// ROSTER CLASS - START
+//
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+//
+// LIBRARY - START
+// 
 
 #include <iostream>
 #include <iomanip> 
@@ -7,10 +16,25 @@
 #include <sstream>
 #include <vector>
 
+#include "..\header\roster.h"
+
+//
+// LIBRARY - END
+//
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+//
+// NAMESPACES - START
+//
 
 using namespace std;
 
-// Roster Class
+//
+// NAMESPACES - END
+//
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+//
+// PUBLIC DATA MEMBERS - START
+//
 
 
 // Project Required:: Input Data:
@@ -25,13 +49,14 @@ const string studentData[] = {
 };
 
 //
-// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// PUBLIC DATA MEMBERS - END
+//
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
 //
 // CONSTRUCTORS - START 
 
-// TODO: DELTE FROM FINAL -- USED FOR TESTING
-// Constructor With Debug Comments
 
+// Roster Constructor
 Roster::Roster() {
 
     // Calls The getInputSize() Function To Calculate The Size Of The Input Data From The Array Of Strings, studentData. 
@@ -58,13 +83,11 @@ Roster::Roster() {
 
 // CONSTRUCTORS - END
 //
-// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
 //
 // DECONSTRUCTORS - START 
 
-// TODO: DELTE FROM FINAL -- USED FOR TESTING
-// Deconstructor With Debug Comments
-
+// Roster Deconstructor
 Roster::~Roster() {
 
     // For Loop Iterates From i to numStudents Passing The Index i To The classRosterArray[i]
@@ -90,20 +113,22 @@ Roster::~Roster() {
 
 // DECONSTRUCTORS - END
 //
-// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
 // 
 // MEMBER FUNCTIONS - START
-
+//
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-// TODO: Completed Add Function
-    // IDEA: Have Add function verify the array size and the number of items. If the new add function call will cause an out of bounds error, perform creation of a new array with the increased size, move all existing objects to the new array, add the new object, delete the old array, rename the new array. 
+
+// Roster Add() Function Adds A New Student Object To the classRoster Array Using the Paramaterized Student Constructor Matches To Its Input Arguments.
+
+    // IDEA: Improve The Add function's Methods to verify the array size and the number of items. 
+        // If the new add function call will cause an out of bounds error, perform creation of a new array with the increased size, move all existing objects to the new array, add the new object, delete the old array, rename the new array. 
     // NOTE: Inspiration for Adding to the end of the array https://www.tutorialspoint.com/cplusplus-program-to-append-an-element-into-an-array 
 
 
-// Add Function With All Required Parameters
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
 
     // Pre-Increments The currentStudentIndex By One (+1). 
@@ -138,7 +163,7 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-
+// Roster Remove() Function. Takes A studentID String Argument To Remove The Matching Student Object From The classRosterArray and Shifts The New NullPtr To The End
 void Roster::remove(string studentID) {
 
     // Creates A Boolean Variable Called isFound And Sets It To False
@@ -212,7 +237,7 @@ void Roster::remove(string studentID) {
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-// Print All Function
+// Roster printAll() Function -- Performs A Loop To Print All Students Using the Print Function From The Student Class. 
 
 void Roster::printAll() {
 
@@ -288,7 +313,7 @@ void Roster::printAll() {
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-// Print Average Days In Course Function
+// Roster pAverageDaysInCourse Function. Prints Using The studentID String Argument. This Takes One Input And Provides Only One Output. 
 
 void Roster::printAverageDaysInCourse(string studentID) {
 
@@ -307,7 +332,7 @@ void Roster::printAverageDaysInCourse(string studentID) {
             // If Statment Uses The getStudentID Accessor From The Student Object Located At The classRosterArray Index Position Of i And Verifies If It Matches The studentID Arument Received. 
             if (classRosterArray[i]->getStudentID() == studentID) {
 
-                
+                // Ouput
                 cout << "\t";
                 cout << classRosterArray[i]->getStudentID();
 
@@ -345,23 +370,26 @@ void Roster::printAverageDaysInCourse(string studentID) {
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-//TODO: Print Invalid Emails Function
-    // NOTE: A valid email per school project requirements: should include an at sign ('@') and period ('.') and should not include a space (' '). [Part E, Number 3, Section e]
-        // NOTE: Valid Email Address Information https://en.wikipedia.org/wiki/Email_address
-        // Only one @ symbol
-            // Local Part (local_part@domain.com)
-                // Allowed: Upper Case (A-Z) and Lower Case (a-z) characters (latin only)
-                // Allowed: Number digits (0-9)
-                // Allowed: Printable Characters !#$%&'*+-/=?^_`{|} 
-                // Allowed With Exception: Periods, Period cannot be the first or last characters and cannot appear consecutively (..)
-            // Domain Part
-                // Allowed: Upper Case (A-Z) and Lower Case (a-z) characters (Latin only)
-                // Allowed With Exception: Number digits (0-9) allowed as long as not all of the characters in the domain name are not numeric.
-                // Allowed With Exception: Hyphen, as long as it is not the first or last character.
-                
-            // There is more information on the above web address. 
+// Roster Function Checks If emailAddress String 
 
-        // IDEA: Get Length/Size of email Address. Loop through each character, check for spaces first. 
+
+// NOTE: A valid email per school project requirements: should include an at sign ('@') and period ('.') and should not include a space (' '). [Part E, Number 3, Section e]
+    // NOTE: Valid Email Address Information https://en.wikipedia.org/wiki/Email_address
+    // Only one @ symbol
+        // Local Part (local_part@domain.com)
+            // Allowed: Upper Case (A-Z) and Lower Case (a-z) characters (latin only)
+            // Allowed: Number digits (0-9)
+            // Allowed: Printable Characters !#$%&'*+-/=?^_`{|} 
+            // Allowed With Exception: Periods, Period cannot be the first or last characters and cannot appear consecutively (..)
+        // Domain Part
+            // Allowed: Upper Case (A-Z) and Lower Case (a-z) characters (Latin only)
+            // Allowed With Exception: Number digits (0-9) allowed as long as not all of the characters in the domain name are not numeric.
+            // Allowed With Exception: Hyphen, as long as it is not the first or last character.
+                
+        // There is more information on the above web address. 
+
+    // IDEA: I Would Like To Refactor/Optomize This Section More. 
+        // NOTE: I Know I Could Do More Faster And "Easier" With Regex, But Wanted To Do It This Awful Way To Utilized More Of What Was Taught. 
 
 void Roster::printInvalidEmails() {
 
@@ -389,7 +417,9 @@ void Roster::printInvalidEmails() {
                 // Changing from int to size_t to remove compiler warning regarding possible data loss due to type conversion. 
             size_t _emailAddressLength = _emailAddress.length();
 
+            // If Statment Checks If debugging Variable Is Set To True
             if (debugging) {
+
                 // Debugging Print Out of Temp Variable Values For Current Student In Loop
                 cout << "---- ---- ---- ---- " << endl;
                 cout << _emailAddress << endl;
@@ -435,6 +465,7 @@ void Roster::printInvalidEmails() {
 
                         if (debugging) {
 
+                            // Debugging Output Statements
                             cout << "INVALID EMAIL ADDRESSES:" << endl;
                             cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                             cout << "\t" << "    ";
@@ -473,6 +504,7 @@ void Roster::printInvalidEmails() {
                 // If Statement Checks If Debugging Variable Is Set To True
                 if (debugging) {
                     
+                    // Debugging Output Statements
                     cout << "INVALID EMAIL ADDRESSES:" << endl;
                     cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                     cout << "\t" << "    ";
@@ -503,6 +535,7 @@ void Roster::printInvalidEmails() {
                     // If Statement Checks If Debugging Variable Is Set To True
                     if (debugging) {
 
+                        // Debugging Output Statements
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
                         cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                         cout << "\t" << "    ";
@@ -535,6 +568,7 @@ void Roster::printInvalidEmails() {
                     // If Statement Checks If Debugging Variable Is Set To True
                     if (debugging) {
 
+                        // Debugging Output Statements
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
                         cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                         cout << "\t" << "    ";
@@ -566,6 +600,7 @@ void Roster::printInvalidEmails() {
                     // If Statement Checks If Debugging Variable Is Set To True
                     if (debugging) {
 
+                        // Debugging Output Statements
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
                         cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                         cout << "\t" << "    ";
@@ -591,6 +626,7 @@ void Roster::printInvalidEmails() {
                     // If Statement Checks If Debugging Variable Is Set To True
                     if (debugging) {
 
+                        // Debugging Output Statements
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
                         cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                         cout << "\t" << "    ";
@@ -616,6 +652,7 @@ void Roster::printInvalidEmails() {
                     // If Statement Checks If Debugging Variable Is Set To True
                     if (debugging) {
 
+                        // Debugging Output Statements
                         cout << "INVALID EMAIL ADDRESSES:" << endl;
                         cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                         cout << "\t" << "    ";
@@ -675,6 +712,7 @@ void Roster::printInvalidEmails() {
                                 // If Statement Checks If Debugging Variable Is Set To True
                                 if (debugging){
 
+                                    // Debugging Output Statements
                                     cout << "INVALID EMAIL ADDRESSES:" << endl;
                                     cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                                     cout << "\t" << "    ";
@@ -705,6 +743,7 @@ void Roster::printInvalidEmails() {
                                 // If Statement Checks If Debugging Variable Is Set To True
                                 if (debugging) {
 
+                                    // Debugging Output Statements
                                     cout << "INVALID EMAIL ADDRESSES:" << endl;
                                     cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                                     cout << "\t" << "    ";
@@ -735,7 +774,8 @@ void Roster::printInvalidEmails() {
 
                                 // If Statement Checks If Debugging Variable Is Set To True
                                 if (debugging) {
-                                    
+
+                                    // Debugging Output Statements
                                     cout << "INVALID EMAIL ADDRESSES:" << endl;
                                     cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                                     cout << "\t" << "    ";
@@ -772,6 +812,7 @@ void Roster::printInvalidEmails() {
                 // If Statement Checks If Debugging Variable Is Set To True
                 if (debugging){
                 
+                    // Debugging Output Statements
                     cout << "INVALID EMAIL ADDRESSES:" << endl;
                     cout << "Student ID:" << "\t\t" << "Reason:" << endl;
                     cout << "\t" << "    ";
@@ -807,6 +848,12 @@ void Roster::printInvalidEmails() {
         cout.width(77);
         cout << right << "Invalid Email Address Results" << endl;
 
+        // Standard Ouput
+        // cout << "Student ID:" ;
+        // cout << "\t\t" << "Reason:";
+        // cout << endl;
+
+        // Stylized Ouput
         cout << endl;
         cout.width(19);
         cout << left << "Student ID";
@@ -840,21 +887,41 @@ void Roster::printInvalidEmails() {
 
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 
-    int isFoundDegree = false;
+    // Creates An Boolean Variable Called isFoundDegree and Sets It To False
+    bool isFoundDegree = false;
 
+    // Standard Output
+    //cout << "Search By Degree Program:" << endl;
 
+    // Stylized Output
     cout.width(75);
     cout << right << "Search By Degree Program:" << endl;
     
     cout.width(66);
     
+    // If-Else Statement Matches The String Variable For The parsedVariableData At Index 8 (The 9th Item) To One Of The Three Enumerated Data Type Values. 
     if (degreeProgram == NETWORK) {
+        
+        // Standard Output
+        //cout << "NETWORK";
+
+        // Stylized Output
         cout << right << "NETWORK";
     }
     else if (degreeProgram == SOFTWARE) {
+
+        // Standard Output
+        //cout << "SOFTWARE";
+
+        // Stylized Output
         cout << right << "SOFTWARE";
     }
     else if (degreeProgram == SECURITY) {
+
+        // Standard Output
+        //cout << "SECURITY";
+
+        // Stylized Output
         cout << right << "SECURITY";
     }
     
@@ -865,14 +932,18 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
     cout << "First Name" << "\t\t";
     cout << "Last Name" << "\t\t";
     cout << "Age" << "\t";
+    
+    // Standard Ouput
     //cout << "Days In Course []" << "\t";
 
+    //Stylized Output
     cout.width(27);
     cout << left << "Days In Course []";
 
-
+    // Standard Output
     //cout << "Degree Program";
 
+    // Stylized Output
     cout.width(14);
     cout << left << "Degree Program";
     
@@ -904,11 +975,13 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 
     }
 
+    // If Statement Checks If isFoundDegree Variable Is Set To False
     if (!isFoundDegree) {
 
-        // Error Message Is Printed. 
+        // Error Message Is Printed - Segment 1. 
         cout << "ERROR: No Students In The ";
         
+        // IF-Else Statements Match The degreeProgram Argument Value From Earlier To Generate An Appropriate Error (No Students Found) Message - Segment 2
         if (degreeProgram == NETWORK) {
             cout << right << "NETWORK";
         }
@@ -919,6 +992,7 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
             cout << right << "SECURITY";
         }
 
+        // Output Message Is Printed - Segment 3
         cout << " Degree Program Were Found." << endl;
     
     }
@@ -929,10 +1003,22 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-// TODO: DELETE FROM FINAL
-
-
-// Gets A Pointer To A Pointer of Student Objects. 
+// 
+// Roster getAllStudents() Function Returns The Student Pointer Array As classRosterArray
+    
+    // Usage:
+        // Roster Class:
+            // Function Returns A Pointer To Pointer Of A Student Object Set To The classRosterArray
+        
+        // Calling: 
+            // Create A New Pointer-To-Pointer To Student Object
+                // Set This To The Class Function (i.e. classRoster.getAllStudents() )
+            // Create A New Pointer-To-Student Object
+                // Set This To The Previously Created Pointer-To-Pointer To Student Object
+            // Call The Newly Created "Pointer-To-Student-Object" To Perform Member Functions. 
+                    
+                // NOTE: NOT USED; KEEP TO PREVENT FROM FORGETTING ANOTHER METHOD
+                // IDEA: Modify Some Of The Other Functions In This Class To Use This Method.
 
 /*
 Student** Roster::getAllStudents() {
@@ -955,6 +1041,7 @@ Use Like This:
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
 // Custom Function to Get Student Object by Array Index Value -- Used During Testing -- Can Be Deleted
+    // NOTE: Keeping To Save The Reference Material 
 
 Student* Roster::getStudent(int i) {
     /*
@@ -965,6 +1052,8 @@ Student* Roster::getStudent(int i) {
     }
     return nullptr;
     */
+
+    // Retusn classRosterArray At Index Of i As A Pointer To A Student Object. 
     return classRosterArray[i];
 }
 
@@ -973,7 +1062,7 @@ Student* Roster::getStudent(int i) {
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
 
-// Function Gets Current Non-NullPtr Pointers In classRosterArray
+// Roster getCurrentStudentCount() Function Gets Current Non-NullPtr Pointers In classRosterArray And Returns An __int64 Value. 
 __int64 Roster::getCurrentStudentCount() {
 
     // Creates A __INT64 Variable Called currentStudentCount and Assigns It With A Value Of 0
@@ -985,7 +1074,7 @@ __int64 Roster::getCurrentStudentCount() {
         // If True -- currentStudentCount Is Set To numStudents
         currentStudentCount = numStudents;
     }
-    // If Not True
+    // If Not True -- Loop Is Perform To Calculcate The currentStudentCount value. 
     else {
 
         // For Loop To Iterate From i=0 to i < numStudents; Passing Index i To The classRosterArray[i].
@@ -1011,6 +1100,8 @@ __int64 Roster::getCurrentStudentCount() {
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
+// Roster printAverageDaysInCourseAll() Function Takes A Roster Object To Perform A Loop On The classRosterArray Elements Calling The Roster printAverageDaysInCourse Function. 
+// This Function Performs The Loop Inside the Roster Class Instead Of Performing The Loop Inside The Main() Function. 
 void Roster::printAverageDaysInCourseAll(const Roster& roster) {
 
     // For Loop To Iterate From i=0 to i < getCurrentStudent Count Function; Passing Index i To The classRosterArray[i].
@@ -1031,29 +1122,54 @@ void Roster::printAverageDaysInCourseAll(const Roster& roster) {
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
+// Roster parseInputData() Function Performs The studentData Array Element String Parsing And Then Calls The Add Function.
 void Roster::parseInputData() {
 
+    // Creates A String Array Called parsedVariableData Of 9 Elements. 
     string parsedVariableData[9] = {};
 
+    // Creates A String Variable Called parsingWorker
     string parsingWorker;
+
+    // Creates A String Variable Called parsedVariable
     string parsedVariable;
 
-    // For Loop 
+    // For Loop To Iterate From i=0 to i < numStudents; Passing Index i To The studentData[i] Array Of Strings. 
     for (int i = 0; i < numStudents; i++) {
 
+        // Sets parsingWorker To The String Element At Index Of i From The studentData Input Data String Array
         parsingWorker = studentData[i];
+        
+        // Creates A String Stream Object Named inputParseData and Passes The parsingWorking String Variable For Input
         stringstream inputParseData(parsingWorker);
+        
+        // Creates An Int Variable And Sets It To 0 
         int j = 0;
 
+        // While Loop Cycles Until Getline Function Returns False; 
+        // Getline Function Takes The String Stream Object, inputParseData; 
+        // Using A Comma Delimiter, Splits The String At Each Comma Assigning The Split Section's Value To parsedVariable Variable
         while (getline(inputParseData, parsedVariable, ',')) {
-            //cout << parsedVariable << endl;
+            
+            // Checks If Debugging Variable Set To True.
+            if (debugging) {
+            
+                cout << parsedVariable << endl;
+            
+            }
+
+            // Sets The Current Split Segment To The parsedVariableData Array At The Index Of j Then Post-Increments The Value By One (1)
             parsedVariableData[j++] = parsedVariable;
 
         }
 
+        // Calls An Enumerated Data Type, DegreeProgram, And Creates A Variable For It, degreeProgram 
         DegreeProgram degreeProgram;
+
+        // Initializes The degreeProgram Variable To Network
         degreeProgram = NETWORK;
 
+        // If-Else Statement Matches The String Variable For The parsedVariableData At Index 8 (The 9th Item) To One Of The Three Enumerated Data Type Values. 
         if (parsedVariableData[8] == "NETWORK") {
             //std::cout << "Degree Program Is Network" << endl;
             degreeProgram = NETWORK;
@@ -1067,6 +1183,7 @@ void Roster::parseInputData() {
             degreeProgram = SECURITY;
         }
 
+        // Calls The Roster Add Function, Passing The Appropriate parsedVariableData Element To The Function. Elements 4, 5, 6, 7 Are Converted From String To Int Using the STOI() function; Element 8 Is Pulled From The degreeProgram Variable Set From The Above If-Else Statement. 
         add(parsedVariableData[0], parsedVariableData[1], parsedVariableData[2], parsedVariableData[3], (stoi(parsedVariableData[4])), (stoi(parsedVariableData[5])), (stoi(parsedVariableData[6])), (stoi(parsedVariableData[7])), degreeProgram);
 
     }
@@ -1076,7 +1193,7 @@ void Roster::parseInputData() {
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
-
+// Roster getInputSize() Function Calculates The Input Size Of The studentData Array. And Returns An __int64 Value
 __int64 Roster::getInputSize() {
 
     // Sets The __INT64 Variable To The Size Of The Number Of Elements In The studentData Input Data. Does This By Dividing The Size of The studentData Array By The First Element Size Of The studentData Array 
@@ -1096,4 +1213,10 @@ __int64 Roster::getInputSize() {
 
 // MEMBER FUNCTIONS - END
 //
-// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+//
+// ROSTER CLASS - END
+// 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 

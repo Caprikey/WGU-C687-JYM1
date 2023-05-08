@@ -1,52 +1,98 @@
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// 
+// ROSTER HEADER - START
+//
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+//
+// LIBRARY - START
+// 
+
 #pragma once
 #include "degree.h"
 #include "student.h"
 
+//
+// LIBRARY - END
+//
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+//
+// NAMESPACES - START
+//
 
 using namespace std;
 
+//
+// NAMESPACES - END
+//
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+//
+// PUBLIC DATA MEMBERS - START
+//
 // Roster Header
 
 class Roster {
 
+
+    //
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+    //
+    // PRIVATE SECTION - START 
+    // 
+
     private:
 
+        // Variable Creation: Array Of Pointers
         Student **classRosterArray;
 
-        // TODO: Find out if there is a way to dynamically set this variable. 
-            // IDEA: May have to do a static initial variable. Then count the array items in the input. Assign that count total to the int numStudents. Then perform a new array creation and delete the initial one or see if there is a way to count the input before the class call then pass the details. 
-        
-        // Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion.
+        // Variable Creation: Number Of Students Value
+            // NOTE: Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion.
         __int64 numStudents = 0;
 
-        // Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion. 
+        // Variable Creation: Current Student Index For Loops.
+            // NOTE: Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion.
         __int64 currentStudentIndex = -1;
 
-        // Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion. 
+        // Variable Creation: Size Of The Input
+            // NOTE: Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion.
         __int64 inputSize = 0;
 
-        // Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion. 
+        // Variable Creation: Size of the Input Data
         // Set By getInputSize() function
+            // NOTE: Changing from int to __int64 to remove compiler warning regarding possible data loss due to type conversion.
         __int64 inputDataSize;
         
 
         // Roster Class Debugging Flag
         bool debugging = false;
 
+    //
+    // PRIVATE SECTION - END
+    //
+    // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+    //
+    // PUBLIC SECTION - START
+    // 
 
     public:
 
-        // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
-        // PUBLIC VARIABLES
+        //
+        // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+        //
+        // 
+        // PUBLIC VARIABLES - Start
         //
         // ---- ---- ---- ---- ---- ---- ---- ---- 
         //
 
 
         //
+        // PUBLIC VARIABLES - END
+        //
         // ---- ---- ---- ---- ---- ---- ---- ---- 
         //
-        // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+        // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
         //
         // FUNCTION DECLARATIONS
         //
@@ -58,8 +104,8 @@ class Roster {
 
         //
         // CONSTRUCTORS - END
-        // 
-        // ==== ==== ==== ==== ==== ==== ==== ==== 
+        //
+        // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
         //
         // DECONSTRUCTORS - START
         //
@@ -68,9 +114,9 @@ class Roster {
 
         //
         // DECONSTRUCTORS - END
-        // 
-        // ==== ==== ==== ==== ==== ==== ==== ==== 
-        // 
+        //
+        // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+        //
         // MEMBER FUNCTIONS - START
 
         // Add Function With All Required Parameters
@@ -88,21 +134,33 @@ class Roster {
 
         void printByDegreeProgram(DegreeProgram degreeProgram);
 
-        // TODO: DELETE FROM FINAL -- CREATED FOR TESTING
+        // Not Used -- But Keeping For Reference
         Student* getStudent(int i);
 
         void parseInputData();
 
         __int64 getInputSize();
 
+        // Disabled -- But Keeping For Reference
         //Student** getAllStudents();
 
         __int64 getCurrentStudentCount();
 
         //
         // MEMBER FUNCTIONS - END
-        // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+        //
+        // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+        //
+        // PUBLIC SECTION - END
         // 
-
+        // ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+        //
 
 };
+
+//
+// ROSTER HEADER - END
+//
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
+// ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== 
